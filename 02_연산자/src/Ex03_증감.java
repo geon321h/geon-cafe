@@ -29,14 +29,20 @@ public class Ex03_증감 {
 		// 변수 뒤-- : 나중에 1감소
 		
 		int i = 10;
-		System.out.println(i);
-		System.out.println(i++);
-		System.out.println(++i);
-		System.out.println(++i);
-		System.out.println(i++);
-		System.out.println(i);
+		//	System.out.println(i); // 10
+		//	System.out.println(i++); // 10
+		//	System.out.println(++i); // 12
+		//	System.out.println(++i); // 13
+		//	System.out.println(i++); // 13
+		//	System.out.println(i); // 14
 		
-		
+		System.out.println(i); // 10
+		System.out.println(i--); //10
+		System.out.println(--i); //8
+		System.out.println(--i); //7
+		System.out.println(i--); //7
+		System.out.println(i); //6
+ 		
 	}
 
 }
