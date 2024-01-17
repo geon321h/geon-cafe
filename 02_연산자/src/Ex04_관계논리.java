@@ -37,6 +37,7 @@ T || F : T
 F || T : T
 F || F : F
 
+! not 연산자
 !true => false
 !false => true
 */
