@@ -39,3 +39,26 @@ public class Ex06_남건 {
  숫자2개 
  계산
  */
+
+/* 추가풀이
+		
+	int result = 0;
+	
+	switch (op) {
+	case '+': result= num1+num2;
+		break;
+	case '-': result= num1-num2;
+		break;
+	case '*': result= num1*num2;
+		break;
+	case '/': result= num1/num2;
+		break;
+	case '%': result= num1%num2;
+		break;
+	default:System.out.println("올바른 연산자가 아닙니다.");
+		break;
+	}
+	
+	System.out.println(num1 + op + num2 + "=" + result);
+		
+ */

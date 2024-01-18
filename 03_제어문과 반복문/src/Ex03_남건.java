@@ -45,6 +45,7 @@ public class Ex03_남건 {
 		System.out.println("---------------------------");
 		System.out.printf("학점=%c\n", grade);
 		
+		
 	}
 
 }
@@ -64,3 +65,43 @@ public class Ex03_남건 {
 ---------------------------
 학점=B
 */
+
+/* 추가풀이
+		 
+	- type1 -
+	
+	if(avg>=90) {
+		grade = 'A';
+	}
+	if(avg>=80 && avg <90) {
+		grade = 'B';
+	}
+	if(avg>=70 && avg <80) {
+		grade = 'C';
+	}
+	if(avg>=60 && avg <70) {
+		grade = 'D';
+	}
+	if(avg<60) {
+		grade = 'F';
+	}
+	System.out.printf("학점=%c\n", grade);
+	
+	- type2 -
+	
+	switch ((int)avg/10) {
+	case 10: // grade = 'A';	break; 굳이 안넣어도 밑으로 가서 작동
+	case 9: grade = 'A';
+		break;
+	case 8: grade = 'B';
+		break;
+	case 7: grade = 'C';
+		break;
+	case 6: grade = 'D';
+		break;
+	default: grade = 'F';
+		break;
+	}
+	System.out.printf("학점=%c\n", grade);
+			
+ */
