@@ -80,6 +80,8 @@ public class Ex01_출력문 {
  삭제: ctrl + d
  여러줄삭제: 블럭잡고 ctrl + d
  되돌리기: ctrl + z
+ 전체선택: ctrl + a
+ 줄(간)맞춤: ctrl + i
  /:슬래시
  \:역슬래시
  ::콜론
