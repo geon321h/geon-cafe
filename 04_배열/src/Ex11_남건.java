@@ -4,6 +4,8 @@ public class Ex11_남건 {
 
 	public static void main(String[] args) {
 
+		// 학생수와 점수 입력받고 분석 및 출력하기 //
+		
 		// 1번 학생수만큼의 배열생성
 		// 2번 각 학생 점수 입력 받기
 		// 3번 점수 리스트 출력
@@ -18,9 +20,9 @@ public class Ex11_남건 {
 		
 		while(true) {
 			
-			System.out.println("====================================");
+			System.out.println("======================================");
 			System.out.println("1.학생수|2.점수입력|3.점수리스트|4.분석|5.종료");
-			System.out.println("====================================");			
+			System.out.println("======================================");			
 			System.out.print("선택>");
 			num = sc.nextInt();
 			
