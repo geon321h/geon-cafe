@@ -38,7 +38,7 @@ public class Ex10_정렬 {
 					arr[i] = arr[j];
 					arr[j] = temp;
 					
-				}
+				} 
 				
 				for(k=0;k<arr.length;k++) {
 					

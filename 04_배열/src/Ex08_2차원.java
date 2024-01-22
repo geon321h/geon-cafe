@@ -56,7 +56,7 @@ public class Ex08_2차원 {
 			
 		}
 		
-		total = 0;
+		total = 0;  
 		for(i=0;i<sum.length;i++) {
 		
 			total += sum[i];

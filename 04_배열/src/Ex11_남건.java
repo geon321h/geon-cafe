@@ -64,7 +64,7 @@ public class Ex11_남건 {
 									min = scores[i];
 								}
 								sum += scores[i];
-								
+								 
 							}
 							avg = sum/scores.length;
 							

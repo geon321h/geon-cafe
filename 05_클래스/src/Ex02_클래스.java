@@ -24,7 +24,7 @@ public class Ex02_클래스 {
 		System.out.println(stu.math);
 		System.out.println(stu.school);
 		System.out.println("---------------");
-		
+		 
 		Student stu2 = new Student();
 		
 		stu2.name="박보검";

@@ -16,7 +16,7 @@ public class Ex09_2차원입력 {
 		row = sc.nextInt();
 		System.out.print("열의 갯수 입력:");
 		col = sc.nextInt();
-		
+		 
 		int[][] arr = new int[col][row];
 		
 		for(i=0;i<arr.length;i++) {

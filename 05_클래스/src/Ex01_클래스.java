@@ -15,7 +15,7 @@ public class Ex01_클래스 {
 		Person.nation = "대한민국";
 		
 		Person p = new Person(); // 객체(인스턴스)를 생성한다. (p참조변수에 참조값이 들어감)
-		
+		 
 		System.out.println("p:" + p);
 		p.name="윤아";
 		p.age=40;
