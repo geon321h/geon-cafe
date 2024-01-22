@@ -2,6 +2,7 @@ class Person{
 	String name; // 인스턴스 변수
 	int age;
 	double height;
+	static String nation;
 }
 
 public class Ex01_클래스 {
@@ -11,6 +12,7 @@ public class Ex01_클래스 {
 		int a=30; // 자료형, type
 		double b=178.3;
 		String c="아이유";
+		Person.nation = "대한민국";
 		
 		Person p = new Person(); // 객체(인스턴스)를 생성한다. (p참조변수에 참조값이 들어감)
 		
@@ -21,6 +23,17 @@ public class Ex01_클래스 {
 		System.out.println(p.name);
 		System.out.println(p.age);
 		System.out.println(p.height);
+		System.out.println(p.nation);
+		
+		Person p1 = new Person(); 
+
+		p1.name="정국";
+		p1.age=50;
+		p1.height=187.2;
+		System.out.println(p.name);
+		System.out.println(p.age);
+		System.out.println(p.height);
+		System.out.println(p.nation);
 		
 	}
 

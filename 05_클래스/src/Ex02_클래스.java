@@ -39,6 +39,7 @@ public class Ex02_클래스 {
 		System.out.println(stu2.school);
 		
 		
+		
 	}
 
 }
