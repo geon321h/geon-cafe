@@ -31,6 +31,21 @@ public class Ex07_남건 {
 		}
 		
 		
+		System.out.println();
+		i=2;
+		while(true) {
+			
+			num[i] = num[i-2] + num[i-1];
+			i++;
+			if(i==num.length) {
+				break;
+			}
+		}
+		
+		for(i=0;i<num.length;i++) {
+			System.out.print(num[i] + " ");			
+		}
+		
 	}
 
 }
