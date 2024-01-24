@@ -1,19 +1,19 @@
 class Calc	{
 	
-	int x;
-	int y;
+	static int x;
+	static int y;
 
-	void sum() { // sum 메서드 정의
+	static void sum() { // sum 메서드 정의 , static 메서드
 		System.out.println(x+y);
 	}
 	
-	int mul() { // mul 메서드 정의
+	int mul() { // mul 메서드 정의 , 인스턴스 메서드
 		return x*y;
 	}
 	
 	int max() { // max 메서드 정의
 		if(x>y) {
-			return x;
+			return x; 
 		}else {
 			return y;
 		}
@@ -29,7 +29,7 @@ class Calc	{
 	
 }
 
-public class Ex05_메서드 {
+public class Ex05_메서드 { // 실행 클래스
 
 	public static void main(String[] args) {
 
@@ -44,6 +44,7 @@ public class Ex05_메서드 {
 		
 		System.out.println(c.x + " " + c.y);
 		c.sum();
+		Calc.sum();
 		System.out.println(result);
 		System.out.println(c.mul());
 		
