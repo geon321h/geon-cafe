@@ -16,7 +16,8 @@ public class Ex11_남건 {
 		
 		int num, std, i, j, max, min, sum, avg, temp;
 		boolean pass = false; // 학생수만 설정하고 점수를 입력하지 않은 경우를 판단
-		int[] scores = new int[0];
+		// int[] scores = new int[0];
+		int[] scores = null;
 		
 		while(true) {
 			
@@ -32,7 +33,7 @@ public class Ex11_남건 {
 						scores = new int[std];
 						pass = false; // 학생수를 재입력할시 다시 점수를 입력받기위해 초기화
 						break;
-				case 2:	if(scores.length != 0) { // 학생수를 입력했는지만 판단
+				case 2:	if(scores != null) { // 학생수를 입력했는지만 판단
 					
 							for(i=0;i<scores.length;i++) {
 								System.out.print("scores[" + i + "]>");
@@ -58,11 +59,13 @@ public class Ex11_남건 {
 							max = scores[0];
 							min = scores[0];
 							sum = scores[0];
+							// max=min=sum=scores[0];
 							for(i=1;i<scores.length;i++) {
 								
 								if(max<scores[i]) {
 									max = scores[i];
-								}else if(min>scores[i]) {
+								} 
+								if(min>scores[i]) {
 									min = scores[i];
 								}
 								sum += scores[i];

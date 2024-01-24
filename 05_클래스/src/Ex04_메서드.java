@@ -7,7 +7,7 @@ public class Ex04_메서드 {
 		a=10;
 		b=20;
 		
-		hap(a,b);
+		hap(a,b); // 호출, 메서드명([전달인자]);
 		hap(11,22);
 		hap(100,200);
 		result = cha(a,b);
