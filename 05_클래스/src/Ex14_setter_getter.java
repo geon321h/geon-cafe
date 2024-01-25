@@ -4,18 +4,18 @@ class Person2{
 	private int age;
 	private double height;
 	
-	void setName(String n){
-		name = n;
+	void setName(String name){
+		this.name = name;
 	}
 	
-	void setAge(int a) {
-		if(a>0) { // 변수를 private해두고 set메서드에서 점검하고 출력 가능 - 안정성 증가			
-			age = a;
+	void setAge(int age) {
+		if(age>0) { // 변수를 private해두고 set메서드에서 점검하고 출력 가능 - 안정성 증가			
+			this.age = age;
 		}
 	}
 
-	void setHeight(double h) {
-		height = h;
+	void setHeight(double height) {
+		this.height = height;
 	}
 
 	String getName(){

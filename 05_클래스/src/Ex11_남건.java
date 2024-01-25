@@ -19,7 +19,8 @@ public class Ex11_남건 {
 		System.out.println(a + "의" + b + "승은: " + square(a,b));
 		System.out.println(a + "의" + b + "승은: " + square2(a,b));
 		
-		
+		double d = Math.pow(a,b); // a의 b승 메서드
+		System.out.println("d:" + d);
 		
 	}
 	

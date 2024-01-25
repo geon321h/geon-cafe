@@ -2,6 +2,10 @@ class Student{
 	String name; // 인스턴스 변수 - 객체를 생성해야만 생성되는 변수
 	int kor,eng,math;
 	static String school; // 공유자원, static(정적) 변수 - 하나만 존재하지만 여러 객체에서 공유할수있다.
+
+	Student(){
+		
+	}
 }
 
 public class Ex02_클래스 {
