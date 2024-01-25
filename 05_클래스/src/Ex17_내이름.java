@@ -69,9 +69,9 @@ public class Ex17_내이름 {
 		// Music m2; setter 통한 초기화 (숲,최유리,발라드,3000)
 		// Music m3; 매개변수 4개있는 생성자 통한 초기화 (다이너마이트,bts,트로트,5000)
 		
-		System.out.println("- 객체를 만들어서 출력 -");
 		// 생성자를 통한 초기화 //
 		
+		System.out.println("- 객체를 만들어서 출력 -");
 		Music m1 = new Music();
 		m1.display();
 
