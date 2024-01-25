@@ -61,7 +61,7 @@ class Music {
 	
 }
 
-public class Ex17_내이름 {
+public class Ex17_남건 {
 
 	public static void main(String[] args) {
 
