@@ -105,6 +105,10 @@ public class Ex17_남건 {
 			m[i].display();
 		}
 		
+		for(Music a : m ) {
+			a.display();
+		}
+		
 	}
 
 }
