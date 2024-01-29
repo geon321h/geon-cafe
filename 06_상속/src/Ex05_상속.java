@@ -78,10 +78,29 @@ public class Ex05_상속 {
 
 	public static void main(String[] args) {
 
+		Person2 p = new Person2("태형",50);
+		p.display();
+		System.out.println();
+		
+		Employee2 e =new Employee2("현아",30,"현대","연구부");
+		e.display();
+		System.out.println();
 		
 		Teacher t = new Teacher("태연",40,"쌍용고","생활지도부","음악");
-		
 		t.display();
+		System.out.println();
+		
+		Person2[] p_arr = new Person2[3];
+		p_arr[0] = p;
+		p_arr[1] = e;
+		p_arr[2] = t;
+		
+		for(Person2 a : p_arr) {
+			
+			a.display();
+			System.out.println();
+			
+		}
 		
 	}
 

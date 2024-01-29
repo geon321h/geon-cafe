@@ -3,6 +3,10 @@ class Sports {
  	String name;
 	int inwon; // 인원수
 	
+	void display() {
+		
+	}
+	
 } // Sports
 
 class Baseball extends Sports { // class 자식(하위) 클래스 extends 부모(상위) 클래스
@@ -60,6 +64,16 @@ public class Ex01_상속 {
 
 		Football fb = new Football("축구",11,6);
 		fb.display();
+		
+		Sports[] s = new Sports[2];
+		s[0] = new Baseball("야구", 0, 0.235);
+		s[1] = new Football("축구", 11, 6);
+		
+		for(Sports a : s) {
+
+			a.display();
+			
+		}
 		
 	}
 
