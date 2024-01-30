@@ -15,9 +15,29 @@ abstract class Empl {
 		
 	}
 	
-	void display() {
+	// 추가풀이 //
+	
+	public int getPay() {
 		
-		System.out.print(empno +"번 " + name + "의 월급: " );
+		return pay;
+		
+	}
+	
+	public String getEmpno() {
+		
+		return empno;
+		
+	}
+	
+	public String getName() {
+		
+		return name;
+		
+	}
+	
+	public String show() {
+		
+		return empno +"번," + name;
 		
 	}
 	
@@ -38,9 +58,15 @@ class FullTime extends Empl { // 정규직
 	
 	public double getMonthPay() {
 
-		return result;
+		return result; // (getPay()/(double)12) + (bonus/(double)12);
 	
 	}	
+	
+	public String show() {
+		
+		return getEmpno() +"번," + getName();
+		
+	}
 	
 }
 
@@ -59,7 +85,13 @@ class Contract extends Empl { // 계약직
 	
 	public double getMonthPay() {
 
-		return result;
+		return result; // getPay()/(double)12*hireYear;
+		
+	}
+	
+	public String show() {
+		
+		return getEmpno() +"번," + getName();
 		
 	}
 	
@@ -80,7 +112,13 @@ class PartTime extends Empl { // 일용직
 	
 	public double getMonthPay() {
 
-		return  result;
+		return  result; // getPay()*workDay;
+		
+	}
+
+	public String show() {
+		
+		return getEmpno() +"번," + getName();
 		
 	}
 	
@@ -95,12 +133,9 @@ public class Ex13_남건 {
 		PartTime p = new PartTime("po1","아이유",500,20);
 		
 		System.out.println("- 클래스별 객체만들기 -");
-		f.display();
-		System.out.println(f.getMonthPay());
-		c.display();
-		System.out.println(c.getMonthPay());
-		p.display();
-		System.out.println(p.getMonthPay());
+		System.out.println(f.show() + "의 평균 월급:" + f.getMonthPay());
+		System.out.println(f.show() + "의 평균 월급:" + c.getMonthPay());
+		System.out.println(f.show() + "의 평균 월급:" + p.getMonthPay());
 		
 		System.out.println("-------------------------");
 		
@@ -113,8 +148,7 @@ public class Ex13_남건 {
 		e[2] = new PartTime("po1","아이유",500,20);
 		
 		for(Empl a : e) {
-			a.display();
-			System.out.println(a.getMonthPay());
+			System.out.println(a.show() + "의 평균 월급:" + a.getMonthPay());
 		}
 		
 	}
