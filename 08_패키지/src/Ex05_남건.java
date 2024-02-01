@@ -37,10 +37,10 @@ public class Ex05_남건 {
 		do {
 
 			System.out.print("아이디 입력:");
-			inputId = sc.next();
+			inputId = sc.nextLine();
 
 			System.out.print("비밀번호 입력:");
-			inputPw = sc.next();
+			inputPw = sc.nextLine();
 
 			for(int i=0;i<p_arr.length;i++) { // 회원정보와 일치하는지 확인
 
@@ -55,7 +55,7 @@ public class Ex05_남건 {
 
 			if(login == false) { // 아이디 혹은 비밀번호가 틀려 로그인이 안된 상태
 
-				System.out.println("아이디 혹은 비밀번호가 일치하지않습니다. ");
+				System.out.println("아이디 혹은 비밀번호가 일치하지 않습니다. ");
 				System.out.println();
 
 			}else { // 로그인이 된 상태
@@ -63,7 +63,7 @@ public class Ex05_남건 {
 				do { // 계속할지 올바른 선택을 했는지 판별
 
 					System.out.print("계속?(y|n)");
-					retry = sc.next();
+					retry = sc.nextLine();
 
 					if(retry.equals("y")||retry.equals("n")|| retry.equals("예")|| retry.equals("아니요")) {
 
