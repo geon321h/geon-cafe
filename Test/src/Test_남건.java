@@ -73,7 +73,7 @@ class Student_ng extends Person_ng{
 		
 	}
 	
-	public void find(ArrayList<Student_ng>lists, Student_ng s) {
+	public void find(ArrayList<Student_ng>lists) {
 		
 		String inputName;
 		boolean flag = false; // 입력받은 이름이 있는 상황과 없는 상황을 구분하기 위한 변수
@@ -81,8 +81,7 @@ class Student_ng extends Person_ng{
 		inputName = sc.next();
 		
 		for(int i=0;i<lists.size();i++) {
-			s = lists.get(i); // 입력한 이름을 갖고있는 요소 각각의 비교하기 위해 반복문을 통하여 비교하기위해 객체에 넣어둔다.
-			if(s.getName().equals(inputName)) { // 요소를 넣어둔 객체의 이름과 입력한 이름이 같으면 실행한다.
+			if(lists.get(i).getName().equals(inputName)) { // 요소를 넣어둔 객체의 이름과 입력한 이름이 같으면 실행한다.
 				
 				System.out.println(lists.get(i)); // 이름이 같은 현재의 요소를 이름제외 3가지를 출력한다.
 				flag = true; // 입력받은 이름과 같은 이름이 있기에 아래 if문을 가지않도록 flag값을 true로 설정한다.
@@ -99,12 +98,11 @@ class Student_ng extends Person_ng{
 		
 	}
 	
-	public void listAll(ArrayList<Student_ng>lists,Student_ng s) {
+	public void listAll(ArrayList<Student_ng>lists) {
 		
 		for(int i=0;i<lists.size();i++) { // 전체 리스트를 한번씩 출력하기 위해 리스트사이즈만큼 진행한다.
-			s = lists.get(i); // 리스트안에 자바와 jsp의 총합을 요소 하나씩 평균내기위해 객체에 집어넣는다.
-			double avg = (s.java+s.jsp)/(double)2; // 객체를 이용하여 평균값을 구해낸다.
-			System.out.println(s.getName() + "," + s + " 평균:" + avg); // 오버라이딩하였던 toString을 이름과 평균을 추가하여 출력한다.
+			double avg = (lists.get(i).java+lists.get(i).jsp)/(double)2; // 객체를 이용하여 평균값을 구해낸다.
+			System.out.println(lists.get(i).getName() + "," + lists.get(i) + " 평균:" + avg); // 오버라이딩하였던 toString을 이름과 평균을 추가하여 출력한다.
 		}
 		
 	}
@@ -168,11 +166,11 @@ public class Test_남건 {
 		}while(true);
 
 		System.out.println("ArrayList 사용한결과");
-		s.listAll(lists,s); // 전체 리스트를 출력하는 메서드를 호출하여, 리스트와 해당 메서드에서 비교를 위해 사용될 객체를 임시로 보낸다.
+		s.listAll(lists); // 전체 리스트를 출력하는 메서드를 호출하여, 리스트와 해당 메서드에서 비교를 위해 사용될 객체를 임시로 보낸다.
 		
 		do { // 원하는 만큼 학생정보를 검색하기 위해 무한반복으로 설정하고 진행여부를 정하는 메서드로 값을 받아 종료한다.
 			
-			s.find(lists,s); // 원하는 요소의 name을 찾아 다른 값을 출력하기위한 메서드를 호출하여, 리스트와 해당 메서드에서 값을 저장해둘 객체를 임시로 보낸다.
+			s.find(lists); // 원하는 요소의 name을 찾아 다른 값을 출력하기위한 메서드를 호출하여, 리스트와 해당 메서드에서 값을 저장해둘 객체를 임시로 보낸다.
 			if(s.continueChoice() == true ) { // continueChoice()메서드에서 반복문의 진행여부를 리턴받아 참이면 반복문을 종료한다.
 				break; // 반복문에서 빠져나간다.
 			}

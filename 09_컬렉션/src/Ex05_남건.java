@@ -33,7 +33,7 @@ class Card {
 		
 	}
 	
-	public void delete(ArrayList lists) { // 명함제거 메서드
+	public void delete(ArrayList<Card> lists) { // 명함제거 메서드
 		
 		flag = false;
 		System.out.print("삭제할이름:");
@@ -41,8 +41,7 @@ class Card {
 		
 		for(int i=0;i<lists.size();i++) {
 
-			Card c = (Card) lists.get(i);
-			if(c.getName().equals(deleteName)) {
+			if(lists.get(i).getName().equals(deleteName)) {
 
 				lists.remove(i);
 				System.out.println("삭제하였습니다.");
@@ -59,7 +58,7 @@ class Card {
 		
 	}
 	
-	public void update(ArrayList lists) { // 수정 메서드
+	public void update(ArrayList<Card> lists) { // 수정 메서드
 		
 		flag = false;
 		System.out.print("이름을 입력하세요:");
