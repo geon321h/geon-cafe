@@ -35,9 +35,11 @@ public class Ex13_남건 {
 				word = read.split(" "); // 문장에서 " "을 기준으로 단어들만 나누어 배열에 넣는다
 				for(String a : word) { // 생긴 배열의 개수만큼 반복하여 Map으로 단어별로 개수를 저장한다
 
-					if((index = a.indexOf(",")) != -1) { // 문자에 있는 ,를 모두 제거하고 없는 문자를 다시 넣는다.
-						a = a.substring(0,index); // 쉼표가 나오기 전까지의 문자가 담는다.
-					}
+					//if((index = a.indexOf(",")) != -1) { // 문자에 있는 ,를 모두 제거하고 없는 문자를 다시 넣는다.
+					//	a = a.substring(0,index); // 쉼표가 나오기 전까지의 문자가 담는다.
+					//}
+					
+					a = a.replaceAll("[,']","");
 					
 					if(hm.containsKey(a) == true) { // Map에 이미 있는 단어는 기존 개수에서 1증가하여 재입력
 						

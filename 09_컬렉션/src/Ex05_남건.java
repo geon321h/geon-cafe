@@ -66,12 +66,11 @@ class Card {
 		
 		for(int i=0;i<lists.size();i++) {
 
-			Card c = (Card) lists.get(i);
-			if(c.getName().equals(updateName)) {
+			if(lists.get(i).getName().equals(updateName)) {
 
 				System.out.print("수정하실 전화번호는:");
 				String updateTel = sc.next();
-				lists.set(i, new Card(c.getName(), updateTel));
+				lists.set(i, new Card(lists.get(i).getName(), updateTel));
 				System.out.println("수정되었습니다.");
 				flag = true;
 				

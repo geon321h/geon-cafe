@@ -4,6 +4,8 @@ import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 class Ex05 extends Frame implements ActionListener	{
 	
@@ -16,6 +18,18 @@ class Ex05 extends Frame implements ActionListener	{
 		super(title);
 		super.setSize(500,400);
 		super.setVisible(true);
+
+		this.addWindowListener(new WindowAdapter() {
+		
+			public void windowClosing(WindowEvent e) {
+				
+				System.out.println("x버튼 클릭함");
+				System.exit(0);;
+				
+			}
+			
+		});
+		
 		
 		setLayout(new FlowLayout());
 		
@@ -50,11 +64,11 @@ class Ex05 extends Frame implements ActionListener	{
 			
 		}else if (obj == btn2) {
 			
-			super.setBackground(Color.blue);
+			super.setBackground(Color.red);
 			
 		}else {
 
-			super.setBackground(Color.red);
+			super.setBackground(Color.blue);
 			
 		}
 		
