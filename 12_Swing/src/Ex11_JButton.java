@@ -19,7 +19,6 @@ class Ex11 extends JFrame {
 		
 		Container contentPane = getContentPane();
 		
-		
 		JPanel p1 = new JPanel();
 		JPanel p2 = new JPanel();
 		

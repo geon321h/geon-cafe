@@ -5,6 +5,10 @@ import java.awt.Label;
 import java.awt.Panel;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.JFrame;
 
 class Ex07_ng extends Frame implements ItemListener {
 	
@@ -32,6 +36,17 @@ class Ex07_ng extends Frame implements ItemListener {
 		setSize(300,200);
 		setVisible(true);
 		
+		this.addWindowListener(new WindowAdapter() {
+		
+			@Override
+			public void windowClosing(WindowEvent e) {
+
+				System.exit(0);
+				
+			}
+		
+		});
+		
 		p2.setBackground(Color.pink);
 		
 		lb1.setBackground(Color.CYAN);
@@ -54,6 +69,7 @@ class Ex07_ng extends Frame implements ItemListener {
 		
 		ch1.addItemListener(this);
 		ch2.addItemListener(this);
+		
 		
 	}
 
