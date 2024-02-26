@@ -1,0 +1,11 @@
+drop table test;
+
+create table test(
+	num number,
+	name varchar2(10),
+	addr varchar2(10)
+);
+
+insert into test VALUES(1,'아이유','서울');
+insert into test VALUES(2,'김연아','제주');
+insert into test VALUES(3,'손흥민','부산');
