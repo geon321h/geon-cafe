@@ -19,7 +19,7 @@ public class PersonDao { // DB작업
 	ArrayList<PersonBean> lists = null;
 	PersonDao() {
 	
-		try {
+		try { 
 
 			// 1. 드라이버 로드
 			Class.forName(driver);

@@ -148,4 +148,97 @@ public class BookDao {
 		
 	}
 
+	public int insertBook(BookDto bDto) {
+		connect();
+		String sql = "insert into book values(bkseq.nextval,?,?,?,?,?)";
+		int cnt = 0;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, bDto.getTitle());
+			ps.setString(2, bDto.getAuthor());
+			ps.setString(3, bDto.getPublisher());
+			ps.setInt(4, bDto.getPrice());
+			ps.setString(5, bDto.getDay());
+			
+			cnt = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+				try {
+					if(ps != null) {
+						ps.close();
+					}
+					if(ps != null) {
+						conn.close();
+					}
+					System.out.println("접속 종료");
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+		}
+		return cnt;
+	}
+
+	public int updateBook(BookDto bDto) {
+		connect();
+		String sql = "update book set Title=?,Author=?,Publisher=?,Price=?,Day=? where No = ?";
+		int cnt = 0;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, bDto.getTitle());
+			ps.setString(2, bDto.getAuthor());
+			ps.setString(3, bDto.getPublisher());
+			ps.setInt(4, bDto.getPrice());
+			ps.setString(5, bDto.getDay());
+			ps.setInt(6, bDto.getNo());
+			
+			cnt = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+				try {
+					if(ps != null) {
+						ps.close();
+					}
+					if(ps != null) {
+						conn.close();
+					}
+					System.out.println("접속 종료");
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+		}
+		return cnt;
+	}
+
+	public int deleteBook(int no) {
+		connect();
+		String sql = "delete book where No = ?";
+		int cnt = 0;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, no);
+			
+			cnt = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+				try {
+					if(ps != null) {
+						ps.close();
+					}
+					if(ps != null) {
+						conn.close();
+					}
+					System.out.println("접속 종료");
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+		}
+		return cnt;
+	}
+
 }
