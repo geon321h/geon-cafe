@@ -1,0 +1,31 @@
+drop sequence prdseq;
+create sequence prdseq
+increment by 1
+start with 1
+minvalue 1
+;
+
+drop table products;
+create table products(
+  id number PRIMARY KEY,
+  name VARCHAR2(10),
+  stock NUMBER,
+  price NUMBER,
+  category varchar2(10),
+  inputdate date default sysdate
+);
+
+insert into products VALUES (prdseq.nextval,'mp3',20,300,'IT',default);
+insert into products VALUES (prdseq.nextval,'갤럭시s6',30,200,'IT',default);
+insert into products VALUES (prdseq.nextval,'iphone',40,300,'IT',sysdate);
+insert into products VALUES (prdseq.nextval,'세탁기',20,300,'KJ',sysdate);
+insert into products VALUES (prdseq.nextval,'냉장고',30,200,'KJ',default);
+insert into products VALUES (prdseq.nextval,'TV',40,500,'KJ',default);
+insert into products VALUES (prdseq.nextval,'Computer',20,300,'IT',sysdate);
+insert into products VALUES (prdseq.nextval,'imac',30,200,'IT',sysdate);
+
+
+update products set CATEGORY = 'iT' where id = 1 ;
+update products set CATEGORY = 'It' where id = 2 ;
+
+select * from products where CATEGORY = upper('it');

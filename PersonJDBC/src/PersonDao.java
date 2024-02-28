@@ -16,7 +16,7 @@ public class PersonDao { // DB작업
 	Connection conn = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
-	
+	ArrayList<PersonBean> lists = null;
 	PersonDao() {
 	
 		try {
@@ -48,7 +48,7 @@ public class PersonDao { // DB작업
 	
 	public ArrayList<PersonBean> getAllPerson() {
 		connect(); // 2.계정에 접속 
-		ArrayList<PersonBean> lists = new ArrayList<>();
+		lists = new ArrayList<>();
 		try {
 			// 3.sql문 작성/분석
 			String sql = "select * from person order by num asc";
