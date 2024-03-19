@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        
+        var f_selarr = new Array('한식','중식','일식','양식')
+        var s_selarr = [
+                            ['김치찌개','된장찌개','불고기','설렁탕','뼈해장국'],
+                            ['탕수육','팔보채','깐풍기','볶음밥'],
+                            ['초밥','덮밥','문어구이','스시','우동'],
+                            ['스테이크','캐비어','푸아그라','파스타','월남쌈']
+                        ];
+
+        function init(){
+            document.myform.first.options[0] = new Option('선택');
+            for( v in f_selarr ){
+                document.myform.first.options[parseInt(v)+1] = new Option(f_selarr[v]);
+            }
+
+            document.myform.second.options[0] = new Option('선택');
+        }
+        
+        function firstChange(){
+            var index = document.myform.second.selectedIndex; // 선택된 옵션의 위치번호 가져오기
+            for( v in s_selarr[index+1] ){
+                document.myform.second.options[1] = null;
+            }
+            var index = document.myform.first.selectedIndex - 1; // 선택된 옵션의 위치번호 가져오기
+            document.myform.second.options[0] = new Option('선택');
+            if(index != -1){
+                for( v in s_selarr[index] ){
+                    document.myform.second.options[parseInt(v)+1] = new Option(s_selarr[index][v]);
+                }
+            }
+        }
+        function secondChange(){
+            var index = document.myform.second.selectedIndex; // 선택된 옵션의 위치번호 가져오기
+            var value = document.myform.second.options[index].value;
+
+            myarea = document.getElementById("result");
+            myarea.innerHTML = "선택한 번호: "+index+"<br>선택된 값: "+value;
+        }
+    </script>
+    <style type="text/css">
+        select {
+            width: 70px;
+        }
+        #result {
+            margin-top: 50px;
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body onload="init()">
+    <form action="" name="myform">
+        <select id="first" onchange="firstChange()">
+        </select>
+        <select id="second" onchange="secondChange()">
+        </select>
+        <div id="result">
+        </div>
+    </form>
+</body>
+</html>

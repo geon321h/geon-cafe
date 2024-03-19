@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function init(){
+            document.myform.first.options[0] = new Option("apple","사과");
+            document.myform.first.options[1] = new Option("banana","바나나");
+            document.myform.first.options[2] = new Option("orange","오렌지");
+            document.myform.first.options[1].selected=true;
+        }
+        
+        function change(){
+            // alert('change')
+            var index = document.myform.first.selectedIndex; // 선택된 옵션의 위치번호 가져오기
+            var text = document.myform.first.options[index].text;
+            var value = document.myform.first.options[index].value;
+            // alert(index+" "+text+" "+value);
+            
+            myarea = document.getElementById("result");
+            myarea.innerHTML = index+" "+text+" "+value;
+        }
+    </script>
+    <style type="text/css">
+    </style>
+</head>
+<body onload="init()">
+    <form action="" name="myform">
+        <input type="text" name="abc" value="하하하">
+        <select name="first" onchange="change()"> <!-- first = 바나나 -->
+            <!-- <option value="사과">apple</option>
+            <option value="바나나" selected="">banana</option>
+            <option value="오렌지">orange</option> -->
+        </select>
+        <div id="result">
+
+        </div>
+    </form>
+</body>
+</html>

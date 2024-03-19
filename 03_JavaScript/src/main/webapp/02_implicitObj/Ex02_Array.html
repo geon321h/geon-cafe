@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        var a = Array("kim",'lee','son');
+        var b = Array('pink','won','shin','choi');
+        var c = a.concat(b);
+        document.write("c:"+c+"<br>");        
+        
+        var crev = c.reverse();
+        for(i=0;i<crev.length;i++){
+            document.write(crev[i]+" ");
+        }
+        document.write("<br>");        
+        
+        var cslice = c.slice(1,3); // 1~<3
+        for(i=0;i<cslice.length;i++){
+            document.write(cslice[i]+" ");
+        }
+        document.write("<br>");        
+        
+        var csort = c.sort(); 
+        for(i=0;i<csort.length;i++){
+            document.write(csort[i]+" ");
+        }
+        document.write("<br>");        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

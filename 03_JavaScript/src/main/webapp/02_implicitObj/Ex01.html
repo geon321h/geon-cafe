@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+    /*  int[] arr = {1,2,3};
+        int[] arr = new int[]{1,2,3};
+        int[] arr = new int[3];
+        arr[0]=1;
+        arr[1]=2;
+        arr[2]=3; */
+
+        var a = new Array(4); // new 생략 가능하다.
+        document.write(a.length+"<br>");
+        for(i=0;i<a.length;i++){
+            document.write(a[i]+" ");
+        }
+        document.write("<br>");
+        
+        var b = Array(10,20,30); 
+        document.write(b.length+"<br>");
+        for(i=0;i<b.length;i++){
+            document.write(b[i]+" ");
+        }
+        document.write("<br>");
+        
+        var c = Array(); 
+        c[0]="spring";
+        c[1]="summer";
+        c[2]="fall";
+        c[5]="winter";
+        document.write(c.length+"<br>");
+        for(i=0;i<c.length;i++){
+            document.write(c[i]+" ");
+        }
+        document.write("<br>");
+        document.write("c:"+c+"<br>");
+        document.write("c:"+c.toString+"<br>");
+        
+        var d = Array('rose','tulip','lily'); 
+        document.write(d.length+"<br>");
+        for(i=0;i<d.length;i++){
+            document.write(d[i]+" ");
+        }
+        document.write("<br>");
+        
+        /*  for(int i : arr){
+            
+        } */
+        
+        for(v in d){            
+            document.write(v+" "+d[v]+"/");
+        }
+        document.write("<br>");
+        
+        var e = [10,-0.234,'javascript',true];
+        for(v in e){            
+            document.write(v+" "+e[v]+"/");
+        }
+            document.write("<br>");
+        
+        
+        
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

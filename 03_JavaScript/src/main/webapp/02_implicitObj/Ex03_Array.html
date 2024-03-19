@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+         /*  int[][] arr = {{10,20},{30,40,50}};
+        int[][] arr = new int[][]{{10,20},{30,40,50}};
+        int[][] arr = new int[2][];
+        arr[0][0]=10;
+        arr[0][1]=20;
+        arr[1][0]=30;
+        arr[1][1]=40;
+        arr[1][2]=50; */
+
+        var arr = [['rose','tulip','lily'],
+                    ['윤아','서현','태연','효연','티파니']
+                    ];
+        var arr3 = new Array(2);
+        arr3[0] = new Array();
+        arr3[1] = new Array();
+        arr3[0][0] = 'rose';
+        arr3[1][4] = '티파니';
+
+        for(i=0;i<arr.length;i++){
+            for(j=0;j<arr[i].length;j++){
+            document.write(arr[i][j]+" ");
+            }
+            document.write("<br>");          
+        }
+
+        for(v in arr){
+            for(v2 in arr[v]){
+            document.write(arr[v][v2]+" ");
+            }
+            document.write("<br>");          
+        }
+        
+  
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

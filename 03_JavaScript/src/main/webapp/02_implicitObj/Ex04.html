@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+
+        var arr = [["cafe0.jpg","cafe1.jpg"],
+                    ["cafe2.jpg","cafe3.jpg"],
+                    ["cafe0.jpg","cafe1.jpg"]
+                    ];
+
+        var table = '<table border=1>';
+        for(v in arr){
+            table +='<tr>';
+            for(v2 in arr[v]){
+                table += '<td><img src="images/'+arr[v][v2]+'"></td>';
+            }
+            table +='</tr>';
+        }
+        table += '</table>';
+        document.write(table);
+  
+    </script>
+    <style type="text/css">
+        table {
+            width: 400px;
+            height: 300px;
+        }
+        img {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>

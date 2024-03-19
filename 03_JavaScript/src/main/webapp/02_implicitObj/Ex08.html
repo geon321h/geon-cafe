@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        var now = new Date();
+        document.write("now1:"+ now + "<br>")
+        document.write("now2:"+ now.toString + "<br>")
+        document.write("now3:"+ now.toDateString + "<br>")
+        document.write("now4:"+ now.toTimeString + "<br>")
+
+        document.write("오늘은 ");
+        document.write(now.getUTCFullYear+"년 ");
+        document.write(now.getYear()+1900+"년 ");
+        document.write(now.getMonth()+1+"월 ");
+        document.write(now.getDate()+"일 <br>");
+
+        var days = new Array('일','월','화','수','목','금','토');
+        var days_img = new Array('day0.jpg','day1.jpg','day2.jpg','day3.jpg','day4.jpg','day5.jpg','day6.jpg');
+        for(v in days){
+
+            document.write('<img src="images/'+ days_img[v]+'">'+days[v]+'요일 <br>');
+        }
+        
+
+        document.write(now.getHours()+"시 ");
+        var hour = now.getHours();
+        var ampm;
+        if(hour>=12){
+            ampm = "오후";
+            hour -= 12;
+        }else{
+            ampm = "오전";
+        }
+        document.write(ampm+" "+hour+"시");
+        document.write(now.getMinutes()+"분 ");
+        document.write(now.getSeconds()+"초 ");
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

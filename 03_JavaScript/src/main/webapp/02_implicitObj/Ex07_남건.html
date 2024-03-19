@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        var clothes = new Array('여성복','남성복','아동복')
+
+        var s_selboxText = new Array();
+        s_selboxText[0] = new Array('회색바지', '검정바지', '반팔');
+        s_selboxText[1] = new Array('점퍼', '코트', '양복','셔츠');
+        s_selboxText[2] = new Array('오렌지원피스', '분홍원피스', '남자아동복');
+
+        var s_selboxImage = new Array();
+        s_selboxImage[0] = new Array('woman1.jpg', 'woman2.jpg', 'woman3.jpg');
+        s_selboxImage[1] = new Array('man1.jpg', '남성코트.jpg', 'man3.jpg','셔츠.jpg');
+        s_selboxImage[2] = new Array('child1.jpg', 'child2.jpg', 'child3.jpg');
+
+        function init(){
+            document.myform.first.options[0] = new Option('선택');
+            for( v in clothes ){
+                document.myform.first.options[parseInt(v)+1] = new Option(clothes[v]);
+            }
+            document.myform.second.options[0] = new Option('선택');
+        }
+
+        function firstChange(){
+            // 초기화
+            var index = document.myform.second.selectedIndex;
+            for(i=s_selboxText.length;i>0;i--){
+                document.myform.second.options[i] = null;
+            }
+            
+            // second 채우기
+            var index = document.myform.first.selectedIndex-1; 
+            document.myform.second.options[0] = new Option('선택');
+            for( v in s_selboxText[index] ){
+                document.myform.second.options[parseInt(v)+1] = new Option(s_selboxText[index][v]);
+            }
+        }
+
+        function secondChange() {
+            var index = document.myform.first.selectedIndex;
+            var index2 = document.myform.second.selectedIndex;
+            var text = document.myform.second.options[index].text;
+            
+            if(index2 != 0){ // 선택 누를시 초기화
+                clothes_area = document.getElementById("result");
+                clothes_area.innerHTML = '<img src="images/'+s_selboxImage[index-1][index2-1]+'"> <br>선택한 옷종류: '+text;
+            }else{
+                clothes_area.innerHTML = null;
+            }
+        }
+
+    </script>
+    <style type="text/css">
+        select {
+            width: 70px;
+        }
+        #result {
+            margin-top: 50px;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body onload="init()">
+    <form action="" name="myform">
+        <select id="first" onchange="firstChange()">
+        </select>
+        <select id="second" onchange="secondChange()">
+        </select>
+        <div id="result">
+        </div>
+    </form>
+</body>
+</html>
