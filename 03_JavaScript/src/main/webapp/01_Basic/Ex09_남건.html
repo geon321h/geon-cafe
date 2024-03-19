@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+			var kr = Number(prompt('국어점수'));
+			var mt = parseInt(prompt('수학점수'));
+			var en = eval(prompt('영어점수'));
+			
+			document.write("국어:"+kr+"<br>");
+			document.write("영어:"+en+"<br>");
+			document.write("수학:"+mt+"<br>");
+			
+			var sum = kr+en+mt;
+			var avg = sum/3;
+			document.write("합계:"+sum+"<br>");
+			document.write("평균:"+avg.toFixed(2)+"<br>");
+			
+
+			if (avg >= 90) { 
+				score = "A";
+			} else if (avg >= 80) {
+				score = "B";
+			} else if (avg >= 70) {
+				score = "C";
+			} else if (avg >= 60) {
+				score = "D";
+			} else {
+				score = "F";
+			}
+			document.write("학점 :"+score+"<br>");
+
+			switch (true) {
+			case avg >= 90:
+				score = "A";
+				break;
+			case avg >= 80:
+				score = "B";
+				break;
+			case avg >= 70:
+				score = "C";
+				break;
+			case avg >= 60:
+				score = "D";
+				break;
+			default:
+				score = "F";
+			}
+		   document.write("학점 :"+score+"<br>");
+			
+		</script>	
+	</head>
+	<body>
+		
+	</body>
+</html>
