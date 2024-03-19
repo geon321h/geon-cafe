@@ -1,0 +1,11 @@
+/* @charset "EUC-KR"; */
+
+body {
+	background-color: #000000;
+	margin-top: 100px;
+}
+h1{
+	color: #ffffff;
+	font-size: 30px;
+	text-align: center;
+}
