@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>예약문의</h1>
+	<form action="result.jsp">
+		<p>
+			<label>작성자</label>
+			<input type="text" name="userName" value="아이유">
+		</p>
+		<p>
+			<label>비밀번호</label>
+			<input type="password" name="userPw">
+		</p>
+		<p>
+			<label>제목</label>
+			<input type="text" name="userTitle">
+		</p>
+		<p>
+			<label>이메일</label>
+			<input type="email" name="userEmail">
+		</p>
+		<p>
+			<label>투숙 날짜</label>
+			<input type="date" name="userDate"> <!-- 외부 창에서만 가능 -->
+		</p>
+		<p>
+			<label>투숙 인원</label>
+			<input type="number" name="userNumber"> <!-- 외부 창에서만 가능 -->
+		</p>
+		<p>
+			<label>예약할 객실을 선택하세요</label>
+			<fieldset style="width: 30%;">
+				<legend>객실 선택</legend>
+				<input type="radio" value="userRoom">Single 
+				<input type="radio" value="userRoom">Double
+				<input type="radio" value="userRoom">Twin
+			</fieldset>
+		</p>
+		<p>
+			<label>예약자 성별을 선택하세요.</label><br>
+				<input type = "radio" name = "userGender"> 남자
+				<input type = "radio" name = "userGender"> 여자
+		</p>
+		<p>
+			<label>Email</label>
+			<input type="text" name="userEmail1"> @ 
+			<select name="userEmail2">
+				<option>daum.net</option>
+				<option>naver.com</option>
+				<option>gmail.com</option>
+				<option>abc.net</option>
+			</select> 
+		</p>
+		
+		<p>
+			<label>좋아하는 색상 선택</label>
+			<input type="color" name="userColor">
+		</p>
+		<p>
+			<label>평점</label>
+			<input type="range" value="userPoint" min="1" max="10" step="1">
+		</p>
+		<p>
+			<label>옵션</label>
+			<fieldset>
+				<legend>옵션 선택</legend>
+				<input type="checkbox" value="userOption">조식 
+				<input type="checkbox" value="userOption">바베큐
+				<input type="checkbox" value="userOption">픽업 서비스
+			</fieldset>
+		</p>
+		<p>
+			<label>작성자 사진</label>
+			<input type="file" value="userFile">
+		</p>
+		<p>
+			<label>글내용</label><br>
+			<textarea name ="userMessage" rows="5" cols="30">문의 사항을 입력하세요</textarea>
+		</p>
+		<p>
+			<input type="submit" value="전송">
+			<input type="button" value="확인">
+			<input type="reset" value="초기화">
+		</p>
+		
+	</form>
+</body>
+</html>
