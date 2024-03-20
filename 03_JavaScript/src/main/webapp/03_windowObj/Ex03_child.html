@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex03_child.html</title>
+    <script type="text/javascript">
+
+        function receiver(){
+            // alert('receiver');
+            myform.child_id.value = window.opener.myform.id.value;
+            myform.child_password.value = opener.myform.password.value;
+            
+        }
+
+        function meClose(){
+            opener.myform.id.value = myform.child_id.value;
+            opener.myform.password.value = myform.child_password.value;
+            self.close();
+        }
+
+    </script>
+    <style type="text/css"> 
+        img {
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body onLoad="receiver()">
+    <img src="images/blue1.jpg" alt="">
+    <br>
+    <form name="myform">
+        <input type="text" name="child_id">
+        <input type="text" name="child_password">
+        <input type="button" value="닫기" onclick="meClose()">
+    </form>
+</body>
+</html>

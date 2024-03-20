@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        var arrimage = ['pic1.jpg','pic2.jpg','pic3.jpg','pic4.jpg'];
+        var cnt = 0;
+
+        function abc(){
+            var area = document.getElementById("myImg");
+            if(cnt == 4)
+                cnt = 0;
+            var result = "<img src='./../images/"   + arrimage[cnt++] + "'>";
+            area.innerHTML = result;
+        }//abc
+
+        var func = window.setInterval( function(){
+            var area = document.getAnimations("myImg");
+            if(cnt == 4){
+                cnt = 0;
+            }
+            var result = "<img src='./../images/"+ arrimage[cnt++] + "'>";
+            area.innerHTML = result;
+        },1000); // (함수,시간)
+
+        setTimeout(function(){
+            window.clearInterval(func);
+            var area = document.getAnimations("myImg");
+            area.innerHTML = '중지합니다.'
+        },10000);
+    </script>
+</head>
+<body>
+    <div id="myImg"></div>
+</body>
+</html>

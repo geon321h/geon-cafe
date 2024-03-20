@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+     document.write(Math.abs(-3)+" abs<br>");
+     document.write(Math.round(12.345)+" round<br>");
+     document.write(Math.round(12.789)+" round<br>");
+     document.write(Math.floor(12.789)+" floor<br>");
+     document.write(parseInt(12.789)+" parseInt<br>");
+     document.write(Math.ceil(12.789)+" ceil<br>");
+     document.write(Math.max(10,20,30,1,21)+" max<br>");
+     document.write(Math.min(10,20)+" min<br>");
+     document.write(Math.random()+" random<br>"); // 0<= x <1
+     
+     //3~ 10사이 정수 난수 발생
+     document.write(parseInt(Math.random()*8+3)+" 3~10<br>"); // (n~m m+1-n)+n
+     
+     //1~45사이 정수 난수 맞추기
+     var cnt=0;
+     var result = parseInt(Math.random()*45+1);
+     do{
+        var input = prompt('1~45사이의 수 입력');
+        cnt++;
+        document.write(cnt+'번째 입력:'+input+'<br>');
+        if(result>input){
+            alert('더 큰수를 입력하세요');
+        }else if(result<input){
+            alert('더 작은수를 입력하세요');
+        }else{
+            alert('맞췄습니다.');
+            break;
+        }
+     }while(true);
+     document.write('정답: '+result+'<br>');
+     document.write('시도한횟수: '+cnt+'<br>');
+     
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

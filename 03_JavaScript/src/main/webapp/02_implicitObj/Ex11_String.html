@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        
+        var subject = "태양처럼 뜨거운, 바람처럼 자유로운 영혼";
+        document.write(subject+'<br>');
+        document.write(subject.toString+'<br>');
+        
+        document.write(subject.length+'<br>'); // 자바와 다르게 메서드가 아닌 속성
+        
+        ch = subject.charAt(5);
+        document.write('ch: '+ch+'<br>');
+        
+        document.write(subject.indexOf('처럼')+'<br>');
+        document.write(subject.lastIndexOf('처럼')+'<br>');
+        document.write(subject.indexOf('가나다')+'<br>');
+        
+        document.write(subject.slice(3)+'<br>'); // 3번째부터 끝까지
+        document.write(subject.slice(10,14)+'<br>'); // 10번째부터 14번째
+        document.write(subject.slice(10,-4)+'<br>');
+        
+        document.write(subject.substring(10)+'<br>'); // 10번째부터 끝까지
+        document.write(subject.substring(10,14)+'<br>'); // 10번째부터 14번째
+        
+        document.write(subject.substr(10,4)+'<br>'); // 10번째부터 4개
+        
+        document.write(subject.replace(subject.charAt(3),'가')+'<br>'); 
+        
+        word = "i Can do iT!";
+        document.write(word.toUpperCase()+'<br>');
+        document.write(word.toLowerCase()+'<br>');
+
+        document.write('<a href="http://www.naver.com">네이버</a><br>');
+        document.write("네이버".link("http://www.naver.com")+"<br>");
+
+        str = "웬디 70 80 90"
+        arr = str.split(" ");
+        for(v in arr){
+            document.write(arr[v]+"<br>");
+        }
+        var sum = 0;
+        for(v in arr){
+            if(v!=0){
+                sum += parseInt(arr[v]);
+            }
+        }
+        document.write(sum+"<br>");
+        
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

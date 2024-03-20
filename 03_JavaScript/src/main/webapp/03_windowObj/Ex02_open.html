@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+
+        function showPopup(url){
+            window.open(url,'popup2','width=400 height=300');
+        }
+        
+        function showCenter(url){
+            var winW = 600;
+            var winH = 300;
+            document.write(screen.width+'/'+screen.height+'<br>');
+            
+            var winLeft = (screen.width-winW)/2;
+            var winTop = (screen.height-winH)/2;
+            
+            var options = "width="+winW+",height="+winH+",left="+winLeft+",top="+winTop
+            window.open(url,'popup3',options);
+
+        }
+
+        function openWindow(){
+            myWin = window.open('Ex02_popup1.html','popup1','');
+        }
+        
+        function closeWindow(){
+            myWin.close();
+        }
+
+    </script>
+</head>
+<body>
+    <input type="button" value="이벤트1" onclick="window.open('Ex02_popup1.html','popup1')"><br><br>
+    <input type="button" value="이벤트2" onclick="showPopup('Ex02_popup2.html')"><br><br>
+    <input type="button" value="이벤트3" onclick="showCenter('Ex02_popup3.html')"><br><br>
+    <input type="button" value="창열기" onclick="openWindow()"><br><br>
+    <input type="button" value="창닫기" onclick="closeWindow()"><br><br>
+</body>
+</html>

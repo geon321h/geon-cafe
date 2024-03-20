@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var now = new Date();
+        document.write(now+"<br>");
+        document.write(now.toLocaleString()+'<br>');
+
+        function goNaver(){
+            location.href='https://www.naver.com/';
+        }
+    </script>
+    
+    <input type="button" name="" id="" value="지금 시간은?" onclick="location.reload()">
+    
+    <input type="button" name="" id="" value="다음" onclick="location.href='https://www.daum.net/'">
+    <input type="button" name="" id="" value="네이버" onclick="goNaver()">
+
+</body>
+</html>

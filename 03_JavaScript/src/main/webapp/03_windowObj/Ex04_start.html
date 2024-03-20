@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex03_parent.html</title>
+    <script type="text/javascript">
+        
+        function openWindow(url){
+            win_size = 'width=400 height=300';
+            window.open(url,'child',win_size);
+        }
+
+    </script>
+</head>
+<body>
+    <form name="myform">
+        <input type="text" name="id">
+        <input type="text" name="password">
+        <input type="button" value="팝업창 열기" onclick="openWindow('Ex03_child.html')">
+    </form>
+</body>
+</html>

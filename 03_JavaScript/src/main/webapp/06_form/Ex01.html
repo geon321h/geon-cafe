@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        // alert('check');
+        function check() {
+	        if(document.myform.id.value == ""){ 
+	            alert('id 누락되었습니다.')
+	            return false;
+	        }
+	        if(myform.pw.value.length == 0){
+	            alert('pw 누락되었습니다.')
+	            return false;
+	        }
+	        if(myform.pw.value.length <4 || myform.pw.value.length> 8){
+	            alert('4~8글자로 입력해주세요.')
+	            return false;
+	        }
+	        
+            /* var e = event.srcElement;
+            var num = "0123456789";
+            pos = e.value.length-1;
+            if(num.indexOf(e.value.charAt(pos)) == -1){
+               e.value = e.value.replace(e.value.charAt(pos),"")
+            } */
+            
+	        if(isNaN(myform.pw.value)){ // isNaN : 숫자아닐시
+	            alert('pw는 숫자만 입력가능합니다.');
+	            return false;
+	        }
+	        return true;
+		}
+    </script>
+</head>
+<body onload="myform.id.focus()">
+    <form action="result.jsp" name="myform">
+
+        <p>
+            <span>아이디:</span>
+            <input type="text" name="id" maxlength="5" size="5">
+        </p>
+
+        <p>
+            <span>비밀번호:</span>
+            <input type="password" name="pw" maxlength="8" placeholder="4~8자리만 입력">
+        </p>
+
+        <p>
+            <input type="submit" value="등록" onclick="return check()">
+            <input type="reset" value="취소">
+        </p>
+
+    </form>
+</body>
+</html>
