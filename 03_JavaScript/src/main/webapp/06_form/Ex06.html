@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function check(){
+            //alert('check');
+
+            var msg = document.forms[0].code.value;
+            console.log(msg);
+
+            // 정규표현식 : 패턴만들기
+            // var regex = /^\d{3}-?\d{3}$/; // 222 893 903 등 숫자 3자리
+            /* 
+                / ~ / : 정규표현식
+                \d : 10진수
+                ^: 시작 
+                $: 끝
+                ?: ?앞에 요소가 최소 0개에서 1개
+                +: +앞에 요소가 최소 1개에서 무한개
+                *: *앞에 요소가 최소 0개에서 무한개
+            */
+            //var regex = /^\d{4}[./-][01]?\d[./-][0123]?\d$/; // 생년월일 패턴 -는 마지막에 해야 ~의미를 안가짐
+            var regex = /^[a-zA-Z0-9]{4,8}@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/; 
+            if(msg.search(regex) == -1){
+                console.log('잘못된 형식');
+            }else{
+                console.log('올바른 형식');
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <form action="">
+        <input type="text" name="code">
+        <br>
+        <input type="button" value="클릭" onclick="check()">
+    </form>
+</body>
+</html>

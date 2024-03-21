@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function check(){
+            mlen = myform.movie.length;
+            var flag = false;
+            var str = "";
+            for(i=0;i<mlen;i++){
+                if(myform.movie[i].checked){
+                    flag = true;
+                    str += myform.movie[i].value;
+                }
+            }
+            if(flag == false){
+                alert("movie 하나는 선택해야 합니다.");
+                return false;
+            }
+
+            flen = myform.fruit.length;
+            flag = false;
+            for(i=0;i<flen;i++){
+                if(myform.fruit[i].checked){
+                    flag = true;
+                    str += myform.fruit[i].value;
+                }
+            }
+            if(flag == false){
+                alert("fruit 하나는 선택해야 합니다.");
+                return false;
+            }
+
+            alert(str);
+            
+        }
+
+    </script>
+</head>
+<body>
+    <form action="result.jsp" name="myform">
+        좋아하는 영화 선택.<br>
+        <input type="radio" name="movie" value="인디아나존스">인디아나존스
+        <input type="radio" name="movie" value="해리포터">해리포터
+        <input type="radio" name="movie" value="반지의 제왕">반지의 제왕
+        <hr>
+        좋아하는 과일 선택<br>
+        <input type="radio" name="fruit" value="사과">사과
+        <input type="radio" name="fruit" value="포도">포도
+        <input type="radio" name="fruit" value="복숭아">복숭아
+        <input type="radio" name="fruit" value="수박">수박
+        <hr>
+        <input type="submit" value="확인" onclick="return check()">
+
+    </form>
+</body>
+</html>

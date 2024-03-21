@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex03_child.html</title>
+    <script type="text/javascript">
+
+        function meClose(){
+            var index = document.myform.sign.selectedIndex;
+            num1 = parseInt(myform.num1.value);
+            num2 = parseInt(myform.num2.value);
+            switch (index) {
+                case 0:
+                    resultNum = num1 + num2
+                    break;
+                case 1:
+                    resultNum = num1 - num2
+                    break;
+                case 2:
+                    resultNum = num1 * num2
+                    break;
+                default:
+                    resultNum = num1 / num2
+                    break;
+            }
+            opener.myform.result.value = resultNum;
+            self.close();
+        }
+
+    </script>
+    <style type="text/css"> 
+        [type='button']{
+            margin-top: 10px;
+            margin-left: 50%;
+        }
+        [type='text'],select{
+            width: 20%;
+        }
+        [name='num1']{
+            margin-left: 20%;
+        }
+    </style>
+</head>
+<body>
+    <form name="myform">
+        <input type="text" name="num1">
+        <select id="sign">
+            <option>더하기</option>
+            <option>빼기</option>
+            <option>곱하기</option>
+            <option>나누기</option>
+        </select>
+        <input type="text" name="num2">
+        <br>
+        <input type="button" value="닫기" onclick="meClose()">
+    </form>
+</body>
+</html>

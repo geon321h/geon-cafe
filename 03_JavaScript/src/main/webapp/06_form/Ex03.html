@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+
+        function check() {
+
+            hlen = myform.hobby.length;
+            var flag = false;
+            var str = "";
+            for(i=0;i<hlen;i++){
+                if(myform.hobby[i].checked){
+                    flag = true;
+                    str += myform.hobby[i].value+" ";
+                }
+            }
+            if(flag == false){
+                alert('1개 이상 선택해주세요');
+                return false;
+            }
+            alert(str);
+        }
+
+    </script>
+</head>
+<body>
+    <form action="result.jsp" name="myform">
+        좋아하는 취미를 여러개 선택하세요.<br>
+        <input type="checkbox" name="hobby" value="게임">게임<br>
+        <input type="checkbox" name="hobby" value="등산">등산<br>
+        <input type="checkbox" name="hobby" value="요리">요리<br>
+        <input type="checkbox" name="hobby" value="공부">공부<br>
+        <input type="checkbox" name="hobby" value="웹툰보기">웹툰보기<br>
+
+        <hr>
+
+        <input type="submit" value="확인" onclick="return check()">
+
+    </form>
+</body>
+</html>

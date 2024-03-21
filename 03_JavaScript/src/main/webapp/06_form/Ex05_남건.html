@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        table {
+            width: 500px;
+            border-spacing: 0px;
+        }
+        table, td {
+            border: 1px solid #cdcdcd;
+            padding: 0px;
+        }
+        td {
+            padding: 3px;
+        }
+        tr:last-child td{
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript">
+        function check() {
+            var str = "";
+            var flag = false;
+            if(document.myform.id.value == ""){
+                alert('아이디를 입력해주세요.')
+                return false;
+            }
+            str += '이름: '+document.myform.id.value;
+
+            if(document.myform.pw.value == ""){
+                alert('비밀번호를 입력해주세요.')
+                return false;
+            }
+            if(document.myform.pwCheck.value != document.myform.pw.value){
+                alert('비밀번호가 일치하지 않습니다.')
+                return false;
+            }
+            str += '\n비밀번호: '+document.myform.pw.value;
+            
+            var p1 = document.myform.phone1.value;
+            var p2 = document.myform.phone2.value;
+            if(p1 == "" || p2 == "" || p1.length != 4 || p2.length != 4 ){
+                alert('전화번호를 올바른 형식으로 입력해주세요.')
+                return false;
+            }
+            if(isNaN(p1) || isNaN(p2)){ 
+                alert('전화번호는 숫자만 입력가능합니다.');
+	            return false;
+	        }
+            index = myform.areacode.selectedIndex;
+            str += '\n전화번호: '+document.myform.areacode[index].value+'-'+p1+'-'+p2;
+            
+            if(document.myform.userName.value == ""){
+                alert('이름을 입력해주세요.')
+                return false;
+            }
+            str += '\n이름: '+document.myform.userName.value;
+            
+            if(document.myform.addr.value == ""){
+                alert('주소를 입력해주세요.')
+                return false;
+            }
+            str += '\n주소: '+document.myform.addr.value;
+            
+            if(document.myform.detailsAddr.value == ""){
+                alert('세부주소를 입력해주세요.')
+                return false;
+            }
+            str += '\n세부주소: '+document.myform.detailsAddr.value;
+            
+            if(document.myform.userEmail.value == ""){
+                alert('이메일을 입력해주세요.')
+                return false;
+            }
+            
+            var regex = /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/; 
+            if(document.myform.userEmail.value.search(regex)== -1){
+                alert('이메일을 올바른 형식으로 입력해주세요.')
+                return false;
+            }
+            str += '\n이메일: '+document.myform.userEmail.value;
+            
+            slen = myform.singer.length;
+            var singerStr = "";
+            for(i=0;i<slen;i++){
+                if(myform.singer[i].checked){
+                    flag = true;
+                    singerStr += myform.singer[i].value+" ";
+                }
+            }
+            if(flag == false){
+                alert('좋아하는 가수를 1명 이상 선택해주세요');
+                return false;
+            }
+            str += '\n좋아하는 가수: '+singerStr;
+            
+            flag = false;
+            glen = myform.gender.length;
+            for(i=0;i<glen;i++){
+                if(myform.gender[i].checked){
+                    flag = true;
+                    str += '\n성별: '+myform.gender[i].value;
+                }
+            }
+            if(flag == false){
+                alert('성별을 선택해주세요');
+                return false;
+            }
+            
+            if(document.myform.ta.value == ""){
+                alert('텍스트를 입력해주세요.')
+                return false;
+            }
+            str += '\n글내용: '+myform.ta.value;
+            
+            alert(str)
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <form action="result.html" name="myform">
+        <table>
+            <tr>
+                <td>
+                    아이디
+                </td>
+                <td>
+                    <input type="text" name="id" placeholder="아이디 입력" size="12">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    비밀번호
+                </td>
+                <td>
+                    <input type="password" name="pw" size="12">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    비밀번호 확인
+                </td>
+                <td>
+                    <input type="password" name="pwCheck" size="12">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    전화번호
+                </td>
+                <td>
+                    <select name="areacode">
+                        <option value="02">02</option>
+                        <option value="032">032</option>
+                        <option value="010">010</option>
+                        <option value="070">070</option>
+                    </select>
+                    -
+                    <input type="text" name="phone1" size="4" maxlength="4">
+                    -
+                    <input type="text" name="phone2" size="4" maxlength="4">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    이름
+                </td>
+                <td>
+                    <input type="text" name="userName" size="12">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    주소
+                </td>
+                <td>
+                    <input type="text" name="addr" size="20">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    세부 주소
+                </td>
+                <td>
+                    <input type="text" name="detailsAddr" size="20">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    email
+                </td>
+                <td>
+                    <input type="email" name="userEmail" size="20">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    좋아하는 가수
+                </td>
+                <td>
+                    <input type="checkbox" name="singer" value="소녀시대" checked>소녀시대
+                    <input type="checkbox" name="singer" value="방탄">방탄
+                    <input type="checkbox" name="singer" value="레드벨벳">레드벨벳
+                    <input type="checkbox" name="singer" value="동방신기">동방신기
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    성별
+                </td>
+                <td>
+                    <input type="radio" name="gender" value="남">남
+                    <input type="radio" name="gender" value="여">여
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    글쓰기
+                </td>
+                <td>
+                    <textarea name ="ta" rows="5" cols="25"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="전송합시다." onclick="return check()">
+                    <input type="reset" value="초기화">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

@@ -7,17 +7,19 @@
     <script type="text/javascript">
         
         function openWindow(url){
-            win_size = 'width=400 height=300';
-            window.open(url,'child',win_size);
+            win_size = 'width=600 height=300';
+            window.open(url,'end',win_size);
         }
 
     </script>
 </head>
 <body>
+    <h1>열기 버튼을 클릭(start.html)</h1>
     <form name="myform">
-        <input type="text" name="id">
-        <input type="text" name="password">
-        <input type="button" value="팝업창 열기" onclick="openWindow('Ex03_child.html')">
+        결과: 
+        <input type="text" name="result">
+        <br>
+        <input type="button" value="열기" onclick="openWindow('Ex04_end남건.html')">
     </form>
 </body>
 </html>
