@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.style1{
+		color : red;
+		background: pink;
+	}
+	.style2{
+		color : green;
+		background: yellow;
+	}
+	.style3{
+		color : cyan;
+		background: blue;
+	}
+</style>
+<script type="text/javascript" src="./../js/jquery.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//alert(1);
+		//$('tr:first').addClass("style1");
+		$('tr:first-child').addClass("style1");
+		
+		//$('tr:last').addClass("style2");
+		$('tr:last-child').addClass("style2");
+		
+		//$('tr:nth-child(3n+1)').addClass("style3");
+		//nth-child:1부터 센다.
+		
+		$('tr:nth-child(odd)').addClass("style3");
+		//odd:1부터 센다.
+		
+		$('td:eq(3)').css('backgroundColor','orange');
+		//eq:0부터 센다.
+	});
+</script>
+</head>
+<body>
+	<table border=1>
+		<tr>
+			<td>one</td>
+			<td>one</td>
+			<td>one</td>
+			<td>one</td>
+			<td>one</td>
+			<td>one</td>
+		</tr>
+		<tr>
+			<td>two</td>
+			<td>two</td>
+			<td>two</td>
+			<td>two</td>
+			<td>two</td>
+			<td>two</td>
+		</tr>
+		<tr>
+			<td>three</td>
+			<td>three</td>
+			<td>three</td>
+			<td>three</td>
+			<td>three</td>
+			<td>three</td>
+		</tr>
+		<tr>
+			<td>four</td>
+			<td>four</td>
+			<td>four</td>
+			<td>four</td>
+			<td>four</td>
+			<td>four</td>
+		</tr>
+		<tr>
+			<td>five</td>
+			<td>five</td>
+			<td>five</td>
+			<td>five</td>
+			<td>five</td>
+			<td>five</td>
+		</tr>
+		<tr>
+			<td>six</td>
+			<td>six</td>
+			<td>six</td>
+			<td>six</td>
+			<td>six</td>
+			<td>six</td>
+		</tr>
+	</table>
+	
+	<br><br>
+	
+	<table border=1>
+		<tr>
+			<td>one</td>
+			<td>one</td>
+			<td>one</td>
+			<td>one</td>
+			<td>one</td>
+			<td>one</td>
+		</tr>
+		<tr>
+			<td>two</td>
+			<td>two</td>
+			<td>two</td>
+			<td>two</td>
+			<td>two</td>
+			<td>two</td>
+		</tr>
+		<tr>
+			<td>three</td>
+			<td>three</td>
+			<td>three</td>
+			<td>three</td>
+			<td>three</td>
+			<td>three</td>
+		</tr>
+		<tr>
+			<td>four</td>
+			<td>four</td>
+			<td>four</td>
+			<td>four</td>
+			<td>four</td>
+			<td>four</td>
+		</tr>
+		<tr>
+			<td>five</td>
+			<td>five</td>
+			<td>five</td>
+			<td>five</td>
+			<td>five</td>
+			<td>five</td>
+		</tr>
+		<tr>
+			<td>six</td>
+			<td>six</td>
+			<td>six</td>
+			<td>six</td>
+			<td>six</td>
+			<td>six</td>
+		</tr>
+	</table>
+	
+</body>
+</html>

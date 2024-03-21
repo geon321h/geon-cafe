@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        var table = '<table border=1>';
+        num = 1;
+        for(i=0;i<4;i++){
+            table += '<tr>';
+                for(j=0;j<7;j++){
+                    table += '<td>'+num+'</td>';
+                    num++;
+                }
+            table += '</tr>';
+        }
+        table += '</table>';
+    
+        document.write(table);
+
+        $(document).ready(function() {
+            $('tr:eq(0)').css('background','orange');
+            $('tr:eq(1) > td:eq(4)').css('background','blue');
+            $('tr:eq(1) > td:nth-child(2n)').css('background','yellow');
+            $('tr:eq(2) > td:nth-child(odd)').css('background','red');
+            $('tr:eq(3) > td:nth-child(3n)').css('background','pink');
+
+        });
+
+    </script>
+    <style type="text/css">
+        table {
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>

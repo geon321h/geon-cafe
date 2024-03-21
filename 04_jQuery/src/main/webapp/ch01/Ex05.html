@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var sum=0, sum0 = 0, sum1 = 0, sum2 = 0, sum0c = 0;
+            $('td').each(function(){
+                console.log($(this).text());
+                sum += parseInt($(this).text());
+            });
+            $('.result1').append(sum);
+
+            $('tr:eq(1) td').each(function(){
+                console.log($(this).text());
+                sum0 += parseInt($(this).text());
+            });
+            $('.result2').append(sum0);
+
+            $('tr:eq(2) td').each(function(){
+                console.log($(this).text());
+                sum1 += parseInt($(this).text());
+            });
+            $('.result3').append(sum1);
+            
+            $('tr:eq(3) td').each(function(){
+                console.log($(this).text());
+                sum2 += parseInt($(this).text());
+            });
+            $('.result4').append(sum2);
+            
+            $('td:first-child').each(function(){
+                console.log($(this).text());
+                sum0c += parseInt($(this).text());
+            });
+            $('.result5').append(sum0c);
+
+        });
+
+    </script>
+        <style type="text/css">
+        </style>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th width="100px">1열</th>
+            <th width="100px">2열</th>
+            <th width="100px">3열</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+    <hr>
+    <div class="result1">전체의 합:</div>
+    <div class="result2">0열의 합:</div>
+    <div class="result3">1열의 합:</div>
+    <div class="result4">2열의 합:</div>
+    <div class="result5">0행의 합:</div>
+
+</body>
+</html>

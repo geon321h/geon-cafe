@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .spotlight {
+            background-color: yellow;
+        }
+        .redtext {
+            color: #f00;
+        }
+        .largetext {
+            font-size: 30pt;
+        }
+        .italictext{
+            font-style: italic;
+        }
+        .under {
+            text-decoration: underline;
+        }
+
+    </style>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('span').addClass('redtext').addClass('under');
+            $('div').addClass('spotlight');
+            $('#simple1').addClass('largetext');
+            $('.simple1').addClass('italictext');
+        });
+
+    </script>
+</head>
+<body>
+    <span id="simple1">simple</span>
+    <div  class="simple1">jQuery</div>
+    <span id="simple2">basic</span>
+    <div  id="simple3">example</div>
+    
+    <hr>
+    
+    <div>
+        <em>Hello!</em>
+        <em>jQuery</em>
+    </div>
+    <span>
+        <em>Good bye~</em>
+        <em>Javascript</em>
+    </span>
+
+</body>
+</html>
