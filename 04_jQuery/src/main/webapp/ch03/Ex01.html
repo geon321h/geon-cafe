@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $('button').click(function(){
+                $('div').addClass('redBorder').add('p').addClass('yellow');
+            });
+        });
+
+    </script>
+    <style type="text/css">
+        div {
+            width: 60px;
+            height: 60px;
+            margin: 10px;
+            float: left;
+        }    
+        p {
+            clear: left;
+        }
+        .redBorder {
+            border: 2px solid red;
+        }
+        .yellow {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <p >이곳은 p영역</p>
+    <button>클릭</button>
+
+</body>
+</html>

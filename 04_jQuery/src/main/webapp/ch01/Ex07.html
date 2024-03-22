@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('td').addClass('bluePink');
+			$('td:lt(2)').removeClass('bluePink'); // 3미만 0부터 시작이므로
+			$('td:gt(4)').removeClass('bluePink'); // 5초과 0부터 시작이므로
+        });
+    </script>
+    <style type="text/css">
+
+        tr {
+            background-color: yellow;
+        }
+        .bluePink {
+            color: blue;
+            background-color: pink;
+        }
+        .orange {
+            background-color: orange;
+        }
+
+    </style>
+</head>
+<body>
+    <table border=1>
+		<tr>
+			<td>one</td>
+			<td>two</td>
+			<td>three</td>
+		</tr>
+		<tr>
+			<td>four</td>
+			<td>five</td>
+			<td>six</td>
+		</tr>
+	</table>
+	<br>
+	<br>
+	<table border=1>
+		<tr>
+			<td>one</td>
+			<td>two</td>
+			<td>three</td>
+		</tr>
+		<tr>
+			<td>four</td>
+			<td>five</td>
+			<td>six</td>
+		</tr>
+	</table>
+</body>
+</html>

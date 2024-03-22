@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $('button').click(function(){
+                //$('div').next().addClass('redPink');
+                //$('div').nextAll().addClass('under');
+                //$('div').prevAll().addClass('blueYellow');
+                $('div').siblings().addClass('blueYellow'); // 형제만
+            });
+
+        });
+
+    </script>
+    <style>
+        div, span {
+            width: 60px; height: 60px;
+            margin: 5px; float: left;
+            border: 2px green solid;
+        }
+        .redPink {
+            color: Red;
+            background-color: Pink;
+        }
+        
+        .blueYellow {
+            color: Blue;
+            background-color: Yellow;
+        }
+        
+        .under{
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <button>버튼</button>
+    </p>
+    <div id="first">first</div> 
+	
+	<span id="second" class="middle">second
+        <div class="child">child</div>
+    </span> 
+	<div id="third"  class="middle">third</div>
+	<span id="fourth" class="middle">fourth</span>
+	<span id="fifth"  class="middle">fifth</span>
+	
+	<div id="sixth">sixth</div>
+
+</body>
+</html>

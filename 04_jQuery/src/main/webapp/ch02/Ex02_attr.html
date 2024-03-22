@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $('#clock1').click(function(){
+                var temp = $('img').eq(0).attr('src');
+    
+                for(i=0;i<$('img').length-1;i++){
+                    $('img').eq(i).attr('src',$('img').eq(i+1).attr('src'));
+                }
+                $('img').eq($('img').length-1).attr('src',temp);
+            });
+
+            $('#clock2').click(function(){
+                var temp = $('img').eq(('img').length-1).attr('src');
+    
+                for(i=$('img').length-1;i>0;i--){
+                    $('img').eq(i).attr('src',$('img').eq(i-1).attr('src'));
+                }
+                $('img').eq(0).attr('src',temp);
+            });
+            
+            setInterval(function() {
+                var temp = $('img').eq(('img').length-1).attr('src');
+    
+                for(i=$('img').length-1;i>0;i--){
+                    $('img').eq(i).attr('src',$('img').eq(i-1).attr('src'));
+                }
+                $('img').eq(0).attr('src',temp);
+
+            },3000);
+        });
+    </script>
+    <style type="text/css">
+        #left_side div {
+            float: left;
+            margin-right: 10px;
+        }
+        #left_side2 {
+            clear: left;
+        }
+    </style>
+</head>
+<body>
+    <div id="left_side">
+        <div><img src="../images/b.jpg" width="90" height="90"></div>
+        <div><img src="../images/c.jpg" width="90" height="90"></div>
+        <div><img src="../images/d.jpg" width="90" height="90"></div>
+    </div>
+    <div id="left_side2">
+        <input type="button" name="" id="clock1" value="왼쪽 이동">
+        <input type="button" name="" id="clock2" value="오른쪽 이동">
+    </div>
+</body>
+</html>

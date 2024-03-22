@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#makeImage').click(function(){
+                
+                // $('#myarea img').remove();
+                // $('#myarea').append(result);
+                $('input:checked').each(function(){
+                    var idval = $(this).attr('id');
+                    var result = '<img src="../images/'+idval+'.jpg">';
+                    console.log(idval);
+                    $('#myarea').html(result);
+
+                });
+
+            });
+          
+        });
+    </script>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+    <p>
+        <input type="checkbox" name="" id="Koala">코알라
+        <input type="checkbox" name="" id="Penguins" checked>펭귄
+        <input type="checkbox" name="" id="Desert" checked>사막
+    </p>
+    <p>
+        <input type="button" name="" id="makeImage" value="그림만들기">
+    </p>
+
+    <div id="myarea"></div>
+</body>
+</html>

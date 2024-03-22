@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // p.a 자식이 아니 a클래스를 가진 p
+            $('p.a').click(function(){
+                $('p.b').toggle(5000);
+            });
+            $('p.c').click(function(){
+                $('p.d').toggle('fast');
+            });
+
+        });
+
+    </script>
+    <style type="text/css">
+        
+        </style>
+</head>
+<body>
+    <p class="a">남자배우 인기순위</p>
+    <p class="b">이승기</p>
+    <p class="b">김수현</p>
+    <p class="b">차은우</p>
+    <p class="b">손석구</p>
+    <p class="b">하정우</p>
+    <hr>
+    
+    <p class="c">여자배우 인기순위</p>
+    <p class="d">전지현</p>
+    <p class="d">공효진</p>
+    <p class="d">김태희</p>
+    <p class="d">신혜선</p>
+    <p class="d">라미란</p>
+
+</body>
+</html>

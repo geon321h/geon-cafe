@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+                /* $('div').css('background-color','yellow')
+                        .filter(function(index){
+                            return index == 1 || $(this).attr('id') == 'fourth';
+                        })
+                        .css('border-color','red'); */
+                        
+                $('div').css('background-color','yellow')
+                        .filter('.middle')
+                        .css('border-color','red');
+
+
+        });
+
+    </script>
+    <style>
+        div {
+            width: 60px; height: 60px;
+            margin: 5px; float: left;
+            border: 2px green solid;
+        }
+    </style>
+</head>
+<body>
+    <div id="first"></div> 
+	
+	<div id="second" class="middle"></div> 
+	<div id="third"  class="middle"></div>
+	<div id="fourth" class="middle"></div>
+	<div id="fifth"  class="middle"></div>
+	
+	<div id="sixth"></div>
+
+</body>
+</html>

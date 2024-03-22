@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('img:first').attr("src","./../images/im0.jpg")
+                            .attr("title","우리집 똘이");
+            $('img:nth-child(1)').attr("width","100px");
+            $('img:eq(0)').attr("height","100px")
+                            .css("border","3px dashed green");
+            
+            $('img:eq(1)').attr({
+                                    src : './../images/im1.jpg',
+                                    title : '우리집 고양이',
+                                    alt : '대신하는 문자열',
+                                    'width' : '150px',
+                                    height : '150px'
+                            })
+                            .css({
+                                border : '1px solid red',
+                                background : 'yellow',
+                                padding : '20px'
+                            });
+            $('#btn').click(function(){
+                console.log('버튼클릭');
+                $('img:eq(0)').removeAttr('title');
+                $('img:eq(0)').attr('title','남의집 똘이');
+                $('img:eq(0)').css('border','5px dashed blue');
+
+            }) ;                          
+
+        });
+    </script>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+   <img/><img/>
+   <div>
+        <b>어트리뷰트 연습</b> 
+        <span></span>
+   </div>
+   <br><br>
+   <button id="btn">어트리뷰트 값 제거하기</button>
+</body>
+</html>

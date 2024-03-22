@@ -42,7 +42,12 @@
             
             var p1 = document.myform.phone1.value;
             var p2 = document.myform.phone2.value;
-            if(p1 == "" || p2 == "" || p1.length != 4 || p2.length != 4 ){
+            if(p1 == "" || p2 == ""){
+                alert('전화번호를 입력해주세요.')
+                return false;
+            }
+            var regex = /^[0-9]{4}$/; 
+            if(document.myform.phone1.value.search(regex)== -1 || document.myform.phone2.value.search(regex)== -1){
                 alert('전화번호를 올바른 형식으로 입력해주세요.')
                 return false;
             }
@@ -116,13 +121,13 @@
             }
             str += '\n글내용: '+myform.ta.value;
             
-            alert(str)
+            alert(str);
             return false;
         }
     </script>
 </head>
 <body>
-    <form action="result.html" name="myform">
+    <form action="result.jsp" name="myform">
         <table>
             <tr>
                 <td>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $('button').click(function(){
+                $('div').children().css('border-bottom','3px solid red');
+                $('div').children('.selected').css('color','green');
+                
+                $('div').find('.selected').css('color','cyan');
+            });
+
+        });
+
+    </script>
+    <style>
+        span {
+            color: red;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <button>엘리먼트에 스타일 입히기</button>
+    <p>여기는 p문장입니다.</p>
+    <div>
+        <h1 class="selected">하하하
+            <span class="selected">여기는 div의 차일드 span입니다.</span>
+        </h1>
+        <h2>호호호</h2>
+    </div>
+    <p> 그리고
+        <span class="selected">여기는 p안 span</span> 문장입니다.
+    </p>
+    <div> 그리고 마지막으로
+        <span class="selected">여기는 div안의 차일드 span이고 </span>
+        이곳은 div이다.
+    </div>
+    <div>
+        div
+        <p>p영역
+            <span class="selected">span</span>
+        </p>
+    </div>
+
+</body>
+</html>
