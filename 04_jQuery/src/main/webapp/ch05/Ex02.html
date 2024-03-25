@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" Content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            cnt = 0;
+            $('img').bind({
+                mouseout : function(){
+                    $('img').attr('src',"../images/but1.gif");
+                    cnt++;
+                    if(cnt == 5){
+                        $('img').unbind();
+                    }
+                },
+                'mouseover' : function(){
+                    $('img').attr('src',"../images/but2.gif");
+                    cnt++;
+                    if(cnt == 5){
+                        $('img').unbind('click');
+                    }
+                },
+                click : function(){
+                    alert('클릭');
+                }
+            })
+        });
+        
+    </script>
+    <style type="text/css">
+        ul {
+            float: left;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <img src="../images/but1.gif" alt="">
+</body>
+</html>

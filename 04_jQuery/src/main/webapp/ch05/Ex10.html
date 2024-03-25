@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" Content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var i =-1;
+            $('.leftbtn').bind('click', function(){
+                if(i == 1){
+                    console.log('마지막 이미지');
+                    return;
+                }
+                $('#first').animate({marginLeft:'-=205px'},2000);
+                i++;
+            })
+            $('.rightbtn').bind('click', function(){
+                if(i == -1){
+                    console.log('첫 이미지');
+                    return;
+                }
+                $('#first').animate({marginLeft:'+=205px'},2000);
+                i--;
+            })
+        });
+    </script>
+    <style type="text/css">
+        #images a img {
+            width: 200px;
+            height: 200px;
+        }
+        #images {
+            width: 600px;
+            height: 200px;
+        }
+        #region {
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            margin: auto;
+        }
+        #direction {
+            margin: auto;
+            width: 350px;
+        }
+        .leftbtn{
+            margin-top: 10px;
+        }
+        .rightbtn{
+            margin-left: 290px;
+            margin-top: 10px;
+        }
+	</style>
+</head>
+<body>
+    <div id="region">
+        <div id='images'>
+            <a href="#" ><img id="first" src="./../images/b.jpg" ></a>
+            <a href="#" ><img id="second" src="./../images/c.jpg"></a>
+            <a href="#" ><img id="third" src="./../images/d.jpg"></a>
+        </div>	
+    </div>
+	<div id="direction">
+        <button class="leftbtn"> &laquo </button> 
+        <button class="rightbtn"> &raquo </button>
+        <!-- &laquo : << , &raquo : >> -->
+    </div>
+</body>
+</html>

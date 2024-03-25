@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" Content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('select[name=coffee]').change(function(){
+                var str = "";
+                $("select option:selected").each(function(){
+                    str += $(this).text()+" "
+                })
+                $('div').text(str);
+            }).change();
+        });
+        
+    </script>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+    <select name="coffee" multiple size="5">
+        <option value="">아메리카노</option>
+        <option value="">카페라떼</option>
+        <option value="">카푸치노</option>
+        <option value="">카라멜마끼야또</option>
+        <option value="">고구마라떼</option>
+        <option value="">녹차라떼</option>
+    </select>    
+    <div></div>
+</body>
+</html>

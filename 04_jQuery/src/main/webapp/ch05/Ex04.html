@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" Content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#sel').change(function(){
+                $('#img').attr('src',`../images/${$(this).val()}`)
+            }).change(); // 함수 시작시 강제 호출
+        });
+        
+    </script>
+    <style type="text/css">
+        img {
+            width: 100px;
+            height: 100px;
+            margin-left: 30px;
+            border: 2px solid #cdcdcd;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <select id="sel">
+                    <option value="strawberry.gif">딸기</option>
+                    <option value="banana.gif">바나나</option>
+                    <option value="apple.gif">사과</option>
+                </select>    
+            </td>
+            <td>
+                <img src="" id="img">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                
+            </td>
+            <td>
+                
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

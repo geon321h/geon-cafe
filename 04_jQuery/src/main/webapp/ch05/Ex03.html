@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" Content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            cnt = 0;
+            $('p').live('dblclick',function(){ // bind와 달리 새로 생성된 것도 포함
+                $(this).after(`<p>Another paragraph ${cnt++}</p>`);
+                if(cnt == 3){
+                    $('p').die();
+                }
+            })
+        });
+        
+    </script>
+    <style type="text/css">
+        p {
+            background: yellow;
+            padding: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <p>Click me!</p>
+</body>
+</html>

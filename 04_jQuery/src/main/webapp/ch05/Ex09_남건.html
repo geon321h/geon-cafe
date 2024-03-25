@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" Content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.small').hover(function(){
+				$(this).fadeTo('slow',0.3)
+				image = $(this).attr('src');
+				$('#area img').attr('src',image)
+                $('#area img').fadeIn(1000,function(){
+                });
+            })
+            $('.small').mouseout(function(){
+				$(this).fadeTo('slow',1)
+                $('#area img').fadeOut(1000,function(){
+                });
+            })
+        });
+        
+    </script>
+    <style type="text/css">
+		#left_side{
+			float: left; 
+			margin-right: 50px ;
+		}
+		div{
+			margin-bottom: 20px;
+		} 
+		#imgsrc{
+			width: 300px ;
+			height: 300px ;
+			left:150px;
+			position:fixed;
+		}
+		img.small{
+			width:90px;
+			height:90px;
+		}
+		#area img{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+    <div id='left_side'>
+		<div><img class="small" src="./../images/a.jpg" ></div>
+		<div><img  class="small" id="first" src="./../images/b.jpg"></div>
+		<div><img  class="small" src="./../images/c.jpg"></div>
+	</div>	
+	<div id='area'><img id='imgsrc'></div>
+</body>
+</html>

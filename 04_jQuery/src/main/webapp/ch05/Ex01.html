@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" Content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('a').click(function(){
+                //alert($('img').attr('src'));
+                $('img').attr('src',$(this).attr('href'));
+                return false; // 이벤트 전파 방지
+            })
+        });
+        
+    </script>
+    <style type="text/css">
+        ul {
+            float: left;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="../images/image3.jpg">사진1</a></li>
+        <li><a href="../images/image4.jpg">사진2</a></li>
+    </ul>
+    <img src="../images/im7.jpg" alt="">
+    <div></div>
+</body>
+</html>
