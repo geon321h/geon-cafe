@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" Content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var car = new Object();
+            car.make = 'hyundai';
+            car.model = 'avante';
+            car.year = 2020;
+            
+            car.buydate = new Date(2022,3,4); // 월은 0부터
+            
+            var owner = new Object();
+            owner.name = "웬디";
+            owner.age = 30;
+            car.on = owner;
+            console.log(car.on.name);
+        });
+    </script>
+    <style type="text/css">
+
+	</style>
+</head>
+<body>
+
+</body>
+</html>
+<!-- class Person {
+    String name;
+    int age;
+}
+Person p = new Person();
+p.name; -->
