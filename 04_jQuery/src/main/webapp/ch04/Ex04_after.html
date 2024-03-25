@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" Content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.Content').after('<hr>');
+            
+            len = $('.Content').length
+            console.log(len);
+            for(i=4;i<len;i++){
+                $(`.Content:eq(${i})`).after('<a href="#first">TOP</a>');
+            }
+            $('.Content:gt(3)').after('<a href="#first">TOP</a>');
+        });
+        
+    </script>
+    <style type="text/css">
+        .Chapter {
+            background-color: gray;
+        }
+        .Content {
+            border: 1px solid red;
+            width: 100%;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <p class="Chapter" id="first">1장</p>
+    <div class="Content">내용...</div>
+    
+    <p class="Chapter" >2장</p>
+    <div class="Content">내용...</div>
+    
+    <p class="Chapter" >3장</p>
+    <div class="Content">내용...</div>
+    
+    <p class="Chapter" >4장</p>
+    <div class="Content">내용...</div>
+   
+    <p class="Chapter" >5장</p>
+    <div class="Content">내용...</div>
+   
+    <p class="Chapter" >6장</p>
+    <div class="Content">내용...</div>
+   
+    <p class="Chapter" >7장</p>
+    <div class="Content">내용...</div>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" Content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('button').click(function(){
+                console.log(1);
+                if($(this).text()=="Second"){
+                    $(this).replaceWith(`<div>${$(this).text()}</div>`);
+                }
+            });
+        });
+        
+    </script>
+    <style type="text/css">
+        button {
+            display: block;
+            margin: 5px 0px;
+            width: 100px;
+        }
+        div {
+            border: 2px solid blue;
+            width: 200px;
+            text-align: center;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <button>First</button>
+    <button>Second</button>
+    <button>Third</button>
+</body>
+</html>

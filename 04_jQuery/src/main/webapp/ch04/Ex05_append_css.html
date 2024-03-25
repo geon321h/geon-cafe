@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" Content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var img1 = "<img src=../images/b.jpg>";
+            var img2 = "<img src=../images/c.jpg>";
+            var img3 = "<img src=../images/d.jpg>";
+            var h2 = "<h2>사진 감상</h2>";
+
+            $('body').append(h2,img1,img2,img3);
+            $('img').css({
+                        width :'100px',
+                        height : '100px',
+                        border : '1px solid #000',
+                        margin : '10px'
+                        })
+        });
+        
+    </script>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+
+
+</body>
+</html>

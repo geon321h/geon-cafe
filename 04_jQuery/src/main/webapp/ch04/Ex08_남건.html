@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" Content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            var arr = ["a.jpg","b.jpg","c.jpg","d.jpg","e.jpg"];
+
+            $('#create').click(function(){
+
+                $('#makeTable').empty();
+                var row = parseInt($('#row').val());
+                var col = parseInt($('#col').val());
+                var table = '<table border=1>'
+                    for(i=0;i<col;i++){
+                    
+                    table += '<tr>'
+                        for(j=0;j<row;j++){
+                            num = Math.floor(Math.random()*5);
+                            imageNum = `<img src="../images/${arr[num]}">`
+                            table += `<td>${imageNum}</td>`
+                        }
+                    table += '</tr>'
+                }
+                table += '</table>'
+                $('#makeTable').append(table);
+            });
+        });
+        
+    </script>
+    <style type="text/css">
+        td {
+            width: 100px;
+            height: 100px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="row" value="2" size="5">행
+    <input type="text" id="col" value="3" size="5">열
+    <input type="button" id="create" value="테이블 동적 생성"><br>
+
+    <div id="makeTable"></div>
+</body>
+</html>

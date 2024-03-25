@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var fruit = new Array('apple','banana','orange','melon');
+            var car = ["sonata","genesis","morning"];
+
+            $(fruit).each(function(index,value){
+                $('#fruit_list').append("<li>"+index+":"+value+"</li>");
+            });
+            $(fruit).each(function(index,value){
+                $('#fruit_list2').prepend("<li>"+index+":"+value+"</li>");
+            });
+            $(car).each(function(index,value){
+                $("<li>"+index+":"+value+"</li>").appendTo('#car_list');
+            });
+            $(car).each(function(index,value){
+                $("<li>"+index+":"+value+"</li>").prependTo('#car_list2');
+            });
+
+        });
+        
+    </script>
+    <style type="text/css">
+        div {
+            width: 150px;
+            height: 200px;
+            margin-right: 30px;
+            margin-bottom: 30px;
+            padding: 10px;
+            float: left;
+            background-color: aliceblue;
+        }
+        div:nth-child(1) {
+            background-color: yellow;
+        }
+        div:nth-child(2) {
+            background-color: pink;
+        }
+        div:nth-child(3) {
+            background-color: yellowgreen;
+        }
+        div:nth-child(4) {
+            background-color: cyan;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <b>내가 좋아하는 과일</b>
+        <ul id="fruit_list"></ul>
+    </div>
+    <div>
+        <b>내가 갖고싶은 차</b>
+        <ul id="car_list"></ul>
+    </div>
+    <div>
+        <b>내가 좋아하는 과일2</b>
+        <ul id="fruit_list2"></ul>
+    </div>
+    <div>
+        <b>내가 갖고싶은 차</b>
+        <ul id="car_list2"></ul>
+    </div>
+</body>
+</html>

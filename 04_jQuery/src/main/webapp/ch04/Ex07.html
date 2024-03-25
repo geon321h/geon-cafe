@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" Content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#btnEmpty').click(function(){
+                $('div').empty();
+                $('div').append("<b>hi~</b>")
+            });
+            $('#btnRemove').click(function(){
+                $('div').remove();
+                $('div').append("<b>hi~</b>")
+            });
+        });
+        
+    </script>
+    <style type="text/css">
+        [type='button'] {
+            display: block;
+            margin: 5px 0px;
+            width: 150px;
+        }
+        div {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>jQuery</p>
+        <p>empty/remove</p>
+    </div>
+    <input type="button" name="" id="btnEmpty" value="영역의 내용 삭제"><br>
+    <input type="button" name="" id="btnRemove" value="영역의 자체를 삭제"><br>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('header').after('<div>좋아하는 과일 : 사과</div>'); // after : append와 달리 형제로 추가
+            $('<div>좋아하는 과일 : 바나나</div>').insertAfter('header');
+            $('footer').before('<div>좋아하는 과일 : 딸기</div>');
+            
+            $('<div>좋아하는 과일 : 복숭아</div>').insertBefore('footer');
+        });
+        
+    </script>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>과일</h1>
+    </header>
+    <footer>
+        <h3>jQuery 예제</h3>
+    </footer>
+</body>
+</html>
