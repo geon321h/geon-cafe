@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript">
+	$(function(){ 
+		$('input[name=name]').focus();
+	});
+	
+	function check(){
+		//alert(1);
+		
+		//if($('input[name=name]').val() == ""){
+		if($('input[name=name]').val().length == 0){
+			alert('이름 입력하세요');
+			//f.name.focus();
+			$('input[name=name]').focus();
+			return false;
+		}
+		
+		//if($('input[name="movie"]:checked').length == 0){
+		if(!$("input[name='movie']").is(":checked")){ // 있:t, 없:f
+			alert('영화 체크 누락');
+			return false;
+		}
+		
+		//if(!$('input[name="fruit"]').is(":checked")){
+		if($('input[name="fruit"]:checked').length == 0){
+			alert('과일을 선택하세요.');
+			return false;
+		}
+		
+        if ($('select[name="hobby"]').val() == "") {
+            alert("취미 선택하세요.");
+            return false;
+        }
+        
+        var fruit = "과일: ";
+		$("input[name = 'fruit']:checked").each(function(){								// 과일의 경우 체크박스로 여러개 선택 가능하므로 ... each 사용해서 각각 조사
+				fruit += $(this).val() + " ";
+		});
+		
+        alert("이름: " + $("input[name = 'name']").val() + "\n" + 
+  			  "영화: " + $("input[name = 'movie']:checked").val()	+ "\n" +
+  			  fruit	+ "\n" +
+  			  "취미: " + $("select[name = 'hobby']").val()
+  		);
+	}
+</script>	
+	
+</head>
+<body>
+<form name = "f" action="result.jsp">
+		<label>이름 : </label>
+		<input type = "text" size = "20" name="name">
+		
+		<br>
+		<br>
+		
+		<label>좋아하는 영화 선택하세요.</label><br>
+		<input type = "radio" name = "movie" value = "인디아나존스">인디아나존스
+		<input type = "radio" name = "movie" value = "해리포터">해리포터
+		<input type = "radio" name = "movie" value = "반지의 제왕">반지의 제왕
+		
+		<br>
+		<br>
+		
+		<label>좋아하는 과일 선택하세요.</label><br>
+		<input type = "checkbox" name = "fruit" value = "사과">사과
+		<input type = "checkbox" name = "fruit" value = "포도">포도
+		<input type = "checkbox" name = "fruit" value = "복숭아">복숭아
+		<input type = "checkbox" name = "fruit" value = "수박">수박
+		
+		<br>
+		<br>
+		
+		<label>좋아하는 취미 선택하세요.</label><br>
+		<select name = "hobby">
+			<option value="">선택</option>
+			<option value="달리기">달리기</option>
+			<option value="공부">공부</option>
+			<option value="게임">게임</option>
+			<option value="등산">등산</option>
+		</select>
+				
+		<br>
+		<br>
+		
+		<input type = "submit" value = "확인" onClick="return check()">
+	</form>
+</body>
+</html>
