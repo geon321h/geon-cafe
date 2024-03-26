@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" Content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#menu1").click(function(){
+                $.ajax({
+                    url : "menu.html", // 요청 URL
+                    dataType : "html", // 반환 타입
+                    success : function(data){
+                        $('#message1').html("성공:"+data);
+                    },
+                    error : function(data){
+                        alert("실패:" + data);
+                    }
+                });
+            })  
+            $("#menu2").click(function(){
+                $('#message2').load("menu.html li");
+            })  
+            $("#menu2").click(function(){
+                $.ajax({
+                    url : "menu.html list", // 요청 URL
+                    dataType : "html", // 반환 타입
+                    success : function(data){
+                        $('#message2').html("성공:"+data);
+                    },
+                    error : function(data){
+                        alert("실패:" + data);
+                    }
+                });
+            })  
+            $("#menu2").click(function(){
+                $('#message2').load("menu.html li");
+            })  
+        });
+    </script>
+    <style type="text/css">
+        div {
+            float: left;
+            margin-right: 20px;
+        }
+        #mes {
+            clear: left;
+        }
+	</style>
+</head>
+<body>
+    <div>
+        <a href="#" id="menu1">메뉴보기1</a>
+        <p></p>
+        <span id="message1"></span>
+    </div>
+    <div>
+        <a href="#" id="menu2">메뉴보기2</a>
+        <p></p>
+        <span id="message2"></span>
+    </div>
+    <div id="mes">load 예제입니다.</div>
+</body>
+</html>

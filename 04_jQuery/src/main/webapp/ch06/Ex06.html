@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" Content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('h3').click(function(){
+                $.ajax({
+                    url : "item.json", // 요청 URL
+                    dataType : "json", // 반환 타입
+                    success : function(data){
+                        $('#jsonTable').append("<tr><td>id</td><td>name</td><td>price</td><td>description</td></tr>");
+                        $.each(data,function(){
+                        $('#jsonTable').append("<tr>"
+                            +"<td>"+this.id+"</td>"
+                            +"<td>"+this.name+"</td>"
+                            +"<td>"+this.price+"</td>"
+                            +"<td>"+this.description+"</td>"
+                            +"</tr>");
+                        })
+                    }
+                });
+
+            })    
+        });
+    </script>
+    <style type="text/css">
+        td {
+            border: 1px solid gray;
+        }
+	</style>
+</head>
+<body>
+    <h3>과일의 특성 조사 자료</h3>
+    <h4></h4>
+    <table id="jsonTable">
+
+    </table>
+</body>
+</html>

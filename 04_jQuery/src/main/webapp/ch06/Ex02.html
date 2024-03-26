@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" Content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var man = new Object();
+            man.name = '거니';
+            man.age = 25;
+            man.birtday = new Date(2000,2,21);
+            
+            var jumsu = new Object();
+            jumsu.kor =10;
+            jumsu.eng =20;
+            jumsu.math =30;
+
+            man.jumsu = jumsu;
+
+            var man2 = {
+                name: '김수현',
+                age: 50,
+                birtday: new Date(2000,2,21),
+                jumsu : {
+                    kor : 30,
+                    eng : 80,
+                    math: 30
+                }
+            }
+
+            var woman = {
+                name: '아이유',
+                age: 30,
+                birtday: new Date(2000,2,21),
+                jumsu : {
+                    kor : 30,
+                    eng : 80,
+                    math: 30
+                }
+            }
+
+            
+            var Person = [
+                man,
+                man2,
+                woman
+            ]
+            
+            function show(){
+                for(v in Person){
+                    console.log(`이름:${Person[v].name}\n나이:${Person[v].age}\n생일:${Person[v].birtday}\n`);
+                    console.log(`국어:${Person[v].jumsu.kor}\n영어:${Person[v].jumsu.eng}\n수학:${Person[v].jumsu.math}`)
+                }
+            }
+            show();
+            
+        });
+    </script>
+    <style type="text/css">
+
+	</style>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	td{
+		border : 1px solid gray;
+	}
+</style>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript">
+	$(function(){ 
+		$.get('item.xml',function(data){
+			//alert(data);
+			$('#jsonTable').append("<tr><td>id</td><td>name</td><td>price</td><td>description</td></tr>");
+			
+			$(data).find('item').each(function(){
+				$('#jsonTable').append("<tr>" 
+						+ "<td>" +  $(this).attr('id') + "</td>"
+						+ "<td>" + $(this).attr('name')+ "</td>"
+						+ "<td>" + $(this).find('price').text()+ "</td>"
+						+ "<td>" + $(this).children('description').text()+ "</td>"
+						+"</tr>"
+					);
+			});
+		});
+		
+	});
+</script>	
+</head>
+<body>
+	<h3>과일의 특성 조사 자료</h3>
+	<h4></h4>
+	
+	<table id="jsonTable">
+		
+	</table>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" Content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="./../js/jquery.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('h3').click(function(){
+/*                 var now = new Date();
+
+                var nowDate ="<span>";
+                hour = now.getHours();
+                if(hour>=12){
+                    nowDate += "오후 ";
+                    hour -= 12;
+                }else{
+                    nowDate += "오전 ";
+                }
+                nowDate += hour+"시 ";
+                nowDate += now.getMinutes()+"분 ";
+                nowDate += now.getSeconds()+"초 </span>";
+                
+                $('h4').append(nowDate); */
+                
+                $.getJSON('item.json',function(data,status){
+                    $('#jsonTable').append("<tr><td>id</td><td>name</td><td>price</td><td>description</td></tr>");
+                        $.each(data,function(){
+                        $('#jsonTable').append("<tr>"
+                            +"<td>"+this.id+"</td>"
+                            +"<td>"+this.name+"</td>"
+                            +"<td>"+this.price+"</td>"
+                            +"<td>"+this.description+"</td>"
+                            +"</tr>");
+                    })
+                })
+
+            })    
+        });
+    </script>
+    <style type="text/css">
+        td {
+            border: 1px solid gray;
+        }
+	</style>
+</head>
+<body>
+    <h3>과일의 특성 조사 자료</h3>
+    <h4></h4>
+    <table id="jsonTable">
+
+    </table>
+</body>
+</html>
