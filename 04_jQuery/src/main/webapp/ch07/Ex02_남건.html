@@ -20,14 +20,116 @@
             text-align: center;
         }
     </style>
+    <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript">
+        $(function(){
+            
+            $('input[name=userName]').focus();
+
+        });
+
         function check() {
 
+
+        if($('input[name=id]').val()==""){
+			alert('아이디를 입력해주세요.');
+			myform.id.focus();
+			return false;
+		};
+		
+		if($('input[name=pw]').val()==""){
+			alert('비밀번호를 입력해주세요.');
+			myform.pw.focus();
+			return false;
+		}
+        if($('input[name=pw]').val()!=$('input[name=pwCheck]').val()){
+			alert('비밀번호가 일치하지 않습니다.');
+			myform.pwCheck.select();
+			return false;
+		}
+		
+		
+        if($('select[name="areacode"]').val() == "") {
+            alert('지역번호 선택을 해주세요.');
+			return false;
+		}
+
+        var regex = /^\d{3,4}$/;
+        
+		if($('input[name=phone1]').val()=="" || $('input[name="phone1"]').val().search(regex) == -1){
+            alert('전화번호를 4자리 입력해주세요.');
+			myform.phone1.focus();
+			return false;
+		}else if($('input[name=phone2]').val()=="" || $('input[name="phone2"]').val().search(regex) == -1){
+            alert('전화번호를 4자리 입력해주세요.');
+			myform.phone2.focus();
+			return false;
+        }
+
+        if($('input[name=userName]').val()==""){
+            alert('이름을 입력해주세요.');
+            myform.userName.focus();
+            return false;
+        }
+		
+		if($('input[name=addr]').val()==""){
+			alert('주소를 입력해주세요.');
+			$('input[name=addr]').focus();
+			return false;
+		}
+		if($('input[name=detailsAddr]').val()==""){
+			alert('세부주소를 입력해주세요.');
+			$('input[name=detailsAddr]').focus();
+			return false;
+		}
+		
+        regex = /^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,3}$/;
+
+		if($('input[name=userEmail]').val()=="" || $('input[name="userEmail"]').val().search(regex) == -1){
+			alert('이메일을 입력해주세요.');
+			$('input[name=userEmail]').focus();
+			return false;
+		}
+		
+		if($('input[name=singer]:checked').length==0){
+			alert('좋아하는 가수를 선택해주세요.');
+			return false;
+		}
+		
+		if($('input[name=gender]:checked').length==0){
+			alert('성별을 선택해주세요.');
+			return false;
+		}
+		
+		if($('textarea[name=ta]').val()==""){
+			alert('글을 작성해주세요.');
+			myform.ta.focus();
+			return false;
+		}
+		
+		var str = "선택한 항목은\n";
+		str += `아이디 : ${$('input[name=id]').val()}\n`;
+		str += `비밀번호 : ${$('input[name=pw]').val()}\n`;
+		str += `이름 : ${$('input[name=userName]').val()}\n`;
+		str += `전화번호 : ${$('select[name=areacode]').val()}-${$('input[name=phone1]').val()}-${$('input[name=phone2]').val()}\n`;
+		str += `주소 : ${$('input[name=addr]').val()}\n`;
+		str += `세부주소 : ${$('input[name=detailsAddr]').val()}\n`;
+		str += `이메일 : ${$('input[name=userName]').val()}\n`;
+		str += `이메일 : ${$('input[name=userName]').val()}\n`;
+		str += "좋아하는 가수 : ";
+		$('input[name=singer]:checked').each(function(){
+            str += $(this).val() + ",";
+		});
+		str += "\n";
+        str += `성별 : ${$('input[name=gender]:checked').val()}\n`;
+        str += `글내용: ${$('textarea[name=ta]').val()}`;
+
+        alert(str);
         }
     </script>
 </head>
 <body>
-    <form action="result.jsp" name="myform">
+    <form action="" name="myform">
         <table>
             <tr>
                 <td>
@@ -59,7 +161,7 @@
                 </td>
                 <td>
                     <select name="areacode">
-                        <option value="02">02</option>
+                        <option value="">선택</option>
                         <option value="032">032</option>
                         <option value="010">010</option>
                         <option value="070">070</option>
