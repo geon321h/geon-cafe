@@ -1,0 +1,312 @@
+@charset "utf-8";
+
+@import 'recipe_font.css';
+
+/* reset */
+
+* {
+    margin: 0; 
+    padding: 0;
+}
+body {
+    font-size:12px; 
+    font-family: 'BuSan'; 
+    background-color: #fff; 
+    color: #000;
+}
+ul {
+    list-style: none;
+}
+img {
+    border: 0;
+}
+a {
+    text-decoration: none; 
+    color: #000;
+}
+.Wrap {
+    width: 100%; 
+    height:0;
+    margin: 0 auto;
+}
+
+/*header*/
+
+.header {
+	width: 100%;
+	height: 100px;
+	position:fixed;
+	left:0;
+	top:0;
+	background-color: #fff;
+}
+
+.header .gnb {
+	position:relative;
+	background:#fff;
+	height: 99px;
+}
+
+.header .gnb .inner {
+	width:1200px;
+	margin:0 auto;
+}
+
+.header .gnb  .menu {
+	float:left;
+	margin-left:10px;
+}
+
+.header .line {
+    position:absolute;
+    top: 100px;
+    width: 100%;
+    height: 1px;
+    background:#EEE8AA;
+}
+
+.header .gnb  .menu a:hover {
+	color:#EEE8AA !important;
+}
+
+.header .gnb  .menu > ul > li {
+	float:left;
+}
+
+.header .gnb  .menu > ul > li > a {
+	display:inline-block;
+	height:102px;
+	padding:30px 0px 0;
+    padding-right: 100px;
+	font-family:'BuSan';
+	font-size:32px;
+	font-weight:700;
+	box-sizing:border-box;
+}
+
+/*container*/
+
+.container {
+	min-width:1200px;
+	padding-top:110px;
+	padding-bottom:30px;
+}
+
+.container .contents {
+	width:1200px;
+	margin:0 auto;
+    background-color: #fff;
+    text-align: center;
+}
+
+.contents h2{
+    margin-top: 80px;
+    font-size: 48px;
+    margin-bottom: 50px;
+}
+
+/* 세부 메뉴 구간 */
+
+#menu_food {
+    width: 500px;
+    margin: auto;
+    margin-bottom: 100px;
+}
+
+#menu_food ul {
+    text-align: center;
+    margin: 0px 0px 80px 0px;
+}
+
+#menu_food li {
+    font-family: 'NanumGothic';
+    font-weight: 600;
+    font-size: 22px;
+    display: inline-block;
+    margin: 0px 20px;
+}
+
+#menu_food a {
+    color: #898989;
+}
+
+#menu_food a:hover {
+    color: black;
+}
+
+/* 음식 종류 구간 */
+
+#food_area {
+    width: 100%;
+    margin-bottom: 60px;
+    text-align: left;
+}
+
+.food_preview_area {
+    display: inline-block;
+    width: 250px;
+    height: 300px;
+    background-color: #EEE8AA;
+    margin-right: 60px;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.food_preview_area:nth-child(4n){
+    margin-right: 0px;
+}
+
+.food_preview_img_area {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.food_preview_img {
+    margin: auto;
+    width: 250px;
+    height: 250px;
+}
+
+#food_area span {
+    font-family: 'BuSan';
+    font-weight: bold;
+    font-size:18px;
+}
+
+/* 레시피구간 */
+
+#recipe_area {
+    width: 1200px;
+    height: 500px;
+    margin-bottom: 150px;
+    border: 1px solid #EEE8AA;
+    display: flex;
+    justify-self: start;
+}
+
+#recipe_img_area {
+    width: 400px;
+    height: 500px;
+}
+
+#recipe_img_area #recipe_img_main {
+    margin: auto;
+    margin-top: 35px;
+    width: 320px;
+    height: 320px;
+}
+
+#recipe_img_area .recipe_img_main {
+    width: 320px;
+    height: 320px;
+    display: none;
+}
+
+#recipe_img_area #recipe_img_sub {
+    margin: auto;
+    margin-top: 30px;
+    width: 400px;
+}
+
+#recipe_img_area .recipe_img_sub {
+    margin-right:8px;
+    width: 73px;
+    height: 75px;
+    border: 1px solid white;
+}
+
+#recipe_img_area .recipe_img_sub:last-child {
+    margin-right: 0px;
+}
+
+
+#recipe_text_area {
+    width: 800px;
+    height: 500px;
+    text-align: center;
+}
+
+#recipe_text_area h3 {
+    font-family: 'BuSan';
+    font-weight: 600;
+    font-size: 28px;
+    margin-top: 60px;
+}
+
+#recipe_explanation_area{
+    display: flex;
+    justify-self: center;
+    margin-top: 10px;
+    padding: 20px;
+}
+
+#recipe_explanation_area #recipe_explanation_frame{
+    width: 600px;
+    height: 300px;
+    margin: 0 auto;
+    border: 1px solid #EEE8AA;
+    overflow: hidden;
+}
+
+#recipe_explanation_area div{
+    height: 300px;
+    display: flex;
+}
+
+#recipe_explanation > div{
+    display: flex;
+    width: 600px;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    text-align: left;
+}
+
+#recipe_explanation > div p{
+    margin: 0px 50px;
+    line-height: 30px;
+    font-family: 'NanumGothic';
+    font-weight: 600;
+    font-size: 18px;
+}
+
+#recipe_explanation_area img{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin-top: 120px;
+}
+
+#recipe_explanation_area #left_btn{
+    filter: opacity(0.3) drop-shadow(0 0 0 #ededed);
+}
+
+/*footer*/
+
+.footer {
+	min-width:1200px;
+	background:#A9A78F;
+}
+
+.footer .foot_inner {
+	width:1200px;
+	height:315px;
+	margin:0 auto;
+	padding-top:55px;
+	overflow:hidden;
+}
+
+.footer h3{
+    
+    font-size:32px;
+
+}
+
+.footer p {
+    font-size:20px;
+    font-family: 'NanumGothic';
+    font-weight: 600;
+    color: #000;
+}
