@@ -1,0 +1,20 @@
+drop table empl;
+drop SEQUENCE e_seq;
+
+create table empl(
+	eid number primary key,
+	name varchar2(10) not null,
+	dept number not null,
+	salary number
+);
+
+CREATE SEQUENCE e_seq
+  increment by 1
+  START WITH 1
+  MINVALUE 1
+  MAXVALUE 10000
+  NOCACHE
+;
+
+insert into empl(eid,name,dept,salary)
+values(e_seq.nextval,'kim',1,100);
