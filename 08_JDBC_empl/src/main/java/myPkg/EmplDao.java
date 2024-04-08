@@ -225,5 +225,43 @@ public class EmplDao {
 		return cnt;
 	}
 	
+	public int deleteCheckData(String[] rowcheckArr) {
+		connect();
+		int cnt = -1;
+		String sql = "delete from empl where eid=? ";
+		
+		try {
+			
+			for(int i=1;i<rowcheckArr.length;i++) {
+				sql += " or eid=?";
+			}
+			
+			ps = conn.prepareStatement(sql);
+			
+			for(int i=0;i<rowcheckArr.length;i++) {
+				int rowcheck = Integer.parseInt(rowcheckArr[i]);
+				ps.setInt(i+1, rowcheck);
+			}
+			
+			
+			cnt = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (ps!=null) {
+					ps.close();
+				}
+				if (conn!=null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}	
+		}
+		return cnt;
+	}
+	
 	
 }
