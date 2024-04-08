@@ -1,0 +1,26 @@
+drop table book;
+drop SEQUENCE b_seq;
+
+create table book(
+	bid number primary key,
+	title varchar2(30) not null,
+	author varchar2(12) not null,
+	publisher varchar2(30) not null,
+	price number not null,
+	reg_date date default sysdate,
+	delivery_price varchar2(6) not null check(delivery_price in('유료','무료')),
+	bookstore VARCHAR2(30) not null,
+	quantity number not null
+);
+
+CREATE SEQUENCE b_seq
+  increment by 1
+  START WITH 1
+  MINVALUE 1
+  MAXVALUE 10000
+  NOCACHE
+;
+
+insert into book values(b_seq.nextval,'인어공주','김인어','문학도시',2000,sysdate,'유료','kyobo',2);
+
+SELECT * FROM book;
