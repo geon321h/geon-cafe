@@ -42,16 +42,24 @@
                 	<%
                 		CategoryDao cdao = CategoryDao.getInstance();
                 	 	ArrayList<CategoryBean> category_lists = cdao.getAllCategory();
-						for(CategoryBean cb : category_lists){
-							%>
-							<tr>
-								<td><%=cb.getCnum()%></td>
-								<td><%=cb.getCode()%></td>
-								<td><%=cb.getCname()%></td>
-								<td><a href="deleteCateProc.jsp?cnum=<%=cb.getCnum()%>">삭제</a></td>
-							</tr>
-							<%
-						}
+                	 	if(category_lists.size()>0){
+							for(CategoryBean cb : category_lists){
+								%>
+								<tr>
+									<td><%=cb.getCnum()%></td>
+									<td><%=cb.getCode()%></td>
+									<td><%=cb.getCname()%></td>
+									<td><a href="deleteCateProc.jsp?cnum=<%=cb.getCnum()%>">삭제</a></td>
+								</tr>
+								<%
+							}
+                	 	}else{
+                	 		%>
+                	 		<tr>
+                	 			<td colspan="4">등록된 카테고리가 없습니다.</td>
+                	 		</tr>
+                	 		<%
+                	 	}
                 	%>
             </table>
         </form>
