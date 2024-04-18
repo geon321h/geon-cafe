@@ -184,6 +184,39 @@ private static ProductDao instance;
 		return lists;
 	}
 	
+	public ArrayList<ProductBean> getProductByCode(String code) {
+		ProductBean product = null;
+		ArrayList<ProductBean> lists = new ArrayList<>();
+		String sql = "select * from product where pcategory_fk like ?";
+		try {
+			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, "%"+code+"%");
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				product = getProductBean(rs);
+				lists.add(product);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (ps!=null) {
+					ps.close();
+				}
+				if (rs!=null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}	
+		}
+		
+		return lists;
+	}
+	
 	public int deleteProduct(int pnum) {
 		int cnt = -1;
 		String sql = "delete from product where pnum=?";
