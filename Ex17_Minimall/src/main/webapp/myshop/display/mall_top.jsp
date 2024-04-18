@@ -110,9 +110,9 @@ s			text-align: center;
 					    			for(CategoryBean cb : category_lists){
 						    			%>
 					    				<tr>
-					    					<td><a><%=cb.getCname()%></a></td>
+					    					<td><a href="<%=contextPath%>/myshop/display/mall_cgList.jsp?code=<%=cb.getCode()%>&cname=<%=cb.getCname()%>"><%=cb.getCname()%>[<%=cb.getCode()%>]</a></td>
 					    				</tr>
-					    			<%
+					    				<%
 					    			}
 					    		}else{
 					    			%>

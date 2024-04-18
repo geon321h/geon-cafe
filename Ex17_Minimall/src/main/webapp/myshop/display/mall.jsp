@@ -87,7 +87,9 @@
 					        	 	String fullPath = requestFolder+"\\"+lists.get(j).getPimage();
 									%>
 										<td class="spec_content" >
-											<img src="<%=fullPath%>"><br>
+											<a href="mall_prodView.jsp?pnum=<%=lists.get(j).getPnum()%>">
+												<img src="<%=fullPath%>"><br>
+											</a>
 											<span><%=lists.get(j).getPname()%></span><br>
 											<span><font color="#DC143C"><%=df.format(lists.get(j).getPrice())%></font>원</span><br>
 											<span>[<%=lists.get(j).getPoint()%>]point</span>
