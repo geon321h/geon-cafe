@@ -75,7 +75,7 @@ public class CategoryDao {
 	public ArrayList<CategoryBean> getAllCategory() {
 		CategoryBean category = null;
 		ArrayList<CategoryBean> lists = new ArrayList<>();
-		String sql = "select * from category";
+		String sql = "select * from category order by cnum";
 		try {
 			
 			ps = conn.prepareStatement(sql);

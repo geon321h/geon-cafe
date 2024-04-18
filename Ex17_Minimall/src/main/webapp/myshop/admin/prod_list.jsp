@@ -1,50 +1,99 @@
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
+<%@page import="my.shop.ProductBean"%>
+<%@page import="my.shop.ProductDao"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	<%@include file="top.jsp" %>
 	<style type="text/css">
-		#cate_input table{
-			width: 400px;
+		#prod_list {
+			margin-top: 20px;
 		}
-		#cate_input h2{
-			margin: 30px  0px;
+		#prod_list table{
+			width: 90%;
+			border-top: 5px;
+			border-bottom: 5px;
+			border-left: 0px;
+			border-right: 0px;
+			border-style: double;
+			border-color: navy;
+			border-collapse: separate;
+			
 		}
 		
-		#cate_input tr{
-			height: 50px;
+		#prod_list tr{
+			height: 40px;
 		}
 	
-		#cate_input tr td:first-child {
-			background-color: yellow;
+		#prod_list tr:first-child {
+			background-color: orange;
 		}
-	    #cate_input td:nth-child(2) input {
-	        width: 100%;
-	    }
+		
+		#prod_list tr:first-child td {
+			font-weight: bold;
+		}
+		
 	</style>
+	
+	<script type="text/javascript">
+		function checkDel() {
+			if (confirm("정말 삭제하시겠습니까?") == true){    //확인
+				return;
+			 }else{   //취소
+			     return false;
+			 }
+		}
+	</script>
     <td colspan="6" >
-	    <!-- myshop/admin/prod_list.jsp 관리자 첫 페이지  -->
-	    <form action="" method="post" id="cate_input">
-        	<h2>카테고리 등록</h2>
-            <table border="1">
+	    <!-- myshop/admin/cate_list.jsp 관리자 첫 페이지  -->
+	    <form action="" method="post" id="prod_list">
+        	<h2>상품 목록<!-- (prod_list.jsp) --></h2>
+            <table >
                 <tr>
-                    <td>아이디</td>
-                    <td>
-                        <input type="text" name="id" maxlength="12">
-                    </td>
+                    <td>번호</td>
+                    <td>상품코드</td>
+                    <td>상품명</td>
+                    <td>이미지</td>
+                    <td>가격</td>
+                    <td>제조회사</td>
+                    <td>수량</td>
+                    <td>수정 | 삭제</td>
                 </tr>
-                <tr>
-                    <td>비밀번호</td>
-                    <td>
-                        <input type="password" name="password" maxlength="12">
-                    </td>
-                </tr>
-                <tr >
-                    <td colspan="2">
-                        <input type="submit"  value="로그인">
-                        <input type="button"  value="회원가입" onclick="location.href='myshop/member/register.jsp'">
-                        <input type="button"  value="아이디 찾기" onclick="location.href='myshop/member/findid.jsp'">
-                        <input type="button"  value="비번 찾기" onclick="location.href='myshop/member/findpwd.jsp'">
-                    </td>
-                </tr>
+                	<%
+                		ProductDao pdao = ProductDao.getInstance();
+                	 	ArrayList<ProductBean> product_lists = pdao.getAllProduct();
+                	 	
+                    	String saveFolder = "/myshop/images";
+                	 	String requestFolder = request.getContextPath()+"/"+saveFolder;
+                	    
+                	 	if(product_lists.size()>0){
+							for(ProductBean pb : product_lists){
+		                	    String fullPath = requestFolder+"\\"+pb.getPimage();
+								%>
+								<tr>
+									<td><%=pb.getPnum()%></td>
+									<td><%=pb.getPcategory_fk()%></td>
+									<td><%=pb.getPname()%></td>
+									<td><img src="<%=fullPath%>" width="50" onclick="location.href='prod_view.jsp?pnum=<%=pb.getPnum()%>'"/></td>
+									<td  align="right"><%=pb.getPrice()%></td>
+									<td><%=pb.getPcompany()%></td>
+									<td align="right"><%=pb.getPqty()%></td>
+									<td>
+										<a href="prod_update.jsp?pnum=<%=pb.getPnum()%>">수정</a> |
+										<a href="deleteProdProc.jsp?pnum=<%=pb.getPnum()%>&pimage=<%=pb.getPimage()%>" onclick="return checkDel()">삭제</a>
+									</td>
+								</tr>
+								<%
+							}
+                	 	}else{
+                	 		%>
+                	 		<tr>
+                	 			<td colspan="4">등록된 상품이 없습니다.</td>
+                	 		</tr>
+                	 		<%
+                	 	}
+                	%>
             </table>
         </form>
     </td>

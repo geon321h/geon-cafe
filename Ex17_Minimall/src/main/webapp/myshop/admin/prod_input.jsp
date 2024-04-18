@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.sql.Timestamp"%>
 <%@page import="my.shop.CategoryBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="my.shop.CategoryDao"%>
@@ -52,7 +54,7 @@
 	
     <td colspan="6" >
 	    <!-- myshop/admin/prod_input.jsp 관리자 첫 페이지  -->
-	    <form action="" method="post" id="prod_input" enctype="multipart/form-data">
+	    <form action="prod_proc.jsp" method="post" id="prod_input" enctype="multipart/form-data">
         	<h2>상품 등록</h2>
             <table >
                 <tr>
@@ -60,11 +62,17 @@
                     <td>
                         <select name="pcategory_fk">
                         	<% 
-                        		for(CategoryBean cb : category_lists){
+                        		if(category_lists.size()>0){
+	                        		for(CategoryBean cb : category_lists){
+	                        			%>
+	                        				<option value="<%=cb.getCname()%>"><%=cb.getCname()%></option>
+	                        			<%
+		                        	}
+                        		}else{
                         			%>
-                        				<option value="<%=cb.getCname()%>"><%=cb.getCname()%></option>
+                        			<option value="카테고리 없음">카테고리 없음</option>
                         			<%
-	                        	}
+                        		}
                         	%>
                         </select>
                     </td>
@@ -78,7 +86,7 @@
                 <tr>
                     <td>상품코드</td>
                     <td>
-                        <input type="text" name="pname" maxlength="50" placeholder="상품코드">
+                        <input type="text" name="pcode" maxlength="50" placeholder="상품코드">
                     </td>
                 </tr>
                 <tr>
