@@ -65,7 +65,7 @@
                         		if(category_lists.size()>0){
 	                        		for(CategoryBean cb : category_lists){
 	                        			%>
-	                        				<option value="<%=cb.getCname()%>"><%=cb.getCname()%></option>
+	                        				<option value="<%=cb.getCode()%>"><%=cb.getCname()%></option>
 	                        			<%
 		                        	}
                         		}else{
