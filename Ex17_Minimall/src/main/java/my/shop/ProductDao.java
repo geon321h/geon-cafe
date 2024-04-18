@@ -130,6 +130,7 @@ private static ProductDao instance;
 			
 			if(rs.next()) {
 				product = getProductBean(rs);
+				
 			}
 			
 		} catch (SQLException e) {
@@ -148,6 +149,39 @@ private static ProductDao instance;
 		}
 		
 		return product;
+	}
+	
+	public ArrayList<ProductBean> getProductByPspec(String pspec) {
+		ProductBean product = null;
+		ArrayList<ProductBean> lists = new ArrayList<>();
+		String sql = "select * from product where pspec = ?";
+		try {
+			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, pspec);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				product = getProductBean(rs);
+				lists.add(product);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (ps!=null) {
+					ps.close();
+				}
+				if (rs!=null) {
+					rs.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}	
+		}
+		
+		return lists;
 	}
 	
 	public int deleteProduct(int pnum) {

@@ -37,6 +37,9 @@
 		}
 		
 	</style>
+	<%
+		session.setAttribute("id", "admin");
+	%>
 
 			<div id="header">
 				<h2>쇼핑몰(관리자용)</h2>

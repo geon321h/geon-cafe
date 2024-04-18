@@ -49,7 +49,7 @@
   		CategoryDao cdao = CategoryDao.getInstance();
   	 	ArrayList<CategoryBean> category_lists = cdao.getAllCategory();
   	 	
-  	 	String[] pspec = {"NORMAL","NEW","HOT"};
+  	 	String[] pspec = {"NORMAL","NEW","HIT","BEST"};
   	%>
 	
     <td colspan="6" >
