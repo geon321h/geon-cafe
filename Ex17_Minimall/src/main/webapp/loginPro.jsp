@@ -17,6 +17,7 @@
 	<%
     	MemberDTO member = mdao.login(mDto.getId(),mDto.getPassword());
     	session.setAttribute("id", member.getId());
+    	session.setAttribute("no", member.getNo());
 		String msg =null;
 		String url =null;
 		

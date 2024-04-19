@@ -75,18 +75,46 @@
 		
 	</style>    
 
+
      <%
        request.setCharacterEncoding("UTF-8");
        int pnum = 1;
        if(request.getParameter("pnum") != null){
-        pnum = Integer.parseInt(request.getParameter("pnum"));
-       }
-       
-  		ProductDao pDao = ProductDao.getInstance();
-  		ProductBean pb = pDao.getProductByPnum(pnum);
-  		String requestFolder = request.getContextPath()+"/myshop/images";
-  		String fullPath = requestFolder+"\\"+pb.getPimage();
-   	%>
+		   pnum = Integer.parseInt(request.getParameter("pnum"));
+		}
+		
+		ProductDao pDao = ProductDao.getInstance();
+		ProductBean pb = pDao.getProductByPnum(pnum);
+		String requestFolder = request.getContextPath()+"/myshop/images";
+		String fullPath = requestFolder+"\\"+pb.getPimage();
+		%>
+
+		<script type="text/javascript">
+	
+			function goCart(pnum){
+				console.log(pnum);
+				
+				let oqty = document.f.oqty.value;
+				console.log(oqty);
+				
+				if(oqty == "" || oqty < 1){
+					alert('수량 누락 또는 1보다 작은 수 입력했습니다.');
+					location.href="mall.jsp";
+					return;
+				}
+				
+				location.href="<%=request.getContextPath()%>/myshop/display/mall_cartAdd.jsp?pnum="+pnum+"&oqty="+oqty;
+	
+			}
+			function goOrder(pnum){
+				
+				oqty = document.f.oqty.value;
+				location.href="<%=request.getContextPath()%>/myshop/display/mall_order.jsp?pnum="+pnum+"&oqty="+oqty;  
+				
+			}
+	
+		</script>
+
    	<td id="mainContent">
 	  <table id="viewTable">
 	  	<tr>
@@ -108,12 +136,12 @@
 		       		<table width=50%>
 						<tr>
 							<td align="center">
-								<a href="">
+								<a href="javascript:goCart(<%=pb.getPnum()%>)">
 									<img src="<%=request.getContextPath()%>/img/cartbtn.gif">
 								</a>
 							</td>
 							<td align="center">
-								<a href="">
+								<a href="javascript:goOrder(<%=pb.getPnum()%>)">
 									<img src="<%=request.getContextPath()%>/img/orderbtn.gif" >
 								</a>
 							</td>

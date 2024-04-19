@@ -57,7 +57,7 @@
     	String saveFolder = "/myshop/images";
 	 	String requestFolder = request.getContextPath()+"/"+saveFolder;
 	 	String fullPath = requestFolder+"\\"+pb.getPimage();
-  	 	String[] pspec = {"NORMAL","NEW","HOT"};
+	 	String[] pspec = {"NORMAL","NEW","HIT","BEST"};
   	 	
   	%>
 	
