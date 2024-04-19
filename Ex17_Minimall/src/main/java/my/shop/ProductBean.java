@@ -13,6 +13,8 @@ public class ProductBean {
 	private String pcontents;
 	private int point;
 	private String pinputdate;
+	private int totalPrice; // 장바구니 담기 추가
+	private int totalPoint; // 장바구니 담기 추가
 	
 	public int getPnum() {
 		return pnum;
@@ -79,6 +81,18 @@ public class ProductBean {
 	}
 	public void setPinputdate(String pinputdate) {
 		this.pinputdate = pinputdate;
+	}
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	public int getTotalPoint() {
+		return totalPoint;
+	}
+	public void setTotalPoint(int totalPoint) {
+		this.totalPoint = totalPoint;
 	}
 	
 	

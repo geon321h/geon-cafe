@@ -91,7 +91,7 @@ s			text-align: center;
 						}
 					%>
 					<a href="<%=contextPath%>/myshop/display/mall.jsp" >쇼핑몰홈</a><span>|</span>
-					<a href="" >장바구니</a><span>|</span>
+					<a href="<%=contextPath%>/myshop/display/mall_cartList.jsp" >장바구니</a><span>|</span>
 					<a href="" >게시판</a><span>|</span>
 					<a href="" >회사소개</a>
 				</div>
