@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 
     <!-- main.jsp -->
+    <%
+    	session.invalidate();
+    	// 세션 초기화
+    %>
 
 <link rel="stylesheet" type="text/css" href="style.css"> 
 <style type="text/css">
