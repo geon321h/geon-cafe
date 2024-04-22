@@ -1,51 +1,87 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="my.shop.mall.OrdersDao"%>
+<%@page import="my.shop.mall.OrderBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	<%@include file="top.jsp" %>
 	<style type="text/css">
-		#cate_input table{
-			width: 400px;
-		}
-		#cate_input h2{
-			margin: 30px  0px;
+		[name="orderList"] {
+			width: 800px;
 		}
 		
-		#cate_input tr{
-			height: 50px;
+		[name="orderList"] tr:nth-child(2) {
+			background-color: #cdcdcd;
 		}
 	
-		#cate_input tr td:first-child {
-			background-color: yellow;
-		}
-	    #cate_input td:nth-child(2) input {
-	        width: 100%;
-	    }
 	</style>
+    <%
+       	OrdersDao odao = new OrdersDao();
+       	ArrayList<OrderBean> lists =null;
+       	String name = request.getParameter("name");
+       	if(name == null){
+       		
+       		lists = odao.getAllOrders("");
+       		
+       	}else{
+       		
+       		lists = odao.getAllOrders(name);
+       		
+       	}
+    %>
+	
     <td colspan="6" >
-	    <!-- myshop/admin/shopping_list.jsp 관리자 첫 페이지  -->
-	    <form action="" method="post" id="cate_input">
-        	<h2>카테고리 등록</h2>
-            <table border="1">
-                <tr>
-                    <td>아이디</td>
-                    <td>
-                        <input type="text" name="id" maxlength="12">
-                    </td>
-                </tr>
-                <tr>
-                    <td>비밀번호</td>
-                    <td>
-                        <input type="password" name="password" maxlength="12">
-                    </td>
-                </tr>
-                <tr >
-                    <td colspan="2">
-                        <input type="submit"  value="로그인">
-                        <input type="button"  value="회원가입" onclick="location.href='myshop/member/register.jsp'">
-                        <input type="button"  value="아이디 찾기" onclick="location.href='myshop/member/findid.jsp'">
-                        <input type="button"  value="비번 찾기" onclick="location.href='myshop/member/findpwd.jsp'">
-                    </td>
-                </tr>
-            </table>
-        </form>
+	    <table border="1" name="orderList" >
+	        <tr>
+	            <td colspan="5">
+	            	<form action="shopping_list.jsp" method="post">
+	            	조회할 회원 아이디 입력: 
+		            	<input type="text" name="name" size="20">
+		            	<input type="submit" value="내역 조회"> 
+	            	</form>
+	            </td>
+	        </tr>
+	        <tr>
+	            <td>회원명</td>
+	            <td>회원 아이디</td>
+	            <td>상품명</td>
+	            <td>수량</td>
+	            <td>금액</td>
+	        </tr>
+
+	        <%
+			int TotalAmount = 0;	                	    
+	    	DecimalFormat df = new DecimalFormat("###,###");
+	    	
+	        if(lists != null){
+				for(OrderBean ob : lists){
+					%>
+					<tr>
+						<td><%=ob.getMname()%></td>
+						<td><%=ob.getMid()%></td>
+						<td><%=ob.getPname()%></td>
+						<td align="right"><%=ob.getQty()%></td>
+						<td align="right"> &#8361;<%=df.format(ob.getAmount())%></td>
+					<tr>
+					<%
+					TotalAmount += ob.getAmount();
+				}
+	  	 	}else{
+	  	 		%>
+	  	 		<tr>
+	  	 			<td colspan="5">구매내역이 없습니다.</td>
+	  	 		</tr>
+	  	 		<%
+	  	 	}
+	      	%>
+	        <tr>
+	            <td colspan="4">
+	            	<b>총 금액 </b>
+	            </td>
+	            <td colspan="1" align="right">
+					 &#8361;<%=df.format(TotalAmount)%>
+	            </td>
+	        </tr>
+	    </table>
     </td>
     <%@include file="bottom.jsp" %>
