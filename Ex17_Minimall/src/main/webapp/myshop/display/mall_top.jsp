@@ -97,7 +97,9 @@ s			text-align: center;
 				</div>
 				<div id="user">
 					<span><%=id%>님</span>
-					<img alt="" src="<%=contextPath%>/img/logout3.jpg" width="50px" height="25px">
+					<a class="Logout" href="<%=contextPath%>/logout.jsp">
+						<img alt="" src="<%=contextPath%>/img/logout3.jpg" width="50px" height="25px">
+					</a>
 				</div>
 			</td>
 		</tr>
