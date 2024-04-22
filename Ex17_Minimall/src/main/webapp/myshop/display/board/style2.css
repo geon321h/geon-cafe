@@ -1,0 +1,58 @@
+
+#mainContent table, tr, td{
+	border:1px solid black;
+	cellpadding:0;
+	cellspacing:0;
+	border-collapse:collapse;
+	margin-top: 3px;
+}
+
+*{
+	font-family: "나눔스퀘어 네오" , "@맑은 고딕";
+}
+
+#mainContent form {
+	text-align: center;
+	margin: auto;
+}
+
+#mainContent p{
+	font-size: 18px;
+	margin-top: 30px;
+}
+
+#mainContent table{
+	margin: auto;
+}
+
+#mainContent table tr:first-child{
+	background-color: #AFEEEE;
+}
+
+#mainContent td{
+	font-family: "나눔스퀘어 네오" , "@맑은 고딕";
+	text-align: center;
+	padding: 10px 20px;
+}
+
+#mainContent caption {
+	background-color: #AFEEEE;
+	border: 1px solid black;
+	margin-bottom: 10px;
+}
+
+#mainContent caption a {
+	padding: 10px 20px;
+	float: right;
+}
+
+#mainContent .leftText {
+	text-align: left;
+}
+
+#mainContent A:link {text-decoration:none;color:#696969}
+#mainContent A:hover{text-decoration:yes;color:#66CCFF}
+#mainContent A:visited {text-decoration:none;color:#330066}
+
+
+
