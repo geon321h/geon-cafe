@@ -1,3 +1,4 @@
+<%@page import="my.shop.mall.CartBean"%>
 <%@page import="my.shop.ProductBean"%>
 <%@page import="java.util.Vector"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -14,6 +15,7 @@
     	
     	Vector<ProductBean> clist = mallCart.getClist();
     	int cnt = order.insertOrders(memno,clist);
+    	mallCart.removeAllProduct();
     	
     	String msg="";
     	if(cnt>0){
@@ -26,4 +28,5 @@
     
      <script type="text/javascript">
 		alert('<%=msg%>');
+		location.href="mall_cartList.jsp";
 	</script>
