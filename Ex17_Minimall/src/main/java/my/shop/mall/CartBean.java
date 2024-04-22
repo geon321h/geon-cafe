@@ -56,6 +56,11 @@ public class CartBean {
 		}		
 	}
 	
+	public void removeAllProduct() {
+		clist.removeAllElements();
+	}
+
+	
 	public void setEdit(int pnum ,int oqty) {
 		for(int i=0;i<clist.size();i++) {
 			if(clist.get(i).getPnum()==pnum){
