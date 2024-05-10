@@ -2,12 +2,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 	<%
 		request.setCharacterEncoding("UTF-8");
 	%>
 	<c:if test="${param.kind==null}">배송비 선택안함</c:if>
 	<c:if test="${param.count=='선택'}">보유수량 선택안함</c:if>
+	<c:if test="${empty paramValues.bookStore}">구입가능서점 선택안함</c:if>
 	<table border="1">
 		<tr>
 				<td>제목</td>
@@ -66,6 +68,21 @@
 			</tr>
 			
 			<tr>
+				<td>구입가능서점</td>
+				<td>
+				<c:choose>
+					<c:when test="${fn:length(paramValues.bookStore) != 0}">
+						<c:forEach var="bookStore" items="${paramValues.bookStore}" varStatus="s">
+					 		${bookStore}
+					 		<c:if test="${not s.last}">,</c:if>
+					 	</c:forEach>
+					</c:when>
+					<c:otherwise>구입가능서점 선택안함</c:otherwise>
+				</c:choose>
+				</td>
+			</tr>
+			
+			<tr>
 				<td>보유수량</td>
 				<td>
 				<c:choose>
@@ -82,11 +99,13 @@
 	<c:set var="publisher" value="${param.publisher}"></c:set>
 	<c:set var="price" value="${param.price}"></c:set>
 	<c:set var="buy" value="${param.buy}"></c:set>
+	<c:set var="bookStore" value="${paramValues.bookStore}"></c:set>
 	<c:set var="kind" value="${param.kind}"></c:set>
 	<c:set var="count" value="${param.count}"></c:set>
 	
 	<c:if test="${kind==null}">배송비 선택안함</c:if>
 	<c:if test="${count=='선택'}">보유수량 선택안함</c:if>
+	<c:if test="${bookStore==null}">구입가능서점 선택안함</c:if>
 	<table border="1">
 		<tr>
 				<td>제목</td>
@@ -145,6 +164,21 @@
 			</tr>
 			
 			<tr>
+				<td>구입가능서점</td>
+				<td>
+				<c:choose>
+					<c:when test="${bookStore != null}">
+						<c:forEach var="bookstore" items="${bookStore}" varStatus="s">
+					 		${bookstore}
+					 		<c:if test="${not s.last}">,</c:if>
+					 	</c:forEach>
+					</c:when>
+					<c:otherwise>구입가능서점 선택안함</c:otherwise>
+				</c:choose>
+				</td>
+			</tr>
+			
+			<tr>
 				<td>보유수량</td>
 				<td>
 				<c:choose>
@@ -161,11 +195,13 @@
 	<c:set target="${bb2}" property="publisher" value="${param.publisher}"></c:set>
 	<c:set target="${bb2}" property="price" value="${param.price}"></c:set>
 	<c:set target="${bb2}" property="buy" value="${param.buy}"></c:set>
+	<c:set target="${bb2}" property="bookStore" value="${paramValues.bookStore}"></c:set>
 	<c:set target="${bb2}" property="kind" value="${param.kind}"></c:set>
 	<c:set target="${bb2}" property="count" value="${param.count}"></c:set>
 	
 	<c:if test="${bb2.kind==null}">배송비 선택안함</c:if>
 	<c:if test="${bb2.count=='선택'}">보유수량 선택안함</c:if>
+	<c:if test="${bb2.bookStore==null}">구입가능서점 선택안함</c:if>
 	<table border="1">
 		<tr>
 				<td>제목</td>
@@ -224,6 +260,21 @@
 			</tr>
 			
 			<tr>
+				<td>구입가능서점</td>
+				<td>
+				<c:choose>
+					<c:when test="${bb2.bookStore != null}">
+						<c:forEach var="bookstore" items="${bb2.bookStore}" varStatus="s">
+					 		${bookstore}
+					 		<c:if test="${not s.last}">,</c:if>
+					 	</c:forEach>
+					</c:when>
+					<c:otherwise>구입가능서점 선택안함</c:otherwise>
+				</c:choose>
+				</td>
+			</tr>
+			
+			<tr>
 				<td>보유수량</td>
 				<td>
 				<c:choose>
@@ -234,6 +285,7 @@
 			</tr>
 	</table>
 	
+	
 	<jsp:useBean id="bb" class="mypkg.bookBean">
 		<jsp:setProperty property="*" name="bb"/>
 	</jsp:useBean>
@@ -241,6 +293,7 @@
 	
 	<c:if test="${bb.kind==null}">배송비 선택안함</c:if>
 	<c:if test="${bb.count=='선택'}">보유수량 선택안함</c:if>
+	<c:if test="${bb.bookStore== null}">보유수량 선택안함</c:if>
 	<table border="1">
 		<tr>
 				<td>제목</td>
@@ -299,6 +352,21 @@
 			</tr>
 			
 			<tr>
+				<td>구입가능서점</td>
+				<td>
+				<c:choose>
+					<c:when test="${bb.bookStore != null}">
+						<c:forEach var="bookstore" items="${bb.bookStore}" varStatus="s">
+					 		${bookstore}
+					 		<c:if test="${not s.last}">,</c:if>
+					 	</c:forEach>
+					</c:when>
+					<c:otherwise>구입가능서점 선택안함</c:otherwise>
+				</c:choose>
+				</td>
+			</tr>
+			
+			<tr>
 				<td>보유수량</td>
 				<td>
 				<c:choose>
@@ -308,6 +376,17 @@
 				</td>
 			</tr>
 	</table>
+	
+	
+<!-- 	param	 -->
+	<c:if test="${param.kind==null}">배송비 선택안함</c:if>
+	<c:if test="${empty paramValues.bookStore}">구입가능서점 선택안함</c:if>
+<!-- 	jsp -->
+	<c:if test="${bb.kind==null}">배송비 선택안함</c:if>
+	<c:if test="${bb.bookStore== null}">보유수량 선택안함</c:if>
+<!-- 	jstl -->
+	<c:if test="${bb2.kind==null}">배송비 선택안함</c:if>
+	<c:if test="${bb2.bookStore==null}">구입가능서점 선택안함</c:if>
 	
 	
 	

@@ -3,6 +3,7 @@
 
 <%
 	String[] kind = {"유료","무료"};
+	String[] bookstore = {"교보문고","알라딘","yes24","인터파크"};
 %>
 	<h1>도서 정보 입력</h1>
 	<form name="myform" action="Ex_result_남건.jsp" method="post">
@@ -35,6 +36,19 @@
 				 	for(int i=0;i<kind.length;i++){
 				 %>
 				 	<%=kind[i] %> <input type="radio" name="kind" value="<%=kind[i] %>"> 
+				 <%	
+				 	}
+				 %>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>구입가능서점</td>
+				<td>
+				 <%
+				 	for(int i=0;i<bookstore.length;i++){
+				 %>
+				 	<input type="checkbox" name="bookStore" value="<%=bookstore[i] %>"><%=bookstore[i] %>  
 				 <%	
 				 	}
 				 %>

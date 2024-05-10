@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 	Ex08.jsp<br>
 	
 	<%
@@ -45,3 +46,18 @@
 			</tr>
 		</c:forEach>				
 	</table>
+	<br>
+	<c:forEach var="cnt" begin="1" end="10" varStatus="a"  step="2">
+			${a.first} / ${a.begin} / ${a.last} / ${a.end} /${a.index} / ${a.count} / ${cnt} 
+			<c:if test="${!a.last}">,</c:if> <!-- if 마지막 데이터가 아니면 쉼표 -->
+			<br>
+	</c:forEach>		
+	
+	length(movieList) : ${fn:length(movieList)} <br>
+	
+	<c:forEach var="i" begin="0" end="${fn:length(mList)-1}" step="1">
+		${i } : ${mList[i]} <br>
+	</c:forEach>	
+	
+	
+	

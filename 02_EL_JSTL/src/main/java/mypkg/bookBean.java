@@ -8,7 +8,9 @@ public class bookBean {
 	private int price;
 	private String buy;
 	private String kind;
+	private String[] bookStore;
 	private String count;
+	
 	public String getTitle() {
 		return title;
 	}
@@ -44,6 +46,12 @@ public class bookBean {
 	}
 	public void setKind(String kind) {
 		this.kind = kind;
+	}
+	public String[] getBookStore() {
+		return bookStore;
+	}
+	public void setBookStore(String[] bookStore) {
+		this.bookStore = bookStore;
 	}
 	public String getCount() {
 		return count;
