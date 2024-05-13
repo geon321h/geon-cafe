@@ -5,7 +5,7 @@
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 	<%
-		request.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 	%>
 	<c:if test="${param.kind==null}">배송비 선택안함</c:if>
 	<c:if test="${param.count=='선택'}">보유수량 선택안함</c:if>
@@ -189,7 +189,7 @@
 			</tr>
 	</table>
 	
-	<c:set var="bb2" value="<%=new bookBean() %>"></c:set>
+	<c:set var="bb2" value="<%=new bookBean()%>"></c:set>
 		<c:set target="${bb2}" property="title" value="${param.title}"></c:set>
 	<c:set target="${bb2}" property="author" value="${param.author}"></c:set>
 	<c:set target="${bb2}" property="publisher" value="${param.publisher}"></c:set>
