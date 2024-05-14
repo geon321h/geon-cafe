@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>06_Servlet</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  
+  <context-param>
+  	<param-name>company</param-name>
+  	<param-value>SM</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>singer</param-name>
+  	<param-value>태연</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>manager</param-name>
+  	<param-value>홍길동</param-value>
+  </context-param>
+  
+    <servlet>
+  	<servlet-name>init</servlet-name>
+  	<servlet-class>myPkg.SecondServlet</servlet-class> 
+  	<init-param>
+  		<param-name>singer</param-name>
+  		<param-value>웬디</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>title</param-name>
+  		<param-value>롤러코스터</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>init</servlet-name>
+  	<url-pattern>/second.do</url-pattern>
+  </servlet-mapping>
+
+  
+  
+</web-app>
