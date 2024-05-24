@@ -71,9 +71,6 @@ s			text-align: center;
         if(id == null){
         	id = "admin";
         }
-		
-        CategoryDao cdao = CategoryDao.getInstance();
-	 	ArrayList<CategoryBean> category_lists = cdao.getAllCategory();
 	 	
 	 	String contextPath = request.getContextPath();
         
@@ -105,27 +102,16 @@ s			text-align: center;
 		</tr>
 			<tr id="content" valign="top">
 				    <td id="aside">
-					    <h2>카테고리</h2>
 					    <table border="1">
-					    	<%
-					    		if(category_lists.size()>0){
-					    			for(CategoryBean cb : category_lists){
-						    			%>
-					    				<tr>
-					    					<td><a href="<%=contextPath%>/myshop/display/mall_cgList.jsp?code=<%=cb.getCode()%>&cname=<%=cb.getCname()%>"><%=cb.getCname()%>[<%=cb.getCode()%>]</a></td>
-					    				</tr>
-					    				<%
-					    			}
-					    		}else{
-					    			%>
-					    				<tr>
-					    					<td>카테고리 없음</td>
-					    				</tr>
-					    			<%
-					    		}
-					    	%>
-					    	<tr>
-					    	</tr>
+		    				<tr>
+		    					<td><a href="<%=contextPath%>/myshop/display/ceo.jsp">ceo 인사말</a></td>
+		    				</tr>
+		    				<tr>
+		    					<td><a href="<%=contextPath%>/myshop/display/history.jsp">회사연혁</a></td>
+		    				</tr>
+		    				<tr>
+		    					<td><a href="<%=contextPath%>/myshop/display/chart.jsp">조직도</a></td>
+		    				</tr>
 					    </table>
 				    </td >
 				

@@ -11,8 +11,8 @@
 	<%@include file="color.jsp" %>
 
 	<%
-	int pageSize = 10;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+	int pageSize = 10;
 	String pageNum = request.getParameter("pageNum");
 	
 	if(pageNum == null){
