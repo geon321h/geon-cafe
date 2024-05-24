@@ -1,0 +1,28 @@
+
+drop sequence seqprd ;
+create sequence seqprd 
+	start with 1
+	minvalue 1
+	increment by 1
+	nocache;
+
+drop table products cascade constraints purge ;
+create table products(
+	id number primary key,
+	name varchar2(30),
+	price number default 0,
+	company varchar2(30),
+	regdate date default sysdate
+) ;
+insert into products(id, name, price, company, regdate) 
+values( seqprd.nextval, '초코파이', 1000, '롯데', sysdate ) ;
+insert into products(id, name, price, company,regdate) 
+values( seqprd.nextval, '먹태깡', 2000, '농심', sysdate - 6 ) ;
+insert into products(id, name, price, company,regdate) 
+values( seqprd.nextval, '고래밥', 3000, '오리온', sysdate + 5  ) ;
+insert into products(id, name, price, company,regdate) 
+values( seqprd.nextval, '허니버터', 4000, '해태', sysdate + 10 ) ;
+commit;
+
+col name for a10
+select * from products;

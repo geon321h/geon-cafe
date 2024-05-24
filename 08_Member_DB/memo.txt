@@ -1,0 +1,21 @@
+drop sequence seqmem;
+drop table mymem purge;
+
+create SEQUENCE seqmem
+START with 1
+minvalue 1
+INCREMENT by 1
+NOCACHE;
+
+CREATE TABLE mymem(
+  id NUMBER PRIMARY KEY,
+  name VARCHAR2(20),
+  password VARCHAR2(20)
+);
+
+
+INSERT INTO mymem VALUES (seqmem.nextval,'김철수','1234');
+INSERT INTO mymem VALUES (seqmem.nextval,'이서현','5678');
+
+SELECT * FROM mymem;
+
