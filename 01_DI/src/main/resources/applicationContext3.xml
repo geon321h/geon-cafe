@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="calc" class="sample5.CalcBeanImpl">
+		<property name="su1">
+			<value type="int">10</value>
+		</property>
+		<constructor-arg>
+			<value type="int">5</value>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="msg" class="sample5.MessageBeanImpl">
+		<property name="greeting">
+			<value type="java.lang.String">Hello</value>
+		</property>
+		<constructor-arg>
+			<value type="java.lang.String">윤아</value>
+		</constructor-arg>
+	</bean>
+
+
+</beans>

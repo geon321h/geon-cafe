@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="per" class="sample6.PersonImpl">
+		<constructor-arg value="태연" />
+		<constructor-arg value="40" />
+		<constructor-arg value="160.5" />
+		<constructor-arg value="춤" />
+	</bean>
+	
+	<bean id="stu" class="sample6.StudentImpl">
+		<property name="kor">
+			<value type="int">50</value>
+		</property>
+		<property name="eng">
+			<value type="int">40</value>
+		</property>
+		<property name="per">
+			<ref  bean="per"/>
+		</property>
+	</bean>
+	
+	<bean id="my" class="sample6.MyInfo">
+		<property name="stu">
+			<ref  bean="stu"/>
+		</property>
+		<property name="per">
+			<ref  bean="per"/>
+		</property>
+	</bean>
+
+
+</beans>
