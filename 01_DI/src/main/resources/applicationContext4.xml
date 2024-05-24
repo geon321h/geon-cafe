@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+<!-- 
 	<bean id="per" class="sample6.PersonImpl">
 		<constructor-arg value="태연" />
 		<constructor-arg value="40" />
@@ -29,6 +32,16 @@
 		<property name="per">
 			<ref  bean="per"/>
 		</property>
+	</bean>
+ -->	
+ 
+	<bean id="per" class="sample6.PersonImpl" c:name="태연" c:age="40" c:height="160.5" c:hobby="춤">
+	</bean>
+	
+	<bean id="stu" class="sample6.StudentImpl" p:kor="50" p:eng="40" p:per-ref="per">
+	</bean>
+	
+	<bean id="my" class="sample6.MyInfo" p:stu-ref="stu" p:per-ref="per">
 	</bean>
 
 
