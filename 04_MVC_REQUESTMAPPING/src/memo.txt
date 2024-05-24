@@ -1,0 +1,6 @@
+1. pom.xml
+2. web.xml
+3. root-context.xml
+4. servlet-context.xml
+5. .com.spring.ex -> @controller
+6. jsp ¿Ãµø
