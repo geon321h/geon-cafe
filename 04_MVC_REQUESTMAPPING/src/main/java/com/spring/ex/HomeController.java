@@ -58,7 +58,6 @@ public class HomeController {
 	public ModelAndView list() { // 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("name", "À¢µð");
-		mav.addObject("age", 30);
 		mav.setViewName("/member/list");
 		
 		return mav; // /WEB-INF/views/member/list.jsp

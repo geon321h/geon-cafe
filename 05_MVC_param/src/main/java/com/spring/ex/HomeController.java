@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.spring.bean.PersonBean;
+
 /**
  * Handles requests for the application home page.
  */
@@ -70,5 +72,12 @@ public class HomeController {
 		
 		return "person/personView";
 	}
+	
+	// http://localhost:8081/ex/person/join2?id=choi&pw=1234&name=kim&addr=seoul
+		@RequestMapping(value = "person/join2")
+		public String join2(PersonBean pb) {
+			
+			return "person/personView2";
+		}
 	
 }
