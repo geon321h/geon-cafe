@@ -3,7 +3,7 @@ package sample2;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import sample1.Circle;
+import sample2.Circle;
 
 public class Main {
 
