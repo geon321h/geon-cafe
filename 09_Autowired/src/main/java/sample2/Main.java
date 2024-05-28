@@ -24,7 +24,7 @@ public class Main {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("/sample2/appContext.xml");
 		Circle circle =(Circle)context.getBean("myCircleImpl");
-		circle.make();
+		System.out.println(circle.make());
 		
 		
 	}
