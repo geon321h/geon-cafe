@@ -1,0 +1,13 @@
+drop SEQUENCE person_seq;
+CREATE SEQUENCE person_seq
+START with 1
+minvalue 1
+increment by 1;
+
+DROP TABLE person;
+CREATE TABLE person(
+  num NUMBER PRIMARY KEY,
+  id VARCHAR2(20),
+  name VARCHAR2(20),
+  age NUMBER
+);
