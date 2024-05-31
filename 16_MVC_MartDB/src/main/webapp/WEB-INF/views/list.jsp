@@ -31,10 +31,10 @@
 
 		function checkAll(obj){ 
 	
-			let rcheck = document.getElementsByName("rowcheck"); 
-			let check = obj.checked;
+			var rcheck = document.getElementsByName("rowcheck"); 
+			var check = obj.checked;
 			if(check){
-				for(let i=0;i<rcheck.length;i++){
+				for(var i=0;i<rcheck.length;i++){
 					rcheck[i].checked = true;
 				}
 			}else{
@@ -45,9 +45,9 @@
 		}
 	
 		function selectDelete(){
-			let rcheck = document.getElementsByName("rowcheck"); 
-			let flag = false;
-			for(let i=0;i<rcheck.length;i++){
+			var rcheck = document.getElementsByName("rowcheck"); 
+			var flag = false;
+			for(var i=0;i<rcheck.length;i++){
 				if(rcheck[i].checked){
 					flag=true;
 					break;
@@ -67,7 +67,6 @@
 	<table border="1">
     	<tr>
     		<td><input type="checkbox" name="allcheck" onclick="checkAll(this)"></td>
-    		<td>번호</td>
     		<td>번호</td>
     		<td>아이디</td>
     		<td>비번</td>
