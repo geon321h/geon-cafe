@@ -102,4 +102,65 @@ public class PDao {
 		return cnt;
 	}
 
+
+	public PDto getPersonByNum(int num) {
+		PDto pdto = null;
+		String sql = "select * from person where num=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, num);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				pdto = getPDto(rs);
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null)
+					rs.close();
+				if(ps!=null)
+					ps.close();
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return pdto;
+		
+	}//getPersonByNum
+	
+	public PDto getPDto(ResultSet rs) throws SQLException {
+		PDto pdto = new PDto();
+		pdto.setNum(rs.getInt("num"));
+		pdto.setId(rs.getString("id"));
+		pdto.setName(rs.getString("name"));
+		pdto.setAge(rs.getInt("age"));
+		return pdto;
+	}//getPDto (selectAll)
+	
+	public int updatePerson(PDto pdto){
+		int cnt = 0;
+		String sql="update person set id=?, name=?, age=? where num=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, pdto.getId());
+			ps.setString(2, pdto.getName());
+			ps.setInt(3, pdto.getAge());
+			ps.setInt(4, pdto.getNum());
+			cnt=ps.executeUpdate();
+
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(ps != null) {
+					ps.close();
+				}
+			}catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}		
+		return cnt;
+	}
+
 }

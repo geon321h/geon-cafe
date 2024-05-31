@@ -10,6 +10,8 @@ import com.spring.ex.command.PCommand;
 import com.spring.ex.command.PDeleteCommand;
 import com.spring.ex.command.PInsertCommand;
 import com.spring.ex.command.PListCommand;
+import com.spring.ex.command.PUpdateCommand;
+import com.spring.ex.command.PUpdateFormCommand;
 
 @Controller
 public class PController {
@@ -50,6 +52,23 @@ public class PController {
 		return "redirect:list";
 	}
 	
+	@RequestMapping(value = "updateForm" )
+	public String updateForm(HttpServletRequest request) {
+		
+		command = new PUpdateFormCommand(); 
+		command.execute(request);
+		
+		return "updateForm";
+	}
+	
+	@RequestMapping(value = "update" )
+	public String update(HttpServletRequest request) {
+		
+		command = new PUpdateCommand();
+		command.execute(request);
+		
+		return "redirect:list";
+	}
 	
 
 }

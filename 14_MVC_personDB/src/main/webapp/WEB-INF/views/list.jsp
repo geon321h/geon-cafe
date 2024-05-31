@@ -18,7 +18,7 @@
 	    		<td>${list.id}</td>
 	    		<td>${list.name}</td>
 	    		<td>${list.age}</td>
-	    		<td><a href="">수정</a></td>
+	    		<td><a href="updateForm?num=${list.num}">수정</a></td>
     			<td><a href="delete?num=${list.num}">삭제</a></td>
 	    	</tr>
     	</c:forEach>
@@ -39,7 +39,7 @@
 	    		<td>${lists[i].id}</td>
 	    		<td>${lists[i].name}</td>
 	    		<td>${lists[i].age}</td>
-	    		<td><a href="">수정</a></td>
+	    		<td><a href="updateForm?num=${lists[i].num}">수정</a></td>
     			<td><a href="delete?num=${lists[i].num}">삭제</a></td>
 	    	</tr>
     	</c:forEach>

@@ -1,0 +1,16 @@
+drop table football;
+create table football(
+	num number primary key,
+	id varchar2(10),
+	pw varchar2(10),
+	win varchar2(10),
+	round16 varchar2(60)
+);
+
+
+
+drop SEQUENCE fb_seq;
+CREATE SEQUENCE fb_seq
+MINVALUE 1
+START WITH 1
+nocache;

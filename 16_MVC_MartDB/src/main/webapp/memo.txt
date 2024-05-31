@@ -1,0 +1,22 @@
+drop table mart;
+create table mart(
+	num number primary key,
+	id varchar2(10),
+	pw varchar2(10),
+	product varchar2(60),
+	time varchar2(20),
+	approve varchar2(20),
+	agree varchar2(10)
+);
+
+
+
+drop SEQUENCE mart_seq;
+CREATE SEQUENCE mart_seq
+MINVALUE 1
+START WITH 1
+nocache;
+
+
+SELECT * FROM mart;
+select * from mart order by num;
