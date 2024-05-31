@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="album.AlbumBean"> <!-- AlbumBean과는 실제로 상관없고 임의로 작성(필수) -->
+ 	<!-- insert ~ select 등 -->
+ 	<select id="getAlbumList" resultType="MyAlbum">
+ 	<!-- bean으로 한줄씩 묶어서 자동으로 List로 반환한다. -->
+ 		SELECT * FROM ALBUMS ORDER BY NUM ASC
+ 	</select>
+ 	
+<!--  	<insert id=""> -->
+<!--  	</insert> -->
+ 	
+<!--  	<delete id=""> -->
+<!--  	</delete> -->
+ 
+ </mapper>
