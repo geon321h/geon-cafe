@@ -5,15 +5,48 @@
   
  <mapper namespace="album.AlbumBean"> <!-- AlbumBean과는 실제로 상관없고 임의로 작성(필수) -->
  	<!-- insert ~ select 등 -->
- 	<select id="getAlbumList" resultType="MyAlbum">
  	<!-- bean으로 한줄씩 묶어서 자동으로 List로 반환한다. -->
- 		SELECT * FROM ALBUMS ORDER BY NUM ASC
+ 	<select id="getAlbumList" resultType="MyAlbum" parameterType="hashmap">
+ 		SELECT * FROM ALBUMS
+ 		<if test="whatColumn=='singer'">
+ 			where singer like #{keyword}
+ 		</if> 
+ 		<if test="whatColumn=='title'">
+ 			where title like #{keyword}
+ 		</if> 
+ 		ORDER BY NUM DESC
  	</select>
  	
-<!--  	<insert id=""> -->
-<!--  	</insert> -->
+ 	<select id="getTotalCount" resultType="Integer" parameterType="hashmap">
+ 		SELECT count(*) cnt FROM ALBUMS
+ 		<if test="whatColumn=='singer'">
+ 			where singer like #{keyword}
+ 		</if> 
+ 		<if test="whatColumn=='title'">
+ 			where title like #{keyword}
+ 		</if> 
+ 		ORDER BY NUM ASC
+ 	</select>
  	
-<!--  	<delete id=""> -->
-<!--  	</delete> -->
+	 <select id="getAlbum" resultType="MyAlbum">
+ 		SELECT * FROM ALBUMS where num = #{num}
+ 	</select>
+ 	
+ 	<insert id="insertAlbum">
+ 		insert into albums(num,title,singer,price,day)
+		values(albums_seq.nextval,#{title},#{singer},#{price},#{day})
+ 	</insert>
+ 	
+ 	<update id="updateAlbum">
+ 		update albums
+ 		set title = #{title}, singer = #{singer}, price = #{price}, day = #{day}
+ 		where num = #{num}
+ 	</update>
+ 	
+	<delete id="deleteAlbum" >
+		delete albums where num = #{num}
+	</delete>
  
  </mapper>
+ 
+ 
