@@ -5,6 +5,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,38 +19,47 @@ import travel.model.TravelDao;
 @Controller
 public class TravelUpdateController {
 
-	private final String commond = "/update.tv";
+	private final String command = "/update.tv";
 	private final String getPage = "travelUpdateForm";
 	private final String goToPage = "redirect:list.tv";
 	
 	@Autowired
 	TravelDao travelDao; 
 	
-	@RequestMapping(value=commond , method = RequestMethod.GET)
-	public ModelAndView doAction(@RequestParam("num") int num) {
-		ModelAndView mov = new ModelAndView();
+	@RequestMapping(value=command , method = RequestMethod.GET)
+	public String doAction(@RequestParam("num") int num,
+			@RequestParam("pageNumber") int pageNumber,
+			Model model) {
 		TravelBean travel = travelDao.getTravel(num);
-		mov.addObject("travel", travel);
-		mov.setViewName(getPage);
 		
-		return mov;
+		model.addAttribute("travel", travel);
+		model.addAttribute("pageNumber", pageNumber); // 속성
+		
+		return getPage;
 	}
 	
-	@RequestMapping(value=commond , method = RequestMethod.POST)
-	public String doAction(@ModelAttribute("travel") @Valid TravelBean travel,BindingResult result) {
+	@RequestMapping(value=command , method = RequestMethod.POST)
+	public ModelAndView doAction(@ModelAttribute("travel") @Valid TravelBean travel,BindingResult result
+			,@RequestParam("pageNumber") int pageNumber) {
+		
+		ModelAndView mov = new ModelAndView();
+		mov.addObject("pageNumber", pageNumber); // 파라미터
 		
 		if (result.hasErrors()) {
-			return getPage;
+			mov.setViewName(getPage);
+			return mov;
 		}
 		//System.out.println("오류없음");
 		int cnt = -1;
 		cnt = travelDao.updateTravel(travel);
 		
 		if(cnt>0) {
-			return goToPage;
+			mov.setViewName(goToPage);
 		}else {
-			return getPage;
+			mov.addObject("num", travel.getNum());
+			mov.setViewName("redirect:"+command);
 		}
+		return mov;
 		
 	}
 	

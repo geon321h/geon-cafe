@@ -37,6 +37,7 @@
 	%>
 	
 	<form:form commandName="travel" action="update.tv" method="post" >
+		<input type="hidden" name="pageNumber" value="${pageNumber}">
 		<input type="hidden" name="num" value="${travel.num}">
 		<table border="1">
 			<tr>

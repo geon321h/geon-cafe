@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Component;
 
 import utility.Paging;
@@ -30,7 +31,13 @@ public class TravelDao {
 
 	public int insertTravel(TravelBean travel) {
 		int cnt = -1;
-		cnt = sqlSessionTemplate.insert(namespace+".insertTravel",travel);
+		try {
+			cnt = sqlSessionTemplate.insert(namespace+".insertTravel",travel);
+		} catch (DataAccessException e) {
+			System.out.println("insert 도중 예외발생");
+			System.out.println("예외 : "+ e.getMessage());
+			System.out.println();
+		}
 		return cnt;
 	}
 
@@ -42,7 +49,12 @@ public class TravelDao {
 
 	public int updateTravel(TravelBean travel) {
 		int cnt = -1;
-		cnt = sqlSessionTemplate.update(namespace+".updateTravel",travel);
+		try {
+			cnt = sqlSessionTemplate.update(namespace+".updateTravel",travel);
+		} catch (DataAccessException e) {
+			System.out.println("update 도중 예외발생");
+			System.out.println("예외 : "+ e.getMessage());
+		}
 		return cnt;
 	}
 

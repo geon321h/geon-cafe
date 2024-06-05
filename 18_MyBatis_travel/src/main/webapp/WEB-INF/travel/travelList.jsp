@@ -6,7 +6,7 @@
     travelList.jsp <br>
     
     <style type="text/css">
-		form,h2 {
+		form,h2,p {
 			text-align: center;
 		}
 		table {
@@ -25,12 +25,13 @@
 			location.href="insert.tv";
 		}
 		
-		function goUpdate(num) {
-			location.href="update.tv?num="+num;
+		function goUpdate(num,pageNumber) {
+			location.href="update.tv?num="+num+"&pageNumber="+pageNumber;
 		}
 	</script>
 	
-	<h2>여행 리스트 화면(전체 레코드갯수:${pageInfo.getTotalCount()})</h2>
+	<h2>여행 리스트 화면(전체 레코드갯수:${pageInfo.getTotalCount()})/${pageInfo.totalCount}</h2>
+	<p>현재 클릭한 페이지 번호 : ${pageInfo.getPageNumber()}/${pageInfo.pageNumber}</p>
 	<form action="list.tv" method="get">
 		<select name="whatColumn">
 			<option value="all" >전체 검색</option>
@@ -65,8 +66,8 @@
 				<td>${travel.area}</td>
 				<td>${travel.style}</td>
 				<td style="text-align: right;">${travel.price}만원</td>
-				<td><input type="button" value="수정" onclick="goUpdate(${travel.num})"></td>
-				<td><a href="delete.tv?num=${travel.num}">삭제</a></td>
+				<td><input type="button" value="수정" onclick="goUpdate(${travel.num},${pageInfo.pageNumber})"></td>
+				<td><a href="delete.tv?num=${travel.num}&pageNumber=${pageInfo.pageNumber}">삭제</a></td>
 			</tr>
 		</c:forEach>
 	</table>

@@ -13,7 +13,7 @@
 		<if test="whatColumn=='style'">
 			where style like #{keyword}
 		</if> 
-		ORDER BY NUM
+		ORDER BY NUM DESC
  	</select>
  	
  	<select id="getTravelCount" resultType="Integer">

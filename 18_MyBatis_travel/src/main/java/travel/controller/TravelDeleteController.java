@@ -17,12 +17,13 @@ public class TravelDeleteController {
 	TravelDao travelDao; 
 	
 	@RequestMapping(value=commond)
-	public String doAction(@RequestParam("num") int num) {
+	public String doAction(@RequestParam("num") int num,
+			@RequestParam("pageNumber") int pageNumber) {
 		
 		int cnt = -1;
 		cnt = travelDao.deleteTravel(num);
 		
-		return getPage;
+		return getPage+"?pageNumber="+pageNumber;
 	}
 	
 }
