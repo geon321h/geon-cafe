@@ -37,7 +37,7 @@
 			<option value="all" >전체 검색</option>
 			<option value="genre" <c:if test="${whatColumn=='genre'}"> selected </c:if>>장르</option>
 			<option value="grade" <c:if test="${whatColumn=='grade'}"> selected </c:if>>관람등급</option>
-			<option value="actor" <c:if test="${whatColumn=='grade'}"> selected </c:if>>출연배우</option>
+			<option value="actor" <c:if test="${whatColumn=='actor'}"> selected </c:if>>출연배우</option>
 		</select>
 		<input type="text" name="keyword" value="<c:if test="${keyword != 'null'}">${keyword}</c:if>">
 		<input type="submit"  value="검색">
@@ -63,14 +63,14 @@
 		<c:forEach var="movie" items="${movieList}">
 			<tr>
 				<td>${movie.num}</td>
-				<td>${movie.title}</td>
+				<td><a href="detailView.mv?num=${movie.num}&pageNumber=${pageInfo.pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}" >${movie.title}</a></td>
 				<td>${movie.continent}</td>
 				<td>${movie.nation}</td>
 				<td>${movie.genre}</td>
 				<td>${movie.grade}</td>
 				<td>${movie.actor}</td>
 				<td><input type="button" value="수정" onclick="goUpdate()"></td>
-				<td><a href="delete.mv?num=${movie.num}">삭제</a></td>
+				<td><a href="delete.mv?num=${movie.num}&pageNumber=${pageInfo.pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}">삭제</a></td>
 			</tr>
 		</c:forEach>
 	</table>

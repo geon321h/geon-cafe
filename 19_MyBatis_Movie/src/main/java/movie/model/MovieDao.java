@@ -32,6 +32,11 @@ public class MovieDao {
 		cnt = sqlSessionTemplate.selectOne(namespace+".getTotalCount",map);
 		return  cnt;
 	}
+	public int searchTitle(String title) {
+		int cnt = 0;
+		cnt = sqlSessionTemplate.selectOne(namespace+".searchTitle",title);
+		return  cnt;
+	}
 	public int insertMovie(MovieBean movie) {
 		int cnt = -1;
 		try {
@@ -40,6 +45,15 @@ public class MovieDao {
 			System.out.println("insert ¿À·ù");
 		}
 		return  cnt;
+	}
+	public MovieBean getMovieDetail(String num) {
+		MovieBean movie = sqlSessionTemplate.selectOne(namespace+".getMovieDetail",num);
+		return  movie;
+	}
+	public int deleteMovie(String num) {
+		int cnt = -1;
+		cnt = sqlSessionTemplate.delete(namespace+".deleteMovie",num);
+		return cnt;
 	}
 
 }

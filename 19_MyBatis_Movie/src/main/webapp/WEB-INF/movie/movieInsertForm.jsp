@@ -30,7 +30,54 @@
 		}
 	</style> 
 	
+	<script type="text/javascript" src="resources/js/jquery.js"></script>
 	<script type="text/javascript">
+		var use;
+		var isCheck = false;
+		var isBlack = false;
+		$(document).ready(function(){
+			$('#title_check').click(function() {
+				isBlack = false;
+				isCheck = true;
+				$.ajax({
+					url : "title_check_proc.mv",
+					type : "post",
+					data :  ({
+                    	"title" : $('input[name="title"]').val()
+					}),
+					success : function(data) {
+						if($('input[name="title"]').val()==""){
+							$('#titleMessage').html("title 입력누락").css('color','red');
+							isBlack = true;
+						}else if($.trim(data) == "YES"){
+							$('#titleMessage').html("사용가능합니다.").css('color','blue');
+							use = 'possible';
+						}else{
+							$('#titleMessage').html("이미 등록한 제목입니다.").css('color','red');
+							use = 'impossible';
+						}
+					}
+				});	
+			});
+			
+			$('#btnSubmit').click(function() {
+				if(use == 'impossible'){
+					alert("이미 등록한 제목입니다.");
+					return false;
+				}else if(!isCheck){
+					alert("중복체크를 해주세요.");
+					return false;
+				}
+			});
+			
+			$('input[name="title"]').keydown(function() {
+				use="";
+				isCheck = false;
+				$('#titleMessage').empty();
+			});
+			
+		});
+		
 		var nation_arr = [
             ['한국','중국','일본','베트남'],
             ['영국','프랑스','독일'],
@@ -90,6 +137,8 @@
 				<th>영화 제목</th>
 				<td colspan="3">
 					<input type="text" name="title" value="${movie.title}">
+					<input type="button" value="중복체크" id="title_check">
+					<span id="titleMessage"></span>
 					<form:errors path="title" cssClass="err"></form:errors>
 				</td>
 			</tr>
@@ -142,7 +191,7 @@
 			</tr>
 			<tr>
 				<td colspan="4">
-					<input type="submit" value="추가하기">
+					<input type="submit" value="추가하기" id="btnSubmit">
 					<input type="button" value="목록보기" onclick="location.href='list.mv?pageNumber=${pageNumber}'">					
 				</td>
 			</tr>
