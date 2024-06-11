@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="animal.AnimalBean">
+ 	
+ 	<select id="getAnimalList" resultType="myAnimal">
+		SELECT * FROM animal
+		<if test="whatColumn=='all'">
+			where class_animal like #{keyword} or family_animal like #{keyword}
+		</if> 
+		<if test="whatColumn=='class_animal'">
+			where class_animal like #{keyword}
+		</if> 
+		<if test="whatColumn=='family_animal'">
+			where family_animal like #{keyword}
+		</if> 
+		ORDER BY NUM DESC
+ 	</select>
+ 	
+ 	<select id="getTotalCount" resultType="Integer">
+		SELECT count(*) cnt FROM animal
+		<if test="whatColumn=='all'">
+			where class_animal like #{keyword} or family_animal like #{keyword}
+		</if> 
+		<if test="whatColumn=='class_animal'">
+			where class_animal like #{keyword}
+		</if> 
+		<if test="whatColumn=='family_animal'">
+			where family_animal like #{keyword}
+		</if> 
+ 	</select>
+ 	
+ 	<select id="searchId" resultType="Integer">
+		SELECT count(*) cnt FROM animal where  id = #{id}
+	</select>
+	
+ 	<select id="detailAnimal" resultType="myAnimal">
+		SELECT * FROM animal where  num = #{num}
+	</select>
+ 	
+	<delete id="deleteAnimal">
+		delete animal where num = #{num}
+	</delete>
+	
+ 	<insert id="getInsertAnimal">
+ 		insert into animal
+		values(animal_seq.nextval,#{id},#{class_animal},#{family_animal},#{many_animal},#{prduct_animal})
+ 	</insert>
+ 	
+ 	<update id="updateAnimal">
+ 		update animal set many_animal= #{many_animal},family_animal= #{family_animal},class_animal= #{class_animal},prduct_animal= #{prduct_animal} where num = #{num}
+ 	</update>
+ 
+ </mapper>
