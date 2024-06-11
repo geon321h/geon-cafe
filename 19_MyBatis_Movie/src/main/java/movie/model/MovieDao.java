@@ -56,4 +56,17 @@ public class MovieDao {
 		return cnt;
 	}
 
+	public MovieBean detailMovie(int num) {
+		MovieBean mb = null;
+		mb = sqlSessionTemplate.selectOne(namespace + ".detailMovie", num);
+		
+		return mb;
+	}//detailMovie
+	
+	public void updateMovie(MovieBean movie) {
+		int cnt = -1;
+		cnt = sqlSessionTemplate.update(namespace+".updateMovie",movie);
+		System.out.println("updateMovie cnt:" + cnt);
+	}//updateMovie
+
 }
