@@ -53,7 +53,7 @@
 	
 	
 	<servlet>
-		<servlet-name>animal</servlet-name>
+		<servlet-name>product</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
@@ -63,8 +63,8 @@
 	</servlet>
 		
 	<servlet-mapping>
-		<servlet-name>animal</servlet-name>
-		<url-pattern>*.am</url-pattern>
+		<servlet-name>product</servlet-name>
+		<url-pattern>*.pd</url-pattern>
 	</servlet-mapping>
 
 </web-app>
