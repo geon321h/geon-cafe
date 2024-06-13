@@ -40,7 +40,7 @@ public class ProductBean {
 		System.out.println("setUpload");
 		System.out.println("upload:"+upload);
 		this.upload = upload;
-		if (this.upload != null) {
+		if (this.upload != null ) {
 			System.out.println(upload.getName()); // upload
 			System.out.println(upload.getOriginalFilename()); // 이미지명
 			image = upload.getOriginalFilename();

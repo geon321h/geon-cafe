@@ -33,7 +33,7 @@
 	<a href="<%=request.getContextPath()+"/main.jsp"%>">시작페이지</a>
 	<a href="#">로그아웃</a>
 
-	<h2>상품 리스트 화면</h2>
+	<h2>상품 리스트 화면(${pageInfo.totalCount})</h2>
 	<h2>productList.jsp</h2>
 	
 	<form action="list.prd" method="get">
@@ -55,6 +55,7 @@
 		<tr>
 			<th>상품번호</th>
 			<th>상품명</th>
+			<th>상품이미지</th>
 			<th>설명</th>
 			<th>가격</th>
 			<th>삭제</th>
@@ -64,6 +65,9 @@
 			<tr>
 				<td>${product.num}</td>
 				<td><a href="detailView.prd?num=${product.num}&pageNumber=${pageInfo.pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}" >${product.name}</a></td>
+				<td>
+					<img style="width: 100px" src="<%=request.getContextPath()%>/resources/uploadImage/${product.image}">
+				</td>
 				<td>${product.contents}</td>
 				<td>${product.price}</td>
 				<td><a href="delete.prd?num=${product.num}&pageNumber=${pageInfo.pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}">삭제</a></td>

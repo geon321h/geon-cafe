@@ -40,5 +40,13 @@
  		insert into products(num, name, company,image, stock, price,contents, point,inputdate)
 		values(seqprod.nextval,#{name},#{company},#{image},#{stock},#{price},#{contents},#{point},#{inputdate})
  	</insert>
+ 	
+ 	<delete id="deleteProduct">
+ 	 	delete products where  num = #{num}
+ 	</delete>
+ 	
+ 	<update id="updateProduct">
+ 	update products set name= #{name},company=#{company},image = #{image},stock = #{stock},price = #{price},contents= #{contents},point= #{point} where  num = #{num}
+ 	</update>
  
  </mapper>

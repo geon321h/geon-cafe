@@ -51,4 +51,25 @@ public class ProductDao {
 		return pb;
 	}
 
+	public int deleteProduct(String num) {
+		int cnt = -1;
+		try {
+			cnt = sqlSessionTemplate.delete(namespace+".deleteProduct",num);
+		} catch (DataAccessException e) {
+			System.out.println("delete 오류");
+		}
+		return  cnt;
+	}
+
+	public int updateProduct(ProductBean product) {
+		// TODO Auto-generated method stub
+		int cnt = -1;
+		try {
+			cnt = sqlSessionTemplate.update(namespace+".updateProduct",product);
+		} catch (DataAccessException e) {
+			System.out.println("update 오류");
+		}
+		return  cnt;
+	}
+
 }

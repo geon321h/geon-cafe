@@ -2,9 +2,11 @@ package product.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +24,10 @@ import product.model.ProductBean;
 import product.model.ProductDao;
 
 @Controller
-public class ProductInsertController {
+public class ProductUpdateController {
 
-	private final String command = "/insert.prd";
-	private final String getPage = "productInsertForm";
+	private final String command = "/update.prd";
+	private final String getPage = "productUpdateForm";
 	private final String goToPage = "redirect:list.prd";
 	
 	@Autowired
@@ -34,50 +36,59 @@ public class ProductInsertController {
 	@Autowired
 	ServletContext servletContext;
 	
-	
 	@RequestMapping(value = command, method = RequestMethod.GET)
-	private String insert(
+	private ModelAndView update(
+			@RequestParam("num") String num,
 			@RequestParam("pageNumber") int pageNumber,
-			Model model,
-			HttpSession session) {
-			model.addAttribute("pageNumber", pageNumber);
+			@RequestParam("whatColumn") String whatColumn,
+			@RequestParam("keyword") String keyword,
+			Model model) {
+			ModelAndView mav = new ModelAndView();
+			ProductBean product = productDao.getProduct(num);
+			mav.addObject("product", product);
+			mav.setViewName(getPage);
 			
-			// 로그인 성공하면 해당 사용자의 정보를 세션에 저장
-			if(session.getAttribute("loginInfo")==null) {
-				return "redirect:/loginForm.mb";
-			}else {
-				return getPage;
-			}
-			
+			//System.out.println("product inputdate: "+product.getInputdate());
+		return mav;
 	}
 	
 	@RequestMapping(value = command, method = RequestMethod.POST)
-	private ModelAndView insert(
+	private ModelAndView update(
 			@ModelAttribute("product") @Valid ProductBean product
 			,BindingResult result
-			,@RequestParam("pageNumber") int pageNumber) {
+			,@RequestParam("pageNumber") int pageNumber
+			,@RequestParam("whatColumn") String whatColumn
+			,@RequestParam("keyword") String keyword) {
 		
-		// C:\sts2\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\21_Mybatis_Product\
-		System.out.println("product.getImage(): "+product.getImage());
-		System.out.println("product.getUpload(): "+product.getUpload()); // 올린 파일의 정보
 		MultipartFile multi = product.getUpload();
-		
 		String uploadPath = servletContext.getRealPath("/resources/uploadImage");
-		System.out.println("uploadPath: "+uploadPath);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("pageNumber", pageNumber);
+		mav.addObject("whatColumn", whatColumn);
+		mav.addObject("keyword", keyword);
+		
 		
 		if (result.hasErrors()) {
 			mav.setViewName(getPage);
+			if(product.getImage().equals("")) {
+				product.setImage(product.getUpload2());
+			}
 			return mav;
 		}
 		
+		try {
+			String encode = URLEncoder.encode(whatColumn,"UTF-8");
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		}
+		
 		int cnt = -1;
-		cnt = productDao.insertProduct(product);
+		cnt = productDao.updateProduct(product);
 		
 		if(cnt>0) {
 			mav.setViewName(goToPage);
+
 			File destination = new File(uploadPath+File.separator+multi.getOriginalFilename());
 			try {
 				multi.transferTo(destination);
@@ -86,6 +97,19 @@ public class ProductInsertController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			
+			String fullPath = uploadPath+File.separator+product.getUpload2();
+			
+			File file = new File(fullPath);
+		 	if(file.exists()){
+		 		if(file.delete()){
+		 			System.out.println("파일 삭제");
+		 		}else{
+		 			System.out.println("파일삭제 실패");
+		 		}
+		 	}else{
+		 			System.out.println("파일없음");
+		 	}
 		}else {
 			mav.setViewName(getPage);
 		}
