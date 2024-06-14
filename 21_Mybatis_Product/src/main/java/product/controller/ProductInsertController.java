@@ -34,17 +34,17 @@ public class ProductInsertController {
 	@Autowired
 	ServletContext servletContext;
 	
-	
 	@RequestMapping(value = command, method = RequestMethod.GET)
 	private String insert(
-			@RequestParam("pageNumber") int pageNumber,
+			@RequestParam(value = "pageNumber", required = false) String pageNumber,
 			Model model,
 			HttpSession session) {
-			model.addAttribute("pageNumber", pageNumber);
+				model.addAttribute("pageNumber", pageNumber);
 			
 			// 로그인 성공하면 해당 사용자의 정보를 세션에 저장
 			if(session.getAttribute("loginInfo")==null) {
-				return "redirect:/loginForm.mb";
+				session.setAttribute("destination","redirect:/insert.prd");
+				return "redirect:/login.mb";
 			}else {
 				return getPage;
 			}

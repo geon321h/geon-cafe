@@ -12,34 +12,48 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import member.model.MemberBean;
 import member.model.MemberDao;
 
 @Controller
-public class MemberRegisterController {
+public class MemberUpdateController {
 
-	private final String command = "register.mb";
-	private final String getPage = "memberRegister";
-	private final String goToPage = "redirect:loginForm.mb";
+	private final String command = "update.mb";
+	private final String getPage = "memberUpdateForm";
+	private final String goToPage = "redirect:list.mb";
 	
 	@Autowired
 	MemberDao memberDao;
 	
 	@RequestMapping(value = command, method = RequestMethod.GET)
-	private String register() {
+	private ModelAndView update(
+			@RequestParam(value = "id") String id,
+			@RequestParam(value = "whatColumn",required = false) String whatColumn,
+			@RequestParam(value = "keyword",required = false) String keyword,
+			@RequestParam(value = "pageNumber",required = false) String pageNumber) {
 			
-			return getPage;
+			MemberBean member = memberDao.getMember(id);
+			ModelAndView mav = new ModelAndView();
+			mav.addObject("member", member);
+			mav.setViewName(getPage);
+			return mav;
 	}
 	
 	@RequestMapping(value = command, method = RequestMethod.POST)
-	private ModelAndView register(
+	private ModelAndView update(
 			@ModelAttribute("member") @Valid MemberBean member,
 			BindingResult result,
-			HttpServletResponse response) {
+			@RequestParam("pageNumber") int pageNumber,
+			@RequestParam("whatColumn") String whatColumn,
+			@RequestParam("keyword") String keyword) {
 		
 		ModelAndView mav = new ModelAndView();
+		mav.addObject("pageNumber", pageNumber);
+		mav.addObject("whatColumn", whatColumn);
+		mav.addObject("keyword", keyword);
 		
 		if (result.hasErrors()) {
 			mav.setViewName(getPage);
@@ -47,20 +61,10 @@ public class MemberRegisterController {
 		}
 		
 		int cnt = -1;
-		cnt = memberDao.insertMember(member);
+		cnt = memberDao.updateMember(member);
 		
 		if(cnt>0) {
 			mav.setViewName(goToPage);
-		}else if(cnt==-3){
-			try {
-				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = response.getWriter();
-				out.println("<script>alert('아이디 중복입니다.');</script>");
-			    out.flush();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			mav.setViewName(getPage);
 		}else{
 			mav.setViewName(getPage);
 		}

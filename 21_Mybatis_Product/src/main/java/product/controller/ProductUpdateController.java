@@ -7,6 +7,7 @@ import java.net.URLEncoder;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,13 +41,19 @@ public class ProductUpdateController {
 	private ModelAndView update(
 			@RequestParam("num") String num,
 			@RequestParam("pageNumber") int pageNumber,
-			@RequestParam("whatColumn") String whatColumn,
-			@RequestParam("keyword") String keyword,
-			Model model) {
+			@RequestParam(value = "whatColumn", required = false) String whatColumn,
+			@RequestParam(value="keyword", required = false) String keyword,
+			HttpSession session) {
+		
 			ModelAndView mav = new ModelAndView();
 			ProductBean product = productDao.getProduct(num);
 			mav.addObject("product", product);
 			mav.setViewName(getPage);
+			
+			if(session.getAttribute("loginInfo")==null) {
+				session.setAttribute("destination","redirect:/update.prd?num="+num+"&pageNumber="+pageNumber);
+				mav.setViewName("redirect:/login.mb");
+			}
 			
 			//System.out.println("product inputdate: "+product.getInputdate());
 		return mav;

@@ -33,15 +33,18 @@
 		String[] hobby = {"취미","마라톤","영화감상","게임","공부"}; 
 	%>
 	<a href="login.mb">로그인화면</a>
-	<h2>회원 가입 화면</h2>
+	<h2>회원 수정 화면</h2>
 	
-	<form:form commandName="member" name="myform" action="register.mb" method="post">
+	<form:form commandName="member" name="myform" action="update.mb" method="post">
+		<input type="hidden" name="pageNumber" value="${param.pageNumber}">
+		<input type="hidden" name="whatColumn" value="${param.whatColumn}">
+		<input type="hidden" name="keyword" value="${param.keyword}">
+		<input type="hidden" name="id" value="${member.id}">
 		<table border="1">
 			<tr>
 				<th>*아이디</th>
 				<td >
-					<input type="text" name="id" value="${member.id}">
-					<form:errors path="id" cssClass="err"></form:errors>
+					<input type="text" value="${member.id}" disabled="disabled">
 				</td>
 			</tr>
 			<tr>
@@ -97,7 +100,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="회원가입하기">
+					<input type="submit" value="수정하기">
 				</td>
 			</tr>
 		</table>

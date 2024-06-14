@@ -31,7 +31,7 @@
 	</script>
 
 	<a href="<%=request.getContextPath()+"/main.jsp"%>">시작페이지</a>
-	<a href="#">로그아웃</a>
+	<a href="<%=request.getContextPath()+"/logout.jsp"%>">로그아웃</a>
 
 	<h2>상품 리스트 화면(${pageInfo.totalCount})</h2>
 	<h2>productList.jsp</h2>

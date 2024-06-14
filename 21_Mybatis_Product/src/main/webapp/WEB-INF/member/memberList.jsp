@@ -61,14 +61,14 @@
 		<c:forEach var="member" items="${memberList}">
 			<tr>
 				<td>${member.id}</td>
-				<td><a href="detailView.mb?num=${member.id}&pageNumber=${pageInfo.pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}" >${member.name}</a></td>
+				<td><a href="detailView.mb?id=${member.id}&pageNumber=${pageInfo.pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}" >${member.name}</a></td>
 				<td>${member.password}</td>
 				<td>${member.gender}</td>
 				<td>${member.hobby}</td>
 				<td>${member.address1} ${member.address2}</td>
 				<td>${member.mpoint}</td>
-				<td><a href="delete.mb?num=${member.id}&pageNumber=${pageInfo.pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}">삭제</a></td>
-				<td><input type="button" value="수정" onclick="goUpdate(${member.id},${pageInfo.pageNumber},'${whatColumn}','${keyword}')"></td>
+				<td><a href="delete.mb?id=${member.id}&pageNumber=${pageInfo.pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}">삭제</a></td>
+				<td><input type="button" value="수정" onclick="goUpdate('${member.id}',${pageInfo.pageNumber},'${whatColumn}','${keyword}')"></td>
 			</tr>
 		</c:forEach>
 	</table>

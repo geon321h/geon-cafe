@@ -41,18 +41,20 @@
 	
 	<h2>로그인 화면</h2>
 	
-	<form name="myform" action="login.mb" method="post" >
+	<form:form commandName="member" name="myform" action="login.mb" method="post" >
 		<table border="1">
 			<tr>
 				<th>아이디</th>
 				<td >
-					<input type="text" name="name" value="kim">
+					<input type="text" name="id" value="${member.id }">
+					<form:errors path="id" cssClass="err"></form:errors>
 				</td>
 			</tr>
 			<tr>
 				<th>비번</th>
 				<td >
-					<input type="password" name="name" value="1234">
+					<input type="password" name="password" value="${member.password }">
+					<form:errors path="password" cssClass="err"></form:errors>
 				</td>
 			</tr>
 			<tr>
@@ -64,4 +66,4 @@
 				</td>
 			</tr>
 		</table>
-	</form>
+	</form:form>
