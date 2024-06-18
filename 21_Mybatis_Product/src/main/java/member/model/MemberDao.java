@@ -88,4 +88,15 @@ public class MemberDao {
 		
 	}
 
+	public void updateMpoint(String id, int i) {
+		MemberBean member = new MemberBean();
+		member.setId(id);
+		member.setMpoint(i);
+		try {
+			sqlSessionTemplate.update(namespace+".updateMpoint",member);
+		} catch (DataAccessException e) {
+			System.out.println("update ¿À·ù");
+		}
+	}
+
 }

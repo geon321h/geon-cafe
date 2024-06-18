@@ -71,5 +71,27 @@ public class ProductDao {
 		}
 		return  cnt;
 	}
+	
+	public int updateStock(int stock , int num) {
+		// TODO Auto-generated method stub
+		ProductBean product = new ProductBean();
+		product.setStock(stock);
+		product.setNum(num);
+		int cnt = -1;
+		try {
+			cnt = sqlSessionTemplate.update(namespace+".updateStock",product);
+		} catch (DataAccessException e) {
+			System.out.println("updateStock ¿À·ù");
+		}
+		return  cnt;
+	}
+
+	public ProductBean detailViewByNum(int num) {
+		ProductBean pb = null;
+		pb = sqlSessionTemplate.selectOne(namespace + ".getProduct", num);
+		return pb;
+	}//detailViewByNum
+	
+	
 
 }

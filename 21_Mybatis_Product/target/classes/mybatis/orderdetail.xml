@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="orderdetail.model.OrderDetail">
+
+	<insert id="InsertData">
+	insert into orderdetails 
+	values(seqodid.nextval,(select max(NVL(oid, 0)) from orders), #{num},  #{orderqty})
+	</insert>
+	
+	<select id="detailOrder" resultType="orderdetail.model.OrderDetailBean">
+		SELECT T10.NAME MNAME,ADDRESS,T10.OID,T20.NAME PNAME,QTY,PRICE 
+		FROM  (SELECT NAME,address1 address,OID
+		      FROM (SELECT mid,OID
+		            FROM orders 
+		            WHERE OID = #{oid})T11,
+		            (SELECT *
+		            FROM MEMBERS)T12
+		      WHERE T11.MID = T12.ID) T10,
+		      (SELECT OID,NAME,QTY,PRICE
+		      FROM (SELECT *
+		            FROM orderdetails 
+		            WHERE OID = #{oid})T21,
+		            (SELECT *
+		            FROM products)T22
+		      WHERE T21.PNUM = T22.NUM) T20
+		WHERE T10.OID = T20.OID
+	</select>
+	
+	<select id="detailProduct" resultType="orderdetail.model.OrderDetailBean">
+		SELECT *
+	    FROM (SELECT *
+            FROM orderdetails 
+            WHERE OID = #{oid})T10,
+            (SELECT *
+            FROM products)T20
+	     WHERE T10.PNUM = T20.NUM
+	</select>
+	
+	<select id="detailMember" resultType="member.model.MemberBean">
+		SELECT *
+      	FROM (SELECT mid,OID
+            FROM orders 
+            WHERE OID = #{oid})T10,
+            (SELECT *
+            FROM MEMBERS)T20
+      	WHERE T10.MID = T20.ID
+	</select>
+
+</mapper>
+
+<!-- orderdetail.xml -->

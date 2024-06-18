@@ -2,8 +2,6 @@ package member.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -29,7 +27,6 @@ public class MemberLoginController {
 	
 	@RequestMapping(value = command, method = RequestMethod.GET)
 	private String loginForm() {
-			
 			return getPage;
 	}
 	

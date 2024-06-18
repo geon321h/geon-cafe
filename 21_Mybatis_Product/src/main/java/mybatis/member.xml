@@ -51,6 +51,11 @@
  		 where  id = #{id}
  	</update>
  	
+ 	<update id="updateMpoint">
+ 		update members set mpoint = mpoint+#{mpoint}
+ 		 where  id = #{id}
+ 	</update>
+ 	
 	<select id="login" resultType="String">
 		SELECT password FROM members where  id = #{id}
 	</select>

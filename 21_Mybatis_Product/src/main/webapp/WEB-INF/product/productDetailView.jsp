@@ -40,7 +40,14 @@
 		</tr>
 		<tr>
 			<th>주문수량</th>
-			<td>주문수량 : <input type="text"><input type="button" value="주문"></td>
+			<td>
+				<form action="add.mall" method="post">
+					<input type="hidden" name="num" value="${product.num}">
+					<input type="hidden" name="pageNumber" value="${pageNumber}">
+					<input type="text" name="orderqty" value="0" style="30px">
+					<input type="submit" value="주문">
+				</form>
+			</td>
 		</tr>
 		<tr>
 			<td colspan="2"><a href="list.prd?pageNumber=${pageNumber}&whatColumn=${whatColumn}&keyword=${keyword}">상품 리스트</a></td>

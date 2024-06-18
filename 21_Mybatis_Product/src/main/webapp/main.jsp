@@ -5,7 +5,7 @@
     
     <%
     	String viewProduct = request.getContextPath() +"/list.prd";
-    	String viewOrder = request.getContextPath() +"/list.mall";
+    	String viewOrder = request.getContextPath() +"/order.mall";
     	String viewMember = request.getContextPath() +"/list.mb";
     %>
     

@@ -11,5 +11,5 @@
 		//String loginId = ((MemberBean)session.getAttribute("loginInfo")).getId();
 	%>
 <%-- 	접속자 아이디1 : <%=loginId %> --%>
-	접속자 아이디2 : ${loginInfo.id}
-	접속자 아이디3 : ${sessionScope.loginInfo.id}
+<%-- 	접속자 아이디2 : ${loginInfo.id} --%>
+	접속자 아이디 : ${sessionScope.loginInfo.id}<br>

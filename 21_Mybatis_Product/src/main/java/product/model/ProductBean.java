@@ -27,6 +27,7 @@ public class ProductBean {
 	private String contents;
 	private int point;
 	private String inputdate;
+	private int orderqty;
 	
 	//Ãß°¡
 	private MultipartFile upload;
@@ -111,6 +112,12 @@ public class ProductBean {
 	}
 	public void setInputdate(String inputdate) {
 		this.inputdate = inputdate;
+	}
+	public int getOrderqty() {
+		return orderqty;
+	}
+	public void setOrderqty(int orderqty) {
+		this.orderqty = orderqty;
 	}
 	
 	
