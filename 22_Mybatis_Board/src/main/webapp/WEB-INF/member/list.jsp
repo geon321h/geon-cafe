@@ -41,7 +41,13 @@
 	</script>
 	
 	<body>
+<<<<<<< HEAD
+<<<<<<< HEAD
 		<a href="<%=request.getContextPath()%>/main.jsp">메인페이지</a>
+=======
+>>>>>>> refs/remotes/origin/main
+=======
+>>>>>>> refs/remotes/origin/main
 		<p>member/list.jsp</p>
 		<h2>회원 목록 보기</h2>
 		

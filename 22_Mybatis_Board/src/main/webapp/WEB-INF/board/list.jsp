@@ -47,7 +47,7 @@
 	</script>
 	
 	<body>
-		<a href="<%=request.getContextPath()%>/main.jsp">메인페이지</a>
+		<a href=" <%=request.getContextPath()%>/main.jsp">메인페이지</a>
 		<p>board/list.jsp</p>
 		<h2>게시판 목록보기</h2>
 		

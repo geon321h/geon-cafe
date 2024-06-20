@@ -76,7 +76,7 @@ public class BoardDao {
 		int cnt = -1;
 		sqlSessionTemplate.update(namespace+".updateReply",board);
 		board.setRe_step(board.getRe_step()+1);
-		board.setRe_level(board.getRe_level()+1);
+		board.setRe_level(board.getRe_level());
 		cnt = sqlSessionTemplate.insert(namespace+".replyBoard",board);
 		try {
 		} catch (DataAccessException e) {

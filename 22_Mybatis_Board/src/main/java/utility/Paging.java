@@ -161,7 +161,6 @@ public class Paging {
 		//System.out.println("startPage1:"+startPage);
 		// 마지막페이지가 총 페이지 갯수를 넘치지 안토록
 		this.number =this.totalCount - (this.pageNumber-1)*this.pageSize;
-	
 	}
 	private String getPagingHtml(String url) {
 		String result = "" ;
