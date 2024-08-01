@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/mylayout}">
+<th:block layout:fragment="css">
+    <style>
+        .fieldError{
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</th:block>
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        $(document).ready(function(){
+            var genre = "";
+            genre += [[${movie.genre}]];
+            var genreList = $('input[name=genre]');
+            genreList.each(function(){
+                var curr = $(this).val();
+                var result = genre.indexOf(curr);
+                if(result != -1){
+                    $(this).attr('checked',true);
+                }
+            });
+
+            var user_id = document.querySelector('#user_id');
+            // console.log("user_id :"+user_id);
+            user_id.addEventListener("keydown", function() {
+                duplicationCheck = false;
+                idcheck = false;
+                blankcheck = false;
+                document.getElementById("msg").innerHTML = "";
+            });
+
+            var submitBtn = document.querySelector('#submitButton');
+            submitBtn.addEventListener("click", function(){
+                if(duplicationCheck == false){
+                    alert('중복체크를 해주세요.');
+                    event.preventDefault();
+                }else if(blankcheck == false){
+                    alert('아이디를 입력해주세요.');
+                    user_id.focus();
+                    event.preventDefault();
+                }else if(idcheck == false){
+                    alert('중복된 아이디입니다.');
+                    event.preventDefault();
+                }
+            });
+
+        });
+
+        var idcheck = false;
+        var blankcheck = false;
+        var duplicationCheck = false;
+
+        function check() {
+           duplicationCheck = true;
+           var userId = document.querySelector('#user_id');
+
+           if(userId.value.trim() == ""){
+                alert("아이디를 입력하세요.");
+                userId.focus();
+                blankcheck = false;
+           }else{
+               blankcheck = true;
+               $.ajax({
+                    url: "/movie/check",
+                    type: "POST",
+                    data: {user_id: userId.value},
+                    success: function(result) {
+                        console.log(result);
+                        if(result == "success"){
+                            document.getElementById("msg").innerHTML = "사용할 수 있는 아이디입니다.";
+                            idcheck = true;
+                        }else{
+                            document.getElementById("msg").innerHTML = "중복된 아이디입니다.";
+                            idcheck = false;
+                        }
+                    }
+               })
+           }
+        }
+    </script>
+</th:block>
+<div class="content" layout:fragment="content">
+    <h2>영화 등록 <span th:text="${movie.genre}"> </span></h2>
+    <form name="myform" method="post" action="/movie/insert" th:object="${movie}">
+        <div class="form-group">
+            <b>아이디</b>
+            <input type="text" class="form-control" th:field="${movie.user_id}" placeholder="아이디를(을) 입력하세요.">
+            <input type="button" id="btn" class="btn btn-info" value="중복체크" onclick="check()">
+            <span id="msg"></span>
+            <p th:if="${#fields.hasErrors('user_id')}" th:errors="*{user_id}" class="fieldError"></p>
+        </div>
+        <div class="form-group">
+            <b>이름</b>
+            <input type="text" class="form-control" th:field="${movie.name}" placeholder="이름를(을) 입력하세요.">
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="fieldError"></p>
+        </div>
+        <div class="form-group">
+            <b>나이</b>
+            <input type="text" class="form-control" th:field="${movie.age}" placeholder="나이를(을) 입력하세요.">
+            <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="fieldError"></p>
+        </div>
+        <div class="form-group">
+            <b>장르</b>
+            <div class="form-control">
+                <div class="form-check-inline">
+                    <span th:each="genre : ${genreList}">
+                        <input  type="checkbox" class="form-check-input" th:field="${movie.genre}" th:value="${genre}"> [[${genre}]]
+                        &nbsp;
+                    </span>
+                </div>
+            </div>
+            <p th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}" class="fieldError"></p>
+        </div>
+        <div class="form-group">
+            <b>즐겨 보는 시간대</b>
+            <select class="form-control" th:field="${movie.movie_time}">
+                <option value="">---선택하세요</option>
+                <option th:each="num : ${#numbers.sequence(0,22,2)}" th:value="${num}+'~'+${num+2}" th:text="${num}+'~'+${num+2}" />
+            </select>
+            <p th:if="${#fields.hasErrors('movie_time')}" th:errors="*{movie_time}" class="fieldError"></p>
+        </div>
+        <div class="form-group">
+            <b>동반 관객수</b>
+            <div class="form-control">
+                <div class="form-check-inline">
+                    <span th:each="people : ${peopleList}">
+                        <input type="radio" class="form-check-input" th:field="${movie.people}" th:value="${people}">[[${people}]]
+                        &nbsp;
+                    </span>
+                </div>
+            </div>
+            <p th:if="${#fields.hasErrors('people')}" th:errors="*{people}" class="fieldError"></p>
+        </div>
+        <div class="form-group">
+            <b>영화관 개선사항</b>
+            <textarea class="form-control" th:field="${movie.movie_comment}" placeholder="개선사항를(을) 입력하세요.">
+            </textarea>
+            <p th:if="${#fields.hasErrors('movie_comment')}" th:errors="*{movie_comment}" class="fieldError"></p>
+        </div>
+        <button type="submit" id="submitButton" class="btn btn-primary">등록</button>
+        <button type="reset" class="btn btn-primary">취소</button>
+    </form>
+</div>
+
+</html>
