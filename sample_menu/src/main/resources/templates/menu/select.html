@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/mylayout}">
+
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        function allck() {
+                var all_ck = document.querySelector('#all');
+                var rows = document.querySelectorAll('input[name=row]');
+                rows.forEach(function(row) {
+                    row.checked = all_ck.checked;
+                });
+            }
+            function checkDelete(){
+                var rows = document.querySelectorAll('input[name=row]:checked');
+                //console.log(rows);
+                if(rows.length == 0){
+                        alert('1개이상 선택해주세요.');
+                        return false;
+                }else{
+                    if(confirm('정말 삭제하시겠습니까?')){
+
+                    }else{
+                        alert('취소');
+                        return false;
+                    }
+                }
+            }
+    </script>
+</th:block>
+
+<div class="content" layout:fragment="content">
+    <div class="container text-center">
+        <h2>식사 목록([[${totalCount}]]/[[${getTotalElements}]])</h2>
+        <form th:action="@{/menus}" method="get" class="form-inline justify-content-center">
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" name="keyword" th:value="${keyword}" class="form-control" placeholder="식당 또는 메뉴로 검색">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">검색</button>
+        </form>
+        <form name="myform" method="post" action="/menu/checkDelete">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th><input type="checkbox" id="all" onclick="allck()">번호</th>
+                    <th>닉네임</th>
+                    <th>식당</th>
+                    <th>음식</th>
+                    <th>식사 시간대</th>
+                    <th>식사 날짜</th>
+                    <th>수정</th>
+                    <th>삭제</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="menu : ${menuList}">
+                    <td><input type="checkbox" name="row" th:value="${menu.menuNo}">[[${menu.menuNo}]]</td>
+                    <td>
+                        <a th:href="@{/menu/detail(menuNo=${menu.menuNo})}" th:text="${menu.nickName}"></a>
+                    </td>
+                    <td th:text="${menu.restaurant}"></td>
+                    <td th:text="${menu.food}"></td>
+                    <td th:text="${menu.menuTime}"></td>
+                    <td th:text="${menu.menuDate}"></td>
+                    <td><a th:href="@{/menu/update(menuNo=${menu.menuNo})}" class="btn btn-success">수정</a></td>
+                    <td><a th:href="@{/menu/delete(menuNo=${menu.menuNo})}" class="btn btn-danger">삭제</a></td>
+                </tr>
+                </tbody>
+            </table>
+            <div style="text-align:center;">
+                <input type="button" class="btn btn-primary" onclick="location.href='/menu/insert'" value="추가">
+                <input type="submit" class="btn btn-danger" onclick="return checkDelete()" value="선택항목 삭제">
+            </div>
+        </form>
+        <nav class="pagination justify-content-center">
+            <li class="page-item" th:classappend="${menuList.hasPrevious()} ? '':'disabled'">
+                 <a class="page-link" href="#" th:href="@{/menus(page=${menuList.number-1},size=${menuList.size},keyword=${keyword})}"> Previous</a>
+            </li>
+            <li class="page-item" th:each="i : ${#numbers.sequence(0,menuList.totalPages-1)}"  th:classappend="${i == menuList.number} ? 'active'">
+                <a class="page-link" href="#" th:href="@{/menus(page=${i},size=${menuList.size},keyword=${keyword})}"> [[${i+1}]]</a>
+            </li>
+            <li class="page-item" th:classappend="${menuList.hasNext()} ? '':'disabled'">
+                <a class="page-link" href="#" th:href="@{/menus(page=${menuList.number+1},size=${menuList.size},keyword=${keyword})}"> Next</a>
+            </li>
+        </nav>
+
+    </div>
+</div>
+
+</html>

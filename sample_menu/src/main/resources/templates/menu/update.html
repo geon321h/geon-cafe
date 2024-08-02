@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/mylayout}">
+<th:block layout:fragment="css">
+    <style>
+        .fieldError{
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+</th:block>
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        $(document).ready(function(){
+            var food = "";
+            food += [[${menu.food}]];
+            var foodList = $('input[name=food]');
+            foodList.each(function(){
+                var curr = $(this).val();
+                var result = food.indexOf(curr);
+                if(result != -1){
+                    $(this).attr('checked',true);
+                }
+            });
+        })
+    </script>
+</th:block>
+
+<div class="content" layout:fragment="content">
+    <div class="container">
+        <h2 class="text-center">식사 수정</h2>
+        <form name="myform" method="post" action="/menu/update" th:object="${menu}">
+            <input type="hidden" th:field="${menu.menuNo}">
+            <div class="form-group">
+                <b>닉네임</b>
+                <input type="text" class="form-control" th:field="${menu.nickName}" placeholder="닉네임을 입력하세요." readonly>
+                <p th:if="${#fields.hasErrors('nickName')}" th:errors="*{nickName}" class="fieldError"></p>
+            </div>
+            <div class="form-group">
+                <b>식당명</b>
+                <input type="text" class="form-control" th:field="${menu.restaurant}" placeholder="식당명을 입력하세요.">
+                <p th:if="${#fields.hasErrors('restaurant')}" th:errors="*{restaurant}" class="fieldError"></p>
+            </div>
+            <div class="form-group">
+                <b>음식</b>
+                <div class="form-control">
+                    <div class="form-check-inline">
+                <span th:each="food : ${foodList}">
+                    <input  type="checkbox" class="form-check-input" th:field="${menu.food}" th:value="${food}"> [[${food}]]
+                    &nbsp;
+                </span>
+                    </div>
+                </div>
+                <p th:if="${#fields.hasErrors('food')}" th:errors="*{food}" class="fieldError"></p>
+            </div>
+            <div class="form-group">
+                <b>식사 시간대</b>
+                <select class="form-control" th:field="${menu.menuTime}">
+                    <option value="">---선택하세요</option>
+                    <option th:each="time : ${timeList}" th:value="${time}" th:text="${time}" />
+                </select>
+                <p th:if="${#fields.hasErrors('menuTime')}" th:errors="*{menuTime}" class="fieldError"></p>
+            </div>
+            <div class="form-group">
+                <b>식사 날짜</b>
+                <input type="date" class="form-control" th:field="${menu.menuDate}">
+                <p th:if="${#fields.hasErrors('menuDate')}" th:errors="*{menuDate}" class="fieldError"></p>
+            </div>
+            <button type="submit" id="submitButton" class="btn btn-primary">수정</button>
+            <button type="reset" class="btn btn-primary">취소</button>
+        </form>
+    </div>
+</div>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/mylayout}">
+<div class="content" layout:fragment="content">
+    <div class="container text-center">
+        <h2>식사 상세 페이지 </h2>
+        <table class="col-6 table" >
+            <tr>
+                <th>번호</th>
+                <td th:text="${menu.menuNo}"></td>
+            </tr>
+            <tr>
+                <th>닉네임</th>
+                <td th:text="${menu.nickName}"></td>
+            </tr>
+            <tr>
+                <th>식당명</th>
+                <td th:text="${menu.restaurant}"></td>
+            </tr>
+            <tr>
+                <th>음식</th>
+                <td th:text="${menu.food}"></td>
+            </tr>
+            <tr>
+                <th>시간대</th>
+                <td th:text="${menu.menuTime}"></td>
+            </tr>
+            <tr>
+                <th>식사 날짜</th>
+                <td th:text="${menu.menuDate}"></td>
+            </tr>
+        </table>
+        <a class="btn btn-primary" th:href="@{/menus}">돌아가기</a>
+    </div>
+</div>
+
+</html>
